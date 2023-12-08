@@ -1,0 +1,28 @@
+{
+  "name": "styling-app",
+  "version": "0.1.0",
+  "type": "module",
+  "dependencies": {
+    "@headlessui/react": "^1.7.14",
+    "@heroicons/react": "^2.0.18",
+    "@hubspot/cms-components": "latest",
+    "autoprefixer": "^10.4.14",
+    "postcss-nested": "^6.0.1",
+    "prop-types": "^15.8.1",
+    "react": "^18.1.0",
+    "styled-jsx": "^5.1.2",
+    "styled-components": "^6.0.3",
+    "tailwindcss": "^3.3.2"
+  },
+  "devDependencies": {
+    "@hubspot/cms-dev-server": "latest",
+    "@testing-library/react": "^13.4.0",
+    "@vitejs/plugin-react": "^2.1.0",
+    "jsdom": "^20.0.1",
+    "vitest": "^0.24.3"
+  },
+  "scripts": {
+    "start": "hs-cms-dev-server .",
+    "test": "vitest"
+  }
+}

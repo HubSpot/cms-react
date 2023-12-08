@@ -1,0 +1,27 @@
+{
+  "name": "js-building-blocks-contact-profile",
+  "description": "JS Building Blocks Contact Profile",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@hubspot/cli": "^4.0.1",
+    "@hubspot/prettier-plugin-hubl": "latest",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.31.10",
+    "prettier": "^2.7.1",
+    "yarpm": "^1.2.0"
+  },
+  "scripts": {
+    "start": "cd contact-profile-project/contact-profile-app && yarpm start",
+    "postinstall": "cd contact-profile-project/contact-profile-app && yarpm install",
+    "lint:js": "eslint . --ext .js,.jsx",
+    "prettier": "prettier . --check",
+    "watch:hubl": "hs watch contact-profile-theme contact-profile-theme",
+    "upload:hubl": "hs upload contact-profile-theme contact-profile-theme",
+    "deploy": "hs project upload contact-profile-project"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

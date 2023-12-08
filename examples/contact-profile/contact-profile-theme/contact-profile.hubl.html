@@ -1,0 +1,17 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Contact Profile
+-->
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+
+  {% module "contact_profile"
+    path="@projects/contact-profile-project/contact-profile-app/components/modules/ContactProfile",
+    firstName="{{contact.firstname}}",
+    lastName="{{contact.lastname}}",
+    email="{{contact.email}}",
+    foo="bar" %}
+
+{% endblock body %}

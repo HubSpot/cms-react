@@ -1,0 +1,19 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: JS Partial - CSS Modules Examples
+-->
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+
+  {% js_partial
+    path="@projects/styling-project/styling-app/components/partials/CSSModulesPartial.jsx" %}
+  <br />
+  {% js_partial
+    path="@projects/styling-project/styling-app/components/partials/CSSPropertiesPartial.jsx" %}
+  <br />
+  {% js_partial
+    path="@projects/styling-project/styling-app/components/partials/InlineStylesPartial.jsx" %}
+
+{% endblock body %}

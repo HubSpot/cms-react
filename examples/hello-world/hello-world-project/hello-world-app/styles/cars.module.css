@@ -1,0 +1,34 @@
+.cars {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 800px;
+}
+
+.carGrid {
+  width: calc(100% / 2);
+  flex-shrink: 0;
+}
+
+.car {
+  margin: 5px;
+  border: 2px solid #ff7a59;
+  border-radius: 4px;
+  padding: 14px 7px;
+  display: flex;
+}
+
+.car h2 {
+  font-size: 1em;
+}
+
+.carDetails {
+  height: 100px;
+  margin-left: auto;
+}
+
+.carDetails img {
+  margin: 0;
+  height: 100%;
+  width: auto;
+}

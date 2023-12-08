@@ -1,0 +1,11 @@
+[
+  {
+    "type": "Color",
+    "name": "brand_color",
+    "label": "Brand Color",
+    "default": {
+      "color": "#FF7A59",
+      "opacity": 100
+    }
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "name": "gql-storybook-app",
+  "version": "0.1.0",
+  "type": "module",
+  "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@hubspot/cms-components": "latest",
+    "@mui/material": "^5.13.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.1.0"
+  },
+  "devDependencies": {
+    "@hubspot/cms-dev-server": "latest",
+    "@testing-library/react": "^13.4.0",
+    "@vitejs/plugin-react": "^2.1.0",
+    "jsdom": "^20.0.1",
+    "vitest": "^0.24.3"
+  },
+  "scripts": {
+    "start": "hs-cms-dev-server . --storybook",
+    "test": "vitest"
+  }
+}

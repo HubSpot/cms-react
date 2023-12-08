@@ -1,0 +1,10 @@
+/**
+*  These styles with the ".module" in the filename do make the classes unique
+*  and will be applied to the elements where they are included.
+*  Helpful to keep CSS from bleeding from one element to another.
+*/
+
+.sample-jsr {
+  padding: 2rem;
+  background: lightsalmon;
+}

@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "name": "public-default-jsr-modules",
+  "version": "1.0.0",
+  "description": "Public default JS Rendered modules",
+  "type": "module",
+  "scripts": {
+    "start": "hs-cms-dev-server ../src",
+    "start-storybook": "hs-cms-dev-server ../src --storybook",
+    "deploy": "hs project upload default-jsr-modules",
+    "test": "vitest"
+  },
+  "resolutions": {
+    "jscodeshift": "0.12.1-hubspot-fork"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hubspot/cms-components": "^0.11",
+    "react": "^18.2.0",
+    "styled-jsx": "^5"
+  },
+  "devDependencies": {
+    "@hubspot/cms-dev-server": "^0.11",
+    "@vitejs/plugin-react": "^4.0.4",
+    "jsdom": "^22.1.0",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.4"
+  }
+}

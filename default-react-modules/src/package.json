@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "public-default-jsr-modules",
+  "name": "public-default-react-modules",
   "version": "1.0.0",
   "description": "Public default React modules",
   "type": "module",

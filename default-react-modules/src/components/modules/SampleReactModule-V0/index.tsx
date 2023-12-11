@@ -9,7 +9,7 @@ export const Component = ({ fieldValues, hublParameters = {} }) => {
   return (
     <div className="sampleReactModuleWrapper">
       <div className={styles['sample-jsr']}>
-        <h1>Sample JSR</h1>
+        <h1>Sample React Module</h1>
         <p>Field Values: {JSON.stringify(fieldValues)}</p>
         <p>HubL Parameters: {JSON.stringify(hublParameters)}</p>
         <p>Module style classes: {JSON.stringify(styles)}</p>
@@ -23,10 +23,10 @@ export const Component = ({ fieldValues, hublParameters = {} }) => {
 export { fields } from './fields.js';
 
 export const meta = {
-  label: 'Sample JSR Module',
+  label: 'Sample React Module Module',
   host_template_types: ['PAGE'],
 };
 export const defaultModuleConfig = {
-  moduleName: 'sample_jsr',
+  moduleName: 'sample_react_module',
   version: 1,
 };

@@ -1,0 +1,8 @@
+/**
+*  These styles without the ".module" in the filename do not make the classes unique
+*  and will be applied globally. Helpful to reduce a bunch of duplicate styles per module.
+*/
+
+.sampleReactModuleWrapper {
+  border: 5px solid #6c6685;
+}

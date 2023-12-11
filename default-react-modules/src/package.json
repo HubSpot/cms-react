@@ -2,12 +2,12 @@
   "private": true,
   "name": "public-default-jsr-modules",
   "version": "1.0.0",
-  "description": "Public default JS Rendered modules",
+  "description": "Public default React modules",
   "type": "module",
   "scripts": {
     "start": "hs-cms-dev-server ../src",
     "start-storybook": "hs-cms-dev-server ../src --storybook",
-    "deploy": "hs project upload default-jsr-modules",
+    "deploy": "hs project upload public-default-react-modules",
     "test": "vitest"
   },
   "resolutions": {

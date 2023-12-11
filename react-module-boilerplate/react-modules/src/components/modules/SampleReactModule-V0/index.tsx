@@ -8,7 +8,7 @@ export const Component = ({ fieldValues, hublParameters = {} }) => {
 
   return (
     <div className="sampleReactModuleWrapper">
-      <div className={styles['sample-jsr']}>
+      <div className={styles['sample-sample-react-module']}>
         <h1>Sample React Module</h1>
         <p>Field Values: {JSON.stringify(fieldValues)}</p>
         <p>HubL Parameters: {JSON.stringify(hublParameters)}</p>

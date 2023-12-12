@@ -1,0 +1,18 @@
+.hydrationText {
+  font-style: italic;
+  color: #aaa;
+  margin-left: 1em;
+  visibility: hidden;
+}
+
+.hydrated .hydrationText {
+  visibility: visible;
+}
+
+.button {
+  font-size: inherit;
+}
+
+.button:hover:not(:disabled) {
+  cursor: pointer;
+}

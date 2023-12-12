@@ -1,0 +1,12 @@
+.rowFluidWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.rowFluid {
+  display: flex;
+}
+
+.col {
+  flex: 1;
+}

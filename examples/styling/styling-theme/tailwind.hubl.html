@@ -1,0 +1,13 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: JS Partial - Styling - Tailwind Example
+-->
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+
+  {% js_partial
+    path="@projects/styling-project/styling-app/components/partials/TailwindPartial.jsx" %}
+
+{% endblock body %}

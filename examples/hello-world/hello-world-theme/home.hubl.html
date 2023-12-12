@@ -1,0 +1,20 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Hello World - Home
+-->
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+
+  {% js_partial
+    path="@projects/hello-world-project/hello-world-app/components/partials/Home.jsx",
+    no_wrapper=True %}
+
+  {% dnd_area "dnd_area", class="main" %}
+    {% dnd_section %}
+
+    {% end_dnd_section %}
+  {% end_dnd_area %}
+
+{% endblock body %}

@@ -1,0 +1,10 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Hello World - Home
+-->
+{% extends "./layouts/base.hubl.html" %}
+{% block body %}
+  {% module "contact_list"
+    path="@projects/gql-storybook-project/gql-storybook-app/components/modules/ContactList" %}
+{% endblock body %}

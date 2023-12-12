@@ -1,0 +1,23 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Hello World - To Do
+-->
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+
+  {# Can also use the module tag:
+    {% module "todo_js_module" 
+      path="@projects/hello-world-project/hello-world-app/components/modules/TodoList" 
+    %} 
+  #}
+
+  {% dnd_area "dnd_area", class="main" %}
+    {% dnd_section %}
+      {% dnd_module extra_classes="todo-js-module", path="@projects/hello-world-project/hello-world-app/components/modules/TodoList" %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+  {% end_dnd_area %}
+
+{% endblock body %}

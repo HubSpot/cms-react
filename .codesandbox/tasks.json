@@ -1,0 +1,59 @@
+{
+  "$schema": "https://codesandbox.io/schemas/tasks.json",
+
+  // These tasks will run in order when initializing your CodeSandbox project.
+  "setupTasks": [
+    {
+      "name": "Install all examples",
+      "command": "find . -name \"package.json\" -not -path \"*/node_modules/*\" -print0 | xargs -0 -n 1 sh -c 'for arg do cd $(dirname \"$1\"); echo \"\"; echo \"Installing at $(pwd)\"; echo \"\"; npm install --quiet; done' _"
+    }
+  ],
+
+  // These tasks can be run from CodeSandbox. Running one will open a log in the app.
+  "tasks": {
+    "graphql-storybook-start": {
+      "name": "Start graphql-storybook example",
+      "command": "cd graphql-storybook; VITE_ORIGIN=$(echo \"//$CODESANDBOX_HOST\" | sed 's/\\$PORT/3000/g') npm start;"
+    },
+    "hello-world-start": {
+      "name": "Start hello-world example",
+      "command": "cd hello-world; PORT=3000 VITE_ORIGIN=$(echo \"//$CODESANDBOX_HOST\" | sed 's/\\$PORT/3000/g') npm start;",
+      "runAtStart": true
+    },
+    "islands-start": {
+      "name": "Start islands example",
+      "command": "cd islands; PORT=3100 VITE_ORIGIN=$(echo \"//$CODESANDBOX_HOST\" | sed 's/\\$PORT/3100/g') npm start;",
+      "runAtStart": false
+    },
+    "styling-start": {
+      "name": "Start styling example",
+      "command": "cd styling; PORT=3200 VITE_ORIGIN=$(echo \"//$CODESANDBOX_HOST\" | sed 's/\\$PORT/3200/g') npm start;",
+      "runAtStart": false
+    },
+    "todo-mvc-start": {
+      "name": "Start todo-mvc example",
+      "command": "cd todo-mvc; PORT=3300 VITE_ORIGIN=$(echo \"//$CODESANDBOX_HOST\" | sed 's/\\$PORT/3300/g') npm start;",
+      "runAtStart": false
+    },
+    "graphql-storybook-install": {
+      "name": "Install graphql-storybook",
+      "command": "cd graphql-storybook; npm install;"
+    },
+    "hello-world-install": {
+      "name": "Install hello-world",
+      "command": "cd hello-world; npm install;"
+    },
+    "islands-install": {
+      "name": "Install islands",
+      "command": "cd islands; npm install;"
+    },
+    "styling-install": {
+      "name": "Install styling",
+      "command": "cd styling; npm install;"
+    },
+    "todo-mvc-install": {
+      "name": "Install todo-mvc",
+      "command": "cd todo-mvc; npm install;"
+    }
+  }
+}

@@ -1,0 +1,145 @@
+/* Button */
+
+.button {
+  border-color: transparent;
+  color: white;
+  background-color: #ff7a59;
+
+  padding: 0.5rem 0;
+  border: 1px solid;
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  width: 60px;
+
+  transition-property: background-color, color, opacity;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.button:hover:enabled {
+  background-color: #ffcec2;
+}
+
+.button:active:enabled {
+  background-color: #d44325;
+}
+
+.logo {
+  margin: auto;
+  height: auto;
+  width: 40vw;
+
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+/* ToDo List */
+
+.todoListContainer {
+  width: 25vw;
+  min-width: 400px;
+}
+
+.todoList,
+.todoContainer {
+  list-style: none;
+}
+
+.todoList {
+  margin: 0;
+  padding: 0;
+}
+
+.todoContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.todo,
+.notComplete {
+  margin: 0 10px 0 0;
+  height: 3rem;
+  line-height: 3rem;
+  padding: 0 10px;
+  display: flex;
+  cursor: pointer;
+  background: #eaf0f6;
+  border: solid #b6c7d6 1px;
+  box-shadow: 0px 1px 5px rgba(33, 51, 67, 0.12);
+  border-radius: 3px;
+  flex: 1;
+}
+
+.todo input {
+  margin-right: 10px;
+}
+
+.todo .todoDateAdded {
+  margin-left: auto;
+  color: gray;
+}
+
+.todoContainer:hover > .todoRemove,
+.todoRemove:focus
+{
+  opacity: 100%;
+}
+
+.todoRemove {
+  /* Remove default button element styles */
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+
+  transition: 0.1s opacity linear, 0.1s color linear;
+  font-size: 2em;
+  color: grey;
+  opacity: 0%;
+  cursor: pointer;
+  top: 13%;
+  position: relative;
+  width: 60px;
+  text-align: center;
+}
+
+.todo.complete {
+  opacity: var(--todo-complete-opacity);
+  background-color: #dbe4ed;
+  border-color: #b6c7d6;
+}
+
+.toDoForm {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.todoInput {
+  padding: 8px 8px;
+  border: 1px solid #b6c7d6;
+  border-radius: 3px;
+  outline: none;
+  line-height: 1.5;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.todoInput:focus {
+  border-color: #0fbfbf;
+}

@@ -1,0 +1,27 @@
+{
+  "name": "js-building-blocks-todo-mvc",
+  "description": "JS Building Blocks Todo MVC",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@hubspot/cli": "^4.0.1",
+    "@hubspot/prettier-plugin-hubl": "latest",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.31.10",
+    "prettier": "^2.7.1",
+    "yarpm": "^1.2.0"
+  },
+  "scripts": {
+    "start": "cd todo-mvc-project/todo-mvc-app && yarpm start",
+    "postinstall": "cd todo-mvc-project/todo-mvc-app && yarpm install",
+    "lint:js": "eslint . --ext .js,.jsx",
+    "prettier": "prettier . --check",
+    "watch:hubl": "hs watch todo-mvc-theme todo-mvc-theme",
+    "upload:hubl": "hs upload todo-mvc-theme todo-mvc-theme",
+    "deploy": "hs project upload todo-mvc-project"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

@@ -1,0 +1,281 @@
+// Vitest Snapshot v1
+
+exports[`BlogPosts > renders BlogPosts 1`] = `
+<DocumentFragment>
+  <style>
+    
+            ._hsBlogPost_ab621b {
+      border-radius: 0px;
+    }
+    ._hsBlogPostImageWrapper_ab621b {
+    }
+    ._hsBlogPostImageOverlay_ab621b {
+    }
+    ._hsBlogPostListingContent_ab621b {
+    }
+    ._hsBlogPostTitle_ab621b {
+    }
+    ._hsBlogPostTitleLink_ab621b {
+    }
+    ._hsBlogPostTitleLink_ab621b:hover {
+    }
+    ._hsBlogPostAuthorImageWrapper_ab621b {
+      border-radius: 0px;
+    }
+    ._hsBlogPostAuthorImage_ab621b {
+      width: undefinedpx;
+    }
+    ._hsBlogPostAuthor_ab621b {
+    }
+    ._hsBlogPostAuthor_ab621b:hover {
+    }
+    ._hsBlogPostTag_ab621b {
+      border-radius: 0px;
+    }
+    ._hsBlogPostTag_ab621b:hover {
+    }
+    ._hsBlogPostTag_ab621b:not(:last-child) {
+      margin-right ;
+    }
+    ._hsBlogPostPublishDate_ab621b {
+    }
+    ._hsBlogPostDescription_ab621b {
+    }
+    ._hsBlogPostButtonWrapper_ab621b {
+    }
+    ._hsBlogPostButton_ab621b {
+      border-radius: 0px;
+    }
+    ._hsBlogPostButton_ab621b:hover {
+    }
+  
+      
+  </style>
+  <section
+    class="_hsBlogPostListing_ab621b _hsBlogPostGrid_ab621b _hsBlogPostGridColumn3_ab621b"
+  >
+    <article
+      class="_hsBlogPost_ab621b _hsBlogPostListingPostColumn3_ab621b"
+      data-testid="blog-post"
+      style="--grid-post-width: calc(50% - 0.5rem); --grid-space-between-posts: 1rem; --grid-post-width-three-column: calc(33.3% - 0.66rem); --grid-post-width-four-column: calc(25% - 0.75rem);"
+    >
+      <a
+        aria-label="Featured image text Bone structure of a foot"
+        class="_hsBlogPostImageWrapper_ab621b"
+        data-testid="blog-post-image"
+        href="https://test-domain/blog/01-01-2023/broken-ankles"
+        style="--margin-right: 20px; --order: 1; --border-radius: 0px;"
+      >
+        <img
+          alt="Bone structure of a foot"
+          class="_hsBlogPostListingImage_ab621b"
+          height="585"
+          loading="eager"
+          src="https://www.mayoclinic.org/-/media/kcms/gbs/patient-consumer/images/2013/08/26/11/10/ds00951_im03497_r7_footanklethu_jpg.jpg"
+          width="632"
+        />
+      </a>
+      <div
+        class="_hsBlogPostListingContent_ab621b"
+      >
+        <h2
+          class="_hsBlogPostTitle_ab621b"
+        >
+          <a
+            class="_hsBlogPostTitleLink_ab621b"
+            href="https://test-domain/blog/01-01-2023/broken-ankles"
+          >
+            How to break your ankle and still smile
+          </a>
+        </h2>
+        <div
+          class="_hsBlogPostAuthor_ab621b"
+          data-testid="author-wrapper"
+        >
+          <div
+            class="_hsBlogPostAuthorImageWrapper_ab621b"
+          >
+            <img
+              class="_hsBlogPostAuthorImage_ab621b"
+              data-testid="author-avatar"
+              loading="lazy"
+              src="https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Cat-512.png"
+            />
+          </div>
+          <a
+            class="_hsBlogPostAuthor_ab621b"
+            data-testid="author-name"
+            href="undefined/author/brandonvandyck"
+          >
+            Brandon Van Dyck
+          </a>
+        </div>
+      </div>
+    </article>
+    <article
+      class="_hsBlogPost_ab621b _hsBlogPostListingPostColumn3_ab621b"
+      data-testid="blog-post"
+      style="--grid-post-width: calc(50% - 0.5rem); --grid-space-between-posts: 1rem; --grid-post-width-three-column: calc(33.3% - 0.66rem); --grid-post-width-four-column: calc(25% - 0.75rem);"
+    >
+      <a
+        aria-label="Featured image text Electric bike"
+        class="_hsBlogPostImageWrapper_ab621b"
+        data-testid="blog-post-image"
+        href="https://test-domain/blog/01-02-2023/ebikes"
+        style="--margin-right: 20px; --order: 1; --border-radius: 0px;"
+      >
+        <img
+          alt="Electric bike"
+          class="_hsBlogPostListingImage_ab621b"
+          height="494"
+          loading="eager"
+          src="https://pedegoelectricbikes.com/wp-content/uploads/2020/12/pedego-ridge-rider-classic-600x494.jpg"
+          width="600"
+        />
+      </a>
+      <div
+        class="_hsBlogPostListingContent_ab621b"
+      >
+        <h2
+          class="_hsBlogPostTitle_ab621b"
+        >
+          <a
+            class="_hsBlogPostTitleLink_ab621b"
+            href="https://test-domain/blog/01-02-2023/ebikes"
+          >
+            E-Bikes: A Guide to Building and Riding
+          </a>
+        </h2>
+        <div
+          class="_hsBlogPostAuthor_ab621b"
+          data-testid="author-wrapper"
+        >
+          <div
+            class="_hsBlogPostAuthorImageWrapper_ab621b"
+          >
+            <img
+              class="_hsBlogPostAuthorImage_ab621b"
+              data-testid="author-avatar"
+              loading="lazy"
+              src="https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Cat-512.png"
+            />
+          </div>
+          <a
+            class="_hsBlogPostAuthor_ab621b"
+            data-testid="author-name"
+            href="undefined/author/jblake"
+          >
+            Joey Blake
+          </a>
+        </div>
+      </div>
+    </article>
+    <article
+      class="_hsBlogPost_ab621b _hsBlogPostListingPostColumn3_ab621b"
+      data-testid="blog-post"
+      style="--grid-post-width: calc(50% - 0.5rem); --grid-space-between-posts: 1rem; --grid-post-width-three-column: calc(33.3% - 0.66rem); --grid-post-width-four-column: calc(25% - 0.75rem);"
+    >
+      <a
+        aria-label="Featured image text Home with mesh wifi "
+        class="_hsBlogPostImageWrapper_ab621b"
+        data-testid="blog-post-image"
+        href="https://test-domain/blog/01-03-2023/wifi"
+        style="--margin-right: 20px; --order: 1; --border-radius: 0px;"
+      >
+        <img
+          alt="Home with mesh wifi "
+          class="_hsBlogPostListingImage_ab621b"
+          height="500"
+          loading="eager"
+          src="https://m.media-amazon.com/images/I/41bMo8AYiML._AC_SY1000_.jpg"
+          width="500"
+        />
+      </a>
+      <div
+        class="_hsBlogPostListingContent_ab621b"
+      >
+        <h2
+          class="_hsBlogPostTitle_ab621b"
+        >
+          <a
+            class="_hsBlogPostTitleLink_ab621b"
+            href="https://test-domain/blog/01-03-2023/wifi"
+          >
+            Mesh Wifi: Boost your home wifi experience
+          </a>
+        </h2>
+        <div
+          class="_hsBlogPostAuthor_ab621b"
+          data-testid="author-wrapper"
+        >
+          <div
+            class="_hsBlogPostAuthorImageWrapper_ab621b"
+          >
+            <img
+              class="_hsBlogPostAuthorImage_ab621b"
+              data-testid="author-avatar"
+              loading="lazy"
+              src="https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Cat-512.png"
+            />
+          </div>
+          <a
+            class="_hsBlogPostAuthor_ab621b"
+            data-testid="author-name"
+            href="undefined/author/wwifi"
+          >
+            Wilfred Wilhelm Wifi
+          </a>
+        </div>
+      </div>
+    </article>
+    <article
+      class="_hsBlogPost_ab621b _hsBlogPostListingPostColumn3_ab621b"
+      data-testid="blog-post"
+      style="--grid-post-width: calc(50% - 0.5rem); --grid-space-between-posts: 1rem; --grid-post-width-three-column: calc(33.3% - 0.66rem); --grid-post-width-four-column: calc(25% - 0.75rem);"
+    >
+      <a
+        aria-label="Featured image text Chef using alcohol and fire to cook a dish"
+        class="_hsBlogPostImageWrapper_ab621b"
+        data-testid="blog-post-image"
+        href="https://test-domain/blog/01-04-2023/being-a-chef"
+        style="--margin-right: 20px; --order: 1; --border-radius: 0px;"
+      >
+        <img
+          alt="Chef using alcohol and fire to cook a dish"
+          class="_hsBlogPostListingImage_ab621b"
+          height="814"
+          loading="lazy"
+          src="https://www.finedininglovers.com/sites/g/files/xknfdk626/files/2021-07/chef%20%281%29.jpg"
+          width="1221"
+        />
+      </a>
+      <div
+        class="_hsBlogPostListingContent_ab621b"
+      >
+        <h2
+          class="_hsBlogPostTitle_ab621b"
+        >
+          <a
+            class="_hsBlogPostTitleLink_ab621b"
+            href="https://test-domain/blog/01-04-2023/being-a-chef"
+          >
+            Being a Chef: To live amongst flame
+          </a>
+        </h2>
+        <div
+          class="_hsBlogPostAuthor_ab621b"
+          data-testid="author-wrapper"
+        >
+          <a
+            class="_hsBlogPostAuthor_ab621b"
+            data-testid="author-name"
+            href="undefined/author/chefredknifer"
+          >
+            Chefred Knifer
+          </a>
+        </div>
+      </div>
+    </article>
+  </section>
+</DocumentFragment>
+`;

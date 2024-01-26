@@ -1,0 +1,161 @@
+/* Shared */
+.hsBlogPostTitle,
+.hsBlogPostTags {
+  margin: 0 0 0.5rem;
+}
+
+/* Layout */
+.hsBlogPostListing {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hsBlogPost {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 1rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+/* Grid layout  */
+.hsBlogPostGridColumn2 {
+  justify-content: space-between;
+}
+
+@media (min-width: 767px) {
+  .hsBlogPostListingPostColumn2 {
+    width: var(--grid-post-width);
+  }
+
+  .hsBlogPostListingPostColumn3 {
+    width: var(--grid-post-width-three-column);
+  }
+
+  .hsBlogPostListingPostColumn3:nth-child(3n + 1),
+  .hsBlogPostListingPostColumn3:nth-child(3n + 2) {
+    margin-right: var(--grid-space-between-posts, '1rem');
+  }
+
+  .hsBlogPostListingPostColumn4 {
+    width: var(--grid-post-width-four-column);
+  }
+
+  .hsBlogPostListingPostColumn4:nth-child(4n + 1),
+  .hsBlogPostListingPostColumn4:nth-child(4n + 2),
+  .hsBlogPostListingPostColumn4:nth-child(4n + 3) {
+    margin-right: var(--grid-space-between-posts, '1rem');
+  }
+}
+
+/* Side by side layout */
+@media (min-width: 768px) {
+  .hsBlogPostSideBySide {
+    flex-direction: row;
+  }
+
+  .hsBlogPostImageWrapperSideBySide {
+    width: var(--image-wrapper-width);
+    margin-right: var(--margin-right);
+    margin-left: var(--margin-left);
+    order: var(--order);
+  }
+
+  .hsBlogPostContentSideBySide {
+    width: var(--content-wrapper-width);
+  }
+}
+
+/* Post content */
+.hsBlogPostListingContent {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Post title */
+.hsBlogPostTitle {
+  display: inline-block;
+}
+
+.hsBlogPostTitleLink {
+  text-decoration: none;
+}
+
+/* Post image */
+.hsBlogPostImageWrapper {
+  display: inline-block;
+}
+
+.hsBlogPostImageOverlay {
+  display: inline-block;
+}
+
+.hsBlogPostListingImage {
+  height: 100%;
+  width: 100%;
+  border-radius: var(--border-radius);
+  aspect-ratio: var(--aspect-ratio);
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+/* Author */
+.hsBlogPostAuthor {
+  display: flex;
+  align-items: center;
+}
+
+.hsBlogPostAuthorImageWrapper {
+  height: auto;
+  margin-right: 0.5rem;
+}
+
+.hsBlogPostAuthorImage {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.hsBlogPostAuthorName {
+  text-decoration: none;
+}
+
+/* Tags */
+.hsBlogPostTags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hsBlogPostTag {
+  text-decoration: none;
+}
+
+.hsBlogPostTag:not(:last-child) {
+  margin-right: var(--spacing-between-tags);
+}
+
+/* Publish date */
+.hsBlogPostPublishDate {
+  display: block;
+}
+
+/* Description */
+.hsBlogPostDescription {
+  display: inline-block;
+}
+
+/* Button */
+.hsBlogPostButtonWrapper {
+  margin-top: auto;
+}
+
+.hsBlogPostButton {
+  display: inline-block;
+}
+
+/* .hsBlogPostButton:active {
+  Note: Need color_variant HubL function recreation to support these styles
+} */

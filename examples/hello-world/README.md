@@ -25,13 +25,13 @@ This repo has a few significant directories:
 
 - `hello-world-theme/`: Some example HubL templates that refer to JS components elsewhere
 - `hello-world-project/`: The HubSpot project folder
-- `hello-world-project/cms-assets`: A package inside of the project that can contain JS components (a project can contain many different package types, like [CRM apps](https://developers.hubspot.com/docs/platform/create-custom-cards-with-projects), etc)
+- `hello-world-project/hello-world-app`: A package inside of the project that can contain JS components (a project can contain many different package types, like [CRM apps](https://developers.hubspot.com/docs/platform/create-custom-cards-with-projects), etc)
 
 ### 2. Install dependencies
 
 Open your terminal and change into the Hello World repo root folder (`cms-js-building-block-examples/hello-world`) if you are not already there.
 
-Then run `npm install`. This will install all the local development tools you need—like `@hubspot/cli` and `@hubspot/cms-dev-server`—and the dependencies used inside cms-assets/ JS component code.
+Then run `npm install`. This will install all the local development tools you need—like `@hubspot/cli` and `@hubspot/cms-dev-server`—and the dependencies used inside hello-world-app/ JS component code.
 
 ### 3. Uploading and Deploying on HubSpot
 

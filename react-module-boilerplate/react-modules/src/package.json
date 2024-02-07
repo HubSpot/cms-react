@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "name": "react-module-boilerplate",
+  "version": "1.0.0",
+  "description": "Default React module boilerplate",
+  "type": "module",
+  "scripts": {
+    "start": "hs-cms-dev-server .",
+    "deploy": "hs project upload react-module-boilerplate",
+    "test": "vitest"
+  },
+  "resolutions": {
+    "jscodeshift": "0.12.1-hubspot-fork"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hubspot/cms-components": "^0.14",
+    "react": "^18.2.0",
+    "styled-components": "^6"
+  },
+  "devDependencies": {
+    "@hubspot/cms-dev-server": "^0.14"
+  }
+}

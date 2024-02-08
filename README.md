@@ -4,7 +4,7 @@
 
 Thank you for taking the time to explore this new direction for the HubSpot CMS! As always our goal is to solve for our customers so we welcome any and all feedback. Chat away in [\#cms-js-rendering](https://hubspotdev.slack.com/archives/C04AY1H2204) with other HubSpot developers who are pushing forward with developing with React on the Hubspot CMS.
 
-## How does CMS React work?
+## How do React modules on the CMS work?
 
 JavaScript modules and partials are new building blocks you can use to write React and JavaScript instead of HubL inside the HubSpot CMS. Note this doesn’t mean you will switch entirely away from HubL immediately, rather we want to provide a pathway to begin writing React to render on both on the server and client. JS modules and partials are built from React components and can directly be referenced via HubL tags in your templates.
 
@@ -12,7 +12,22 @@ JavaScript modules and partials are new building blocks you can use to write Rea
 
 Yes! Working with React modules is generally available and can be used with all tiers of the CMS, including free. 
 
-## Documentation -- This needs a link update. It currently points to --> https://github.hubspot.com/cms-js-building-block-examples/
+## [Default React modules](default-react-modules)
+This directory contains a copy of all of our internal default React modules. As React modules do not appear in the Design manager, we made them available within this public repository so you can make your own copy and edit as you like.
+
+## [React module boilerplate](react-module-boilerplate)
+If you'd like to get started with your own React module or one of our defaults, we have provided a boilerplate project for you to pick up and get started right away. This boilerplate comes complete with a Sample module so you can test working with this repo with only a few steps on your part. In order to get working with this boilerplate you simply have to: 
+
+- Become familiar with working with our CLI, if you are not already, with our [Hubspot CLI documentation](https://developers.hubspot.com/docs/cms/guides/getting-started)
+- Run `hs init` and select your portal.
+- Within the react-module-boilerplate/src run `yarn deploy` or `npm deploy`, which is a helper script we offer which runs the `hs project upload react-module-boilerplate` CLI command.
+- You will be prompted to create this project in your portal, so confirm so the project will be created.
+- Wait a few moments for the deploy to finish. You can view the projects within your portal at `https://app.hubspot/com/developer-projects/{YOUR_PORTAL_ID}` 
+
+Once the module is uploaded you should be able to see it when you go to edit a page, adding it like any other module. 
+
+
+## Documentation -- This needs a link update. It currently points to: https://github.hubspot.com/cms-js-building-block-examples/
 [Link to documentation](https://github.hubspot.com/cms-js-building-block-examples/)
 
 ## Examples -- we need to update the codesandbox.io portion here to no longer reference cms-js-building-blocks

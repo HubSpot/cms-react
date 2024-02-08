@@ -18,7 +18,7 @@ This section will take you through the process of deploying your first JS render
 First, clone the Hello World repository:
 
 ```
-git clone https://github.com/HubSpot/cms-js-building-block-examples.git
+git clone https://github.com/HubSpot/cms-react.git
 ```
 
 This repo has a few significant directories:
@@ -29,7 +29,7 @@ This repo has a few significant directories:
 
 ### 2. Install dependencies
 
-Open your terminal and change into the Hello World repo root folder (`cms-js-building-block-examples/hello-world`) if you are not already there.
+Open your terminal and change into the Hello World repo root folder (`cms-react/hello-world`) if you are not already there.
 
 Then run `npm install`. This will install all the local development tools you need—like `@hubspot/cli` and `@hubspot/cms-dev-server`—and the dependencies used inside hello-world-app/ JS component code.
 

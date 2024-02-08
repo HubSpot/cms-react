@@ -182,7 +182,7 @@ Type: Enhancement
 
 Part of: `@hubspot/cms-components@0.11.0`
 
-Added secrets integration. See [documentation](https://github.hubspot.com/cms-js-building-block-examples/reference/secrets.html) for more information and example usage
+Added secrets integration. See [documentation](https://github.hubspot.com/cms-react/reference/secrets.html) for more information and example usage
 
 ## 2023-10-16
 
@@ -291,7 +291,7 @@ Options:
     --storybook             Launches a Storybook dev server.
 
 For more information on HubSpot CMS JS Rendering, visit:
-https://github.hubspot.com/cms-js-building-block-examples/
+https://github.hubspot.com/cms-react/
 
 ```
 

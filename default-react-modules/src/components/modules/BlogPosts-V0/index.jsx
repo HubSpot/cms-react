@@ -1,6 +1,6 @@
 import blogIcon from './assets/blog.svg';
-import StyledJSXRegistry from '../StyledJSXRegistry.jsx';
-import { createExcerpt } from '../../../../cms-react-utilities/createExcerpt.js';
+import StyledJSXRegistry from '../../StyledJSXRegistry.jsx';
+import { createExcerpt } from '../../../utils/utils.js';
 import styles from './styles.module.css';
 
 function applyCssIfPresent(styleField, cssProperty) {
@@ -371,7 +371,12 @@ const BlogPostImage = ({
   groupDefaultText,
   firstRowImage,
 }) => {
-  const { featuredImage, featuredImageWidth, featuredImageHeight, absoluteUrl } = blogPost;
+  const {
+    featuredImage,
+    featuredImageWidth,
+    featuredImageHeight,
+    absoluteUrl,
+  } = blogPost;
   const ariaLabel = `${groupDefaultText.featuredImageText} ${blogPost.featuredImageAltText}`;
   const imageSide = getImageSide(hasAlternatingImage, loopIndex);
   const imageStyles = makePostImageStyles(imageStyle, imageSide);
@@ -754,7 +759,6 @@ export const meta = {
 };
 
 export { default as experimentalHublData } from './module.hubl.html?raw';
-
 export { default as hublDataTemplate } from './hubl_data.hubl.html?raw';
 
 export const defaultModuleConfig = {

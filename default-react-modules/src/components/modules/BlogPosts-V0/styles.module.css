@@ -155,7 +155,3 @@
 .hsBlogPostButton {
   display: inline-block;
 }
-
-/* .hsBlogPostButton:active {
-  Note: Need color_variant HubL function recreation to support these styles
-} */

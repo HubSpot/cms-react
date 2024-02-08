@@ -1,0 +1,51 @@
+name: CMS dev server test
+
+on: push
+
+jobs:
+  dev-server-smoke-test:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        node: [16, 18]
+
+    runs-on: ${{ matrix.os }}
+
+    defaults:
+      run:
+        working-directory: examples/hello-world
+        shell: bash
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: NPM install
+        run: |
+          npm install
+
+      - name: Run dev server
+        run: |
+          npm run start &
+
+      - name: Basic dev server home test
+        run: |
+          curl --no-progress-meter http://localhost:3000/ --output home.txt
+          ls -lh
+          wc home.txt
+          echo "Grepping home.txt"
+          grep -q '/partial/Cars' home.txt
+          echo "-----"
+          cat home.txt
+
+      - name: Basic dev server partial test
+        run: |
+          curl --no-progress-meter http://localhost:3000/partial/Cars --output Cars.txt
+          echo "Grepping Cars.txt"
+          grep -q 'Volkswagen' Cars.txt
+          echo "-----"
+          cat Cars.txt
+
+

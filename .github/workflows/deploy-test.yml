@@ -1,0 +1,41 @@
+name: Project build and deploy test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-test:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        node: [18]
+
+    runs-on: ${{ matrix.os }}
+
+    defaults:
+      run:
+        working-directory: examples/hello-world/hello-world-project
+        shell: bash
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Rename project
+        run: |
+          sed -i 's/hello-world-project/hello-world-project-os-${{ matrix.os }}-node-${{ matrix.node }}/g' hsproject.json
+          echo ""
+          echo "After rename"
+          cat hsproject.json
+
+      - name: Build and deploy
+        env:
+          HUBSPOT_PORTAL_ID: ${{ secrets.hubspot_portal_id }}
+          HUBSPOT_PERSONAL_ACCESS_KEY: ${{ secrets.hubspot_personal_access_key }}
+        run: |
+          npx --yes --package=@hubspot/cli@latest --call='hs project upload . --use-env'
+

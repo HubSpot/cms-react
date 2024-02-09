@@ -1,6 +1,6 @@
 # Styling
 
-Refer to the [styling example project](https://github.com/HubSpot/cms-js-building-block-examples/tree/main/styling/styling-project/styling-app) for working examples of supported methods of styling your components, including a number of major styling libraries.
+Refer to the [styling example project](https://github.com/HubSpot/cms-react/tree/main/styling/styling-project/styling-app) for working examples of supported methods of styling your components, including a number of major styling libraries.
 
 ## Tailwind
 

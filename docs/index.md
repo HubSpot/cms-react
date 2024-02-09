@@ -12,7 +12,7 @@ CMS JS Building Blocks slack channel: [\#cms-js-rendering](https://hubspotdev.sl
 
 Thank you for taking the time to explore this new direction for the HubSpot CMS! As always our goal is to solve for our customers so we welcome any and all feedback. Chat away in [\#cms-js-rendering](https://hubspotdev.slack.com/archives/C04AY1H2204) with other HubSpot developers who are pushing forward with CMS JS Building Blocks.
 
-The easiest way to get started is by following the [Hello World example guide](https://github.com/HubSpot/cms-js-building-block-examples/tree/main/hello-world). Once you've acquainted yourself with JS building blocks use the [API reference](https://github.hubspot.com/cms-js-building-block-examples/reference/project-structure.html) to learn more. If you are new to JavaScript or React, please check out the “Learning links” execution in the [appendix](/appendix) below.
+The easiest way to get started is by following the [Hello World example guide](https://github.com/HubSpot/cms-react/tree/main/hello-world). Once you've acquainted yourself with JS building blocks use the [API reference](https://github.hubspot.com/cms-react/reference/project-structure.html) to learn more. If you are new to JavaScript or React, please check out the “Learning links” execution in the [appendix](/appendix) below.
 
 ## What are the new JS building blocks?
 
@@ -43,7 +43,6 @@ Additionally by building on top of JavaScript and an open source framework (Reac
 Note, CMS JS Building Blocks is still in development and we are actively working on many things. Here is a list of some features that we are actively implementing but do not work in the feature yet:
 
 - More performance optimizations
-- Support for passing template-level overrides to the module tag via HubL params
 - Support for contact variable during local proxy
 - Support for importing JS Modules into JS Partials
 

@@ -5,14 +5,14 @@ import fieldTypesSidebar from '../field-types/typedoc-sidebar.json';
 export default defineConfig({
   title: 'HubSpot - JS Building Blocks',
   description: 'Documentation for HubSpot CMS JS Building Blocks',
-  base: '/cms-js-building-block-examples/',
+  base: '/cms-react/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
       {
         text: 'Getting Started',
-        link: 'https://github.com/HubSpot/cms-js-building-block-examples/tree/main/hello-world',
+        link: 'https://github.com/HubSpot/cms-react/tree/main/hello-world',
       },
       { text: 'API Reference', link: '/reference/project-structure' },
       { text: 'Appendix', link: '/appendix' },
@@ -26,7 +26,7 @@ export default defineConfig({
           items: [
             {
               text: 'Getting started',
-              link: 'https://github.com/HubSpot/cms-js-building-block-examples/tree/main/hello-world',
+              link: 'https://github.com/HubSpot/cms-react/tree/main/hello-world',
             },
             { text: 'API reference', link: '/reference/project-structure' },
             { text: 'Field types', link: '/field-types/' },
@@ -99,7 +99,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/HubSpot/cms-js-building-block-examples/',
+        link: 'https://github.com/HubSpot/cms-react/',
       },
     ],
   },

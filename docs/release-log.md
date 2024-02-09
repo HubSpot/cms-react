@@ -1,5 +1,66 @@
 # Release Log
 
+## 2023-01-19
+
+Type: Security fix
+
+Part of: `@hubspot/cms-components@0.13.11` (and our internal build code that uses that)
+
+Make sure that more globals in inline script elements (like `__hsServerPageUrl`, `__hsSS`, etc) are escaped so that malacious input like `'alert('got you')` or `</script><script>alert('got you')</script>` are fully escaped.
+
+## 2023-01-02
+
+Type: Bug Fix
+
+Part of: `@hubspot/cms-dev-server@0.13.9`
+
+Fixed proxying of root urls
+
+## 2023-01-02
+
+Type: Bug Fix
+
+Part of: `@hubspot/cms-dev-server@0.13.8`
+
+Fixed props passed to a JS partial when proxying a page
+
+## 2023-12-19
+
+Type: Enhancement
+
+Part of: `@hubspot/cms-dev-server@0.13.7`
+
+Change: Add field validation output to console and dev server render
+
+Example Usage: No change, user will see fields validation error overlay when viewing the "module" route in the dev server and errors/warnings in the developer console for proxy and module routes.
+[Field Validation - Watch Video](https://www.loom.com/share/c6c524f1037e406aa8df52449b23c40f)
+
+[![Field validation thumbnail](https://cdn.loom.com/sessions/thumbnails/private/c6c524f1037e406aa8df52449b23c40f-with-play.gif?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZG4ubG9vbS5jb20vc2Vzc2lvbnMvdGh1bWJuYWlscy9wcml2YXRlL2M2YzUyNGYxMDM3ZTQwNmFhOGRmNTI0NDliMjNjNDBmLXdpdGgtcGxheS5naWYiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3MDQ0NzAwMTh9fX1dfQ__&Key-Pair-Id=APKAJQIC5BGSW7XXK7FQ&Signature=OoiPLEn8t8I%7EZ9o7jkOq67dpo3nQB92FZvTcEzwjtby5EUr7CF97psC3HjxrL-v51VCH1f1e28fQXrxNxCbFqylFOxGWceqoef8FwHQew08r3V-CtnHkyLjC63gBGz9egvl12WeMUooYmo4WhCMOh7gpSniEPicfgNqHmnnXndlcjSvdylVyvjSsSj598u6lGnD1YEqYXKgZzY75MxC9ifjqg4mKylaQf7kqDFhcwx1xCXVzpLm5Q3lalMNmVNQ9a33GTTpUWe6gww0BrUviwNvI3mgWn9UY1KY8DSewHh%7E8iM%7EQV%7EfTRHwIyMUvBuQ8eJ6u1cy9t9N0qYNSx9ybQw__)](https://www.loom.com/share/c6c524f1037e406aa8df52449b23c40f)
+
+---
+
+Type: Bug Fix
+
+Part of: `@hubspot/cms-dev-server@0.13.6`
+
+Change: Fix prop shape for GraphQL query data result for use with Storybook.
+
+---
+
+Type: Security Fix, Enhancement
+
+Part of: Platform Release
+
+Change: Ensure that serialized island props have `</script>` escaped to prevent XSS attacks with user generated content that maliciously closes the inline script block and tries to inject JS code.
+
+## 2023-12-06
+
+Type: Bug Fix
+
+Part of: `@hubspot/cms-components@0.13.0`
+
+Fix `<ImageField>`, `<EmbedField>`, and others to take a `resizable` prop instead of the incorrect "resizeable" spelling.
+
 ## 2023-11-14
 
 Type: Enhancement
@@ -121,7 +182,7 @@ Type: Enhancement
 
 Part of: `@hubspot/cms-components@0.11.0`
 
-Added secrets integration. See [documentation](https://github.hubspot.com/cms-js-building-block-examples/reference/secrets.html) for more information and example usage
+Added secrets integration. See [documentation](https://github.hubspot.com/cms-react/reference/secrets.html) for more information and example usage
 
 ## 2023-10-16
 
@@ -230,7 +291,7 @@ Options:
     --storybook             Launches a Storybook dev server.
 
 For more information on HubSpot CMS JS Rendering, visit:
-https://github.hubspot.com/cms-js-building-block-examples/
+https://github.hubspot.com/cms-react/
 
 ```
 

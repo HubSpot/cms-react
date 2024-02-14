@@ -1,7 +1,19 @@
 import blogIcon from './assets/blog.svg';
 import StyledJSXRegistry from '../../StyledJSXRegistry.jsx';
-import { createExcerpt } from '../../../utils/utils.js';
 import styles from './styles.module.css';
+
+function stripTags(stringWithTags) {
+  return stringWithTags.replace(/<\/?[^>]+>/gi, '');
+}
+
+function createExcerpt(excerptString, maxLength) {
+  const excerptWithoutTags = stripTags(excerptString);
+  const showEllipsis = excerptWithoutTags.length > maxLength;
+
+  return showEllipsis
+    ? `${excerptWithoutTags.substring(0, maxLength)}...`
+    : excerptWithoutTags;
+}
 
 function applyCssIfPresent(styleField, cssProperty) {
   if (!styleField) {

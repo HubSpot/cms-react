@@ -12,7 +12,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       {
         text: 'Getting Started',
-        link: 'https://github.com/HubSpot/cms-react/tree/main/hello-world',
+        link: 'https://github.com/HubSpot/cms-react/tree/main/examples/hello-world',
       },
       { text: 'API Reference', link: '/reference/project-structure' },
       { text: 'Appendix', link: '/appendix' },
@@ -26,7 +26,7 @@ export default defineConfig({
           items: [
             {
               text: 'Getting started',
-              link: 'https://github.com/HubSpot/cms-react/tree/main/hello-world',
+              link: 'https://github.com/HubSpot/cms-react/tree/main/examples/hello-world',
             },
             { text: 'API reference', link: '/reference/project-structure' },
             { text: 'Field types', link: '/field-types/' },

@@ -16,6 +16,9 @@ Yes! Working with React modules is generally available and can be used with all 
 
 This directory contains a copy of all of our internal default React modules. As React modules do not appear in the Design manager, we made them available within this public repository so you can make your own copy and edit as you like. The modules you find in this directory are synced up with our internal code to ensure we keep them up to date.
 
+### What if I don't see a default React module in this repo but that is available for use within Hubspot?
+Some default React modules contain code that is internal to Hubspot and thus cannot be used in a general way by external developers. If you are are seeking to utilize one of these modules, or otherwise get a better sense of how it works, please reach out to a developer advocate for more information.
+
 ## [React module boilerplate](react-module-boilerplate)
 
 If you'd like to get started with your own React module or one of our defaults, we have provided a boilerplate project for you to pick up and get started right away. This boilerplate comes complete with a Sample module so you can test working with this repo with only a few steps on your part. In order to get working with this boilerplate you simply have to:

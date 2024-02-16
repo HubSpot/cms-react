@@ -32,14 +32,12 @@ If you'd like to get started with your own React module or one of our defaults, 
 Once the module is uploaded you should be able to see it when you go to edit a page, adding it like any other module.
 
 
-## Documentation -- This needs a link update. It currently points to: https://github.hubspot.com/cms-react/
-[Link to documentation](https://github.hubspot.com/cms-react/)
+## Documentation
+Check out an expanded documetnation page at https://github.hubspot.com/cms-react/
 
-## Examples -- we need to update the codesandbox.io portion here to no longer reference cms-js-building-blocks
+## Examples
 
 In this repository is example usage of some of key features of React modules. These examples are are best understood alongside our official [documentation](docs). You can quickly try things out without any local setup by [opening this repo in Codesandbox.io](https://codesandbox.io/p/sandbox/stoic-pateu-g20chg?file=%2Fcms-react%2FREADME.md).
-
-<img width="400" alt="Preview of examples in Codesandbox.io interface" src="https://github.com/HubSpot/cms-react/assets/60455/e8ab456e-39a6-4919-b256-584cd7054cb2">
 
 <br>
 

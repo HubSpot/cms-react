@@ -1,5 +1,5 @@
 import blogIcon from './assets/blog.svg';
-import StyledJSXRegistry from '../../StyledJSXRegistry.jsx';
+import StyledJSXRegistry from './StyledJSXRegistry.jsx';
 import styles from './styles.module.css';
 
 function stripTags(stringWithTags) {

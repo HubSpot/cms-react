@@ -17,7 +17,8 @@
   "dependencies": {
     "@hubspot/cms-components": "^0.14",
     "react": "^18.2.0",
-    "styled-components": "^6"
+    "styled-components": "^6",
+    "styled-jsx": "^5"
   },
   "devDependencies": {
     "@hubspot/cms-dev-server": "^0.14"

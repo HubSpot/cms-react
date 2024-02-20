@@ -2,7 +2,7 @@
 
 ## Welcome!
 
-Thank you for taking the time to learn about HubSpot CMS React. As always our goal is to solve for our customers so we welcome any and all feedback. Chat away in [\#cms-js-rendering](https://hubspotdev.slack.com/archives/C04AY1H2204) with other HubSpot developers who are pushing forward with developing with React on the Hubspot CMS.
+Thank you for taking the time to learn about HubSpot CMS React. As always our goal is to solve for our customers so we welcome any and all feedback. Chat away in [\#cms-react](https://hubspotdev.slack.com/archives/C04AY1H2204) with other HubSpot developers who are pushing forward with developing with React on the Hubspot CMS.
 
 ## How do React modules on the CMS work?
 
@@ -32,7 +32,7 @@ If you'd like to get started with your own React module or one of our defaults, 
 Once the module is uploaded you should be able to see it when you go to edit a page, adding it like any other module.
 
 ## Documentation
-Check out an expanded documetnation page at https://github.hubspot.com/cms-react/
+Check out an expanded documentation page at https://github.hubspot.com/cms-react/
 
 ## Examples
 
@@ -40,11 +40,11 @@ In this repository is example usage of some of key features of React modules. Th
 
 ### [Hello World](examples/hello-world)
 
-The "Hello World" example combines partials, modules, islands and CSS modules for styling to show a more cohesive yet straightforward example of how various parts of the new Building Blocks work together.
+The "Hello World" example combines partials, modules, islands and CSS modules for styling to show a more cohesive yet straightforward example of how CMS React components and APIs work together.
 
 ### [Styling](examples/styling)
 
-In this example, we take a look at three different approaches to styling JS Building Blocks. This is not an exhaustive list and there are many ways that styles can be organized and implemented.
+In this example, we take a look at three different approaches to styling React components. This is not an exhaustive list and there are many ways that styles can be organized and implemented.
 
 ### [Islands](examples/islands)
 

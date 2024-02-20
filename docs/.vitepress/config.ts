@@ -3,8 +3,8 @@ import fieldTypesSidebar from '../field-types/typedoc-sidebar.json';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: 'HubSpot - JS Building Blocks',
-  description: 'Documentation for HubSpot CMS JS Building Blocks',
+  title: 'HubSpot - CMS React',
+  description: 'Documentation for HubSpot CMS React',
   base: '/cms-react/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -45,9 +45,9 @@ export default defineConfig({
                 text: 'Project Structure',
                 link: 'project-structure',
               },
-              { text: 'JS Partials', link: 'js-partials' },
+              { text: 'React Partials', link: 'js-partials' },
               {
-                text: 'JS Modules',
+                text: 'React Modules',
                 link: 'js-modules',
                 items: [
                   {

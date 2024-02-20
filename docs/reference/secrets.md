@@ -1,6 +1,6 @@
 # Secrets
 
-JS building blocks integrate with the same secrets store used by [HubSpot serverless functions](https://developers.hubspot.com/docs/cms/data/serverless-functions#secrets) to receive sensitive data.
+CMS React components integrate with the same secrets store used by [HubSpot serverless functions](https://developers.hubspot.com/docs/cms/data/serverless-functions#secrets) to receive sensitive data.
 
 To start using secrets, store secret values using `hs secrets add` in the HubSpot CLI, then add the names of secrets used by your components to a `secretNames` array in your `cms-assets.json` config. For example:
 

@@ -38,13 +38,13 @@ Then run `npm install`. This will install all the local development tools you ne
 Run `hs init` from the root of the repository to configure it to upload to your HubSpot account using your personal access key. When setting up JavaScript assets for the first time, you will need to deactivate and regenerate your personal access key making sure it includes `CMS Pages`, `Design Manager`, `Developer Projects`, and `GraphQL Data Fetching` permissions. This will create a `hubspot.config.yaml` file that is required for both uploading changes and local development. See the [HubSpot CLI documentation](https://developers.hubspot.com/docs/cms/guides/getting-started-with-local-development?__hstc=75491725.e2098b212e147a7b9be6fd756c0c6815.1649440584659.1667397195793.1667489478959.105&__hssc=75491725.4.1667489478959&__hsfp=1149209764#configure-the-local-development-tools) for more information.
 
 > **Warning**
-> If you are using an existing access key from a previous call to `hs init` or `hs auth`, you will need to deactivate and regenerate the access key after your account has been enabled for JS building blocks.
+> If you are using an existing access key from a previous call to `hs init` or `hs auth`, you will need to deactivate and regenerate the access key to include new scopes necessary for local CMS React development.
 
 Next, run `npm run deploy` to upload the Hello World project to your HubSpot account. Once the project is uploaded, built, and deployed, you will be able to add the modules and partials to your HubSpot templates.
 
 From the repository root, run `npm run upload:hubl` to upload the corresponding example HubL files to your account.
 
-At this point, you should be able to create a page from one of the `hello-world-theme` templates and see the output of the JS building blocks included in them in the page preview.
+At this point, you should be able to create a page from one of the `hello-world-theme` templates and see the output of the React components included in them in the page preview.
 
 ### 4. Developing Locally
 

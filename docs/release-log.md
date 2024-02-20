@@ -1,6 +1,14 @@
 # Release Log
 
-## 2023-01-19
+## 2024-02-06
+
+Type Bug Fix
+
+Part of: `@hubspot/cms-components@0.14.2`
+
+Change: Support `showOpacity` on `ColorField`.
+
+## 2024-01-19
 
 Type: Security fix
 
@@ -8,7 +16,7 @@ Part of: `@hubspot/cms-components@0.13.11` (and our internal build code that use
 
 Make sure that more globals in inline script elements (like `__hsServerPageUrl`, `__hsSS`, etc) are escaped so that malacious input like `'alert('got you')` or `</script><script>alert('got you')</script>` are fully escaped.
 
-## 2023-01-02
+## 2024-01-02
 
 Type: Bug Fix
 
@@ -16,7 +24,7 @@ Part of: `@hubspot/cms-dev-server@0.13.9`
 
 Fixed proxying of root urls
 
-## 2023-01-02
+---
 
 Type: Bug Fix
 

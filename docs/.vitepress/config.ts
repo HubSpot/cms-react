@@ -102,5 +102,9 @@ export default defineConfig({
         link: 'https://github.com/HubSpot/cms-react/',
       },
     ],
+
+    search: {
+      provider: 'local'
+    }
   },
 });

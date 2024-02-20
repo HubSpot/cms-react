@@ -498,9 +498,7 @@ const BlogPostPublishDate = ({ blogPost }) => {
       className={styles.hsBlogPostPublishDate}
       dateTime={new Date(publishDate).toLocaleDateString()}
     >
-      {publishDateLocalized.date
-        ? publishDateLocalized.date
-        : publishDateLocalized}
+      {publishDateLocalized}
     </time>
   );
 };
@@ -770,7 +768,6 @@ export const meta = {
   categories: ['blog'],
 };
 
-export { default as experimentalHublData } from './module.hubl.html?raw';
 export { default as hublDataTemplate } from './hubl_data.hubl.html?raw';
 
 export const defaultModuleConfig = {

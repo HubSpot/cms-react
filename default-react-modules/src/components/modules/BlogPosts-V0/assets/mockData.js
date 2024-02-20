@@ -23,7 +23,7 @@ export const mockBlogPosts = [
     ],
     parentBlog: {},
     publishDate: 1756388800000,
-    publishDateLocalized: { date: 'Jun 30, 2022 12:00:00 AM' },
+    publishDateLocalized: 'Jun 30, 2022 12:00:00 AM',
     postListContent:
       "<h3>Ankles may break, but spirits don't have to</h3> <p>Find out why a broken bone does not mean frowns all around.</p>",
   },
@@ -55,7 +55,7 @@ export const mockBlogPosts = [
     ],
     parentBlog: {},
     publishDate: 1756388800000,
-    publishDateLocalized: { date: 'Jun 30, 2022 12:00:00 AM' },
+    publishDateLocalized: 'Jun 30, 2022 12:00:00 AM',
     postListContent:
       '<h3>Bikes were traditionally powered by calories -- no more!</h3> <p>Experience the joy of electricity powered movement.</p>',
   },
@@ -88,7 +88,7 @@ export const mockBlogPosts = [
     ],
     parentBlog: {},
     publishDate: 1756388800000,
-    publishDateLocalized: { date: 'Jun 30, 2022 12:00:00 AM' },
+    publishDateLocalized: 'Jun 30, 2022 12:00:00 AM',
     postListContent:
       '<h3>【Eliminate WiFi Dead Spots】Cover more than 6000 square feet from garage to backyard, seamless single WiFi name for whole house.</h3> <p>Easy to expand the coverage by install 3 pack mesh system, simply setup mesh to eliminate WiFi dead spots. Support up to 9 dots to build WiFi system for any home size</p>',
   },
@@ -120,7 +120,7 @@ export const mockBlogPosts = [
     ],
     parentBlog: {},
     publishDate: 1756388800000,
-    publishDateLocalized: { date: 'Jun 30, 2022 12:00:00 AM' },
+    publishDateLocalized: 'Jun 30, 2022 12:00:00 AM',
     postListContent:
       "<h3>Being a Chef</h3> <p>As much as restaurants are driven by chefs' desire to feed and entertain, and to express themselves, to produce the best possible food, delivered with impeccable service, they are, when it comes down to it, businesses and every chef that wants to be successful must get a handle on that side of things. It is perhaps the most important factor for longevity.</p>",
   },

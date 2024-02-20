@@ -19,10 +19,10 @@ project-folder/
 
 A `hsproject.json` file must be inside the root of your project folder in order for `hs project upload` to recognize your project. A `cms-assets.json` file must be inside of your JavaScript asset package subfolder so that the project build can recognize and correctly build your JS components.
 
-CMS JS Building Blocks introduces the “CMS assets” project component alongside private apps, CRM extensions, and serverless functions. To learn more about HubSpot projects, you can check out the [projects beta documentation](https://developers.hubspot.com/docs/platform/build-and-deploy-using-hubspot-projects).
+CMS React components introduce the “CMS assets” project component alongside private apps, CRM extensions, and serverless functions. To learn more about HubSpot projects, you can check out the [projects beta documentation](https://developers.hubspot.com/docs/platform/build-and-deploy-using-hubspot-projects).
 
 :::info Note
-The linked documentation notes that "Create a project (BETA)" is available for "Sales Hub" and "Service Hub" enterprise. JS Building Blocks within the CMS is available for all tiers and therefore so is use of the Projects system to support them.
+The linked documentation notes that "Create a project (BETA)" is available for "Sales Hub" and "Service Hub" enterprise. CMS React components are available for all tiers and therefore so is use of the Projects system to support them.
 :::
 
 Building and deploying is straightforward. A project can be uploaded for build and deploy with the `hs project upload` command. The command can be run in the root of a project with no argument or a directory path can be passed i.e. `hs project upload path/to/project`.

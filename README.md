@@ -40,11 +40,11 @@ In this repository is example usage of some of key features of React modules. Th
 
 ### [Hello World](examples/hello-world)
 
-The "Hello World" example combines partials, modules, islands and CSS modules for styling to show a more cohesive yet straightforward example of how various parts of the new Building Blocks work together.
+The "Hello World" example combines partials, modules, islands and CSS modules for styling to show a more cohesive yet straightforward example of how CMS React components and APIs work together.
 
 ### [Styling](examples/styling)
 
-In this example, we take a look at three different approaches to styling JS Building Blocks. This is not an exhaustive list and there are many ways that styles can be organized and implemented.
+In this example, we take a look at three different approaches to styling React components. This is not an exhaustive list and there are many ways that styles can be organized and implemented.
 
 ### [Islands](examples/islands)
 

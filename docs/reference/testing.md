@@ -1,6 +1,6 @@
 # Testing
 
-With JS building blocks it is easy to unit test your components using [Vitest](https://vitest.dev/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
+React components are easy to unit test with [Vitest](https://vitest.dev/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
 
 To add tests to your own project, start by adding those packages as dev dependencies, as well as `@vitejs/plugin-react` (for React support)
 

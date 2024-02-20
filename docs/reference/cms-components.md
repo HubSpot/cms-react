@@ -1,6 +1,6 @@
 # @hubspot/cms-components
 
-`@hubspot/cms-components` is a runtime library providing primitives to interact with features the JS Building Blocks platform and other HubSpot data from your components.
+`@hubspot/cms-components` is a runtime library providing primitives to interact with CMS React features and other HubSpot data from your components.
 
 ## Getters
 

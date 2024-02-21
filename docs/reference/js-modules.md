@@ -814,5 +814,4 @@ export const hublDataTemplate = `
 `
 ```
 
-In order to use `hublDataTemplate` in `cms-dev-server`, while developing modules:
-Prepend `preview` to any `hslocal.net:3000/module/...` routes, e.g. `hslocal.net:3000/preview/module/...`
+While developing modules in `cms-dev-server`, prepend `preview` to any `hslocal.net:3000/module/...` routes, e.g. `hslocal.net:3000/preview/module/...`, to have your local hublDataTemplate string resolved.

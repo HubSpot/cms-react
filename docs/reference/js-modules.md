@@ -788,7 +788,6 @@ Any valid HubL may go into this template, including HubL [functions/filters](htt
 This will come through on your React module as a top level prop, `hublData`.
 
 ```javascript
-import ModuleComponent from './ModuleComponent.js';
 import ModuleFields from './ModuleFields.js';
 import ModuleMeta from './ModuleMeta.js';
 

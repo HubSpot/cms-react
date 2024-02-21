@@ -1,5 +1,13 @@
 # Release Log
 
+## 2024-02-21
+Type: Feature
+
+Added [`hublDataTemplate` API](./reference/js-modules.md#hubldatatemplate)
+
+Added `/preview/module/{moduleName}` route in `cms-dev-server` for local development experience of `hublDataTemplate`
+
+
 ## 2024-02-06
 
 Type Bug Fix

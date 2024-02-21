@@ -766,3 +766,51 @@ export default function ModuleComponent(props) {
 The GraphQL HubSpot integration currently supports querying data from HubDB and Custom Objects. To explore your portal's GraphQL data schema and for help with writing queries check out our [GraphiQL implementation](http://app.hubspot.com/l/graphiql)
 
 Using GraphQL in this way will connect any module and subsequent down stream pages to updates to the query and upstream data. This is has implications for prerendering in that updates to data sources referenced from the query will cause the page to re-prerender.
+
+## hublDataTemplate
+
+To automatically attach and pass through HubL context variables to your React modules you can use the `hublDataTemplate` API.
+
+Export a string via `hublDataTemplate` from your module:
+`export const hublDataTemplate = "..."`
+
+In this string, set the `hublData` variable:
+`{% set hublData = "Hello from HubL!" %}`
+
+Full example:
+`export const hublDataTemplate = \`{% set hublData = "Hello from HubL!" %}\``
+
+Any valid HubL may go into this template, including HubL [functions/filters](https://developers.hubspot.com/docs/cms/hubl/functions), referencing the fields on your module, etc.
+
+This will come through on your React module as a top level prop, `hublData`.
+
+```javascript
+import ModuleComponent from './ModuleComponent.js';
+import ModuleFields from './ModuleFields.js';
+import ModuleMeta from './ModuleMeta.js';
+
+export function Component(props) {
+  return (
+    <div>
+     <div>My total posts: {props.hublData.totalBlogPostCount}</div>
+     <a href={props.hublData.blogAllPostsUrl}>View all posts</a>
+    </div>
+  )
+}
+
+export const meta = ModuleMeta;
+
+export const fields = ModuleFields;
+
+export const hublDataTemplate = `
+  {% set blogId = module.blog_field %}
+  {% set hublData = {%
+      "totalBlogPostCount": blog_total_post_count(blogId),
+      "blogAllPostsUrl": blog_all_posts_url(blogId)
+    %}
+  %}
+`
+```
+
+In order to use `hublDataTemplate` in `cms-dev-server`, while developing modules:
+Prepend `preview` to any `hslocal.net:3000/module/...` routes, e.g. `hslocal.net:3000/preview/module/...`

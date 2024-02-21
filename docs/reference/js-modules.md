@@ -806,10 +806,10 @@ export const fields = ModuleFields;
 
 export const hublDataTemplate = `
   {% set blogId = module.blog_field %}
-  {% set hublData = {%
+  {% set hublData = {
       "totalBlogPostCount": blog_total_post_count(blogId),
       "blogAllPostsUrl": blog_all_posts_url(blogId)
-    %}
+    }
   %}
 `
 ```

@@ -778,7 +778,10 @@ In this string, set the `hublData` variable:
 `{% set hublData = "Hello from HubL!" %}`
 
 Full example:
-`export const hublDataTemplate = \`{% set hublData = "Hello from HubL!" %}\``
+
+```
+export const hublDataTemplate = `{% set hublData = "Hello from HubL!" %}`
+```
 
 Any valid HubL may go into this template, including HubL [functions/filters](https://developers.hubspot.com/docs/cms/hubl/functions), referencing the fields on your module, etc.
 

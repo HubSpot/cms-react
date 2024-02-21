@@ -59,6 +59,7 @@ export default defineConfig({
                     link: 'js-modules#module-fields',
                   },
                   { text: 'GraphQL', link: 'js-modules#graphql' },
+                  { text: 'hublDataTemplate', link: 'js-modules#hublDataTemplate' },
                 ],
               },
               { text: 'Islands', link: 'islands' },

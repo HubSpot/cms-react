@@ -1,0 +1,25 @@
+{
+  "name": "module-components",
+  "description": "CMS React Module Components Example",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@hubspot/cli": "latest",
+    "@hubspot/prettier-plugin-hubl": "latest",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.31.10",
+    "prettier": "^2.7.1",
+    "yarpm": "^1.2.0"
+  },
+  "scripts": {
+    "start": "cd module-components-project/module-components-app && yarpm start",
+    "postinstall": "cd module-components-project/module-components-app && yarpm install",
+    "lint:js": "eslint . --ext .js,.jsx",
+    "prettier": "prettier . --check",
+    "deploy": "hs project upload module-components-project"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

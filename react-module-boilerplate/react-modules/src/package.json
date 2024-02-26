@@ -9,9 +9,6 @@
     "deploy": "hs project upload react-module-boilerplate",
     "test": "vitest"
   },
-  "resolutions": {
-    "jscodeshift": "0.12.1-hubspot-fork"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {

@@ -20,7 +20,7 @@ Returns `true` for components rendered live for a deployed project and `false` w
 
 `(secretName: string) => string`
 
-Returns a value for a given secret key. The secret must be defined using `hs secrets` in the CLI and the key must be included in a `secretNames` array in your `cms-assets.json` configuration. To prevent accidentally leaking  secrets, `getSecret()` can only be called from components executed on the server and not from the browser (i.e. within an island).
+Returns a value for a given secret key. The secret must be defined using `hs secrets` in the CLI and the key must be included in a `secretNames` array in your `cms-assets.json` configuration. To prevent accidentally leaking secrets, `getSecret()` can only be called from components executed on the server and not from the browser (i.e. within an island).
 
 See the [Secrets section](./secrets) for more information on usage.
 
@@ -80,7 +80,6 @@ Returns an object of state shared multiple islands and a dispatch function. It w
 
 See the [Islands](./islands) section for details.
 
-
 ### `<SharedIslandState>`
 
 Defines the initial value for the shared state accessed in `useSharedIslandState()` by other islands in this JS module or partial. All islands that are are "wrapped" by `SharedIslandState` (i.e. are children or descendents of the children) will share a single state reference. Note, `SharedIslandState` must be rendered on the server and cannot be contained inside an island.
@@ -90,7 +89,6 @@ Defines the initial value for the shared state accessed in `useSharedIslandState
   …
 </SharedIslandState>
 ```
-
 
 ### `<SharedIslandReducer>`
 
@@ -113,4 +111,80 @@ export default function reducerFunc(state, action) {
 
   return state;
 }
+```
+
+### Icon
+
+#### @hubspot/cms-components/Icon
+
+The Icon component renders a SVG for a referenced Icon field.
+
+##### Props
+
+###### fieldPath
+
+type: `string`
+
+The path of the icon field to render
+
+Examples:
+
+- Top level `fieldPath="icon_field"`
+
+- Nested in a group: `fieldPath="group_field.icon_field"`
+
+- Repeater field: `fieldPath="icon_field[1]"`
+
+- Repeater group field: `fieldPath="group_field[0].icon_field"`
+
+###### iconPurpose
+
+type: `'SEMANTIC' | 'DECORATIVE'`
+
+default: `SEMANTIC`
+
+`SEMANTIC` will set the `role="img"` attribute on the svg, as well as `aria-labelledby` pointing to the [title](#title) element
+
+###### Title
+
+type: `string`
+
+If provided, will render a `<title>` tag within the SVG for accessibilty to be described by `aria-labelledby` via [iconPurpose](#iconpurpose)
+
+###### iconStyle
+
+type: `'REGULAR' | 'SOLID' | 'LIGHT'`
+
+If provided, overrides the default icon style associated with the field. Not all icons have every style. Will only use the override if the icon style exists.
+
+###### SVG element attributes
+
+This component also accepts all valid attributes for an SVG element and will apply them, such as `id`, `style`, etc.
+
+##### Example Usage
+
+```javascript
+import { Icon } from '@hubspot/cms-components';
+
+export function Component() {
+  return <Icon fieldPath="icon_field" height={10} />;
+}
+
+export const meta = {
+  label: `Icon Module`,
+};
+
+export const fields = [
+  {
+    type: 'icon',
+    default: {
+      name: 'Alternate Level Up',
+      unicode: 'f3bf',
+      type: 'SOLID',
+    },
+    icon_set: 'fontawesome-5.14.0',
+    label: 'Icon',
+    name: 'icon_field',
+  },
+];
 ```

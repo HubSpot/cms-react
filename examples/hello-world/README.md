@@ -40,7 +40,7 @@ Run `hs init` from the root of the repository to configure it to upload to your 
 > **Warning**
 > If you are using an existing access key from a previous call to `hs init` or `hs auth`, you will need to deactivate and regenerate the access key to include new scopes necessary for local CMS React development.
 
-Next, run `npm run deploy` to upload the Hello World project to your HubSpot account. Once the project is uploaded, built, and deployed, you will be able to add the modules and partials to your HubSpot templates.
+Next double-check you are still in `hello-world/` and run `npm run deploy` to upload the Hello World project to your HubSpot account. Once the project is uploaded, built, and deployed, you will be able to add the modules and partials to your HubSpot templates.
 
 From the repository root, run `npm run upload:hubl` to upload the corresponding example HubL files to your account.
 

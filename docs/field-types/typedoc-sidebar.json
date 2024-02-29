@@ -181,13 +181,13 @@
   },
   {
     "text": "HubDbRowFieldType",
-    "link": "/../../field-types/type-aliases/type-alias.HubDbRowFieldType.md",
+    "link": "/../../field-types/type-aliases/type-alias.HubdbRowFieldType.md",
     "collapsed": true,
     "items": []
   },
   {
     "text": "HubDbTableFieldType",
-    "link": "/../../field-types/type-aliases/type-alias.HubDbTableFieldType.md",
+    "link": "/../../field-types/type-aliases/type-alias.HubdbTableFieldType.md",
     "collapsed": true,
     "items": []
   },

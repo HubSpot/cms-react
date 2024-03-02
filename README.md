@@ -27,7 +27,7 @@ If you'd like to get started with your own React module or one of our defaults, 
 - Run `hs init` and select your portal.
 - Within the react-module-boilerplate/src run `yarn deploy` or `npm deploy`, which is a helper script we offer which runs the `hs project upload react-module-boilerplate` CLI command.
 - You will be prompted to create this project in your portal. Confirm and the project will be created.
-- Wait a few moments for the deploy to finish. You can view the projects within your portal at `https://app.hubspot/com/developer-projects/{YOUR_PORTAL_ID}`
+- Wait a few moments for the deploy to finish. You can view the projects within your portal at `https://app.hubspot.com/developer-projects/{YOUR_PORTAL_ID}`
 
 Once the module is uploaded you should be able to see it when you go to edit a page, adding it like any other module.
 

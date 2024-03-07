@@ -1,5 +1,5 @@
 import { ModuleFields, RichTextField } from '@hubspot/cms-components/fields';
-import { RichTextFieldWrapper, logInfo } from '@hubspot/cms-components';
+import { RichText, logInfo } from '@hubspot/cms-components';
 
 export function Component(props) {
   logInfo(props);
@@ -12,7 +12,7 @@ export function Component(props) {
           display: 'flex',
         }}
       >
-        <RichTextFieldWrapper fieldValue={props.fieldValues.richTextField} />
+        <RichText fieldPath="richTextField" />
       </div>
     </>
   );
@@ -23,7 +23,7 @@ export const fields = (
     <RichTextField
       label="Rich Text Field"
       name="richTextField"
-      default="<h1>Rich Text Field</h1><p>Hello World</p>"
+      default="<h2>Rich Text Field</h2><p>Hello CMS React</p>"
     />
   </ModuleFields>
 );

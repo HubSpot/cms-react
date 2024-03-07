@@ -3,7 +3,7 @@
   "description": "JS Building Blocks Contact Profile",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@hubspot/cli": "^4.0.1",
+    "@hubspot/cli": "latest",
     "@hubspot/prettier-plugin-hubl": "latest",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",

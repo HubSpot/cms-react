@@ -1,9 +1,7 @@
 import { ModuleFields, IconField } from '@hubspot/cms-components/fields';
-import { Icon, logInfo } from '@hubspot/cms-components';
+import { Icon } from '@hubspot/cms-components';
 
-export function Component(props) {
-  logInfo(props);
-
+export function Component() {
   return (
     <>
       <h1>Icon Examples</h1>
@@ -14,9 +12,10 @@ export function Component(props) {
           justifyContent: 'space-around',
         }}
       >
-        <Icon fieldPath="iconExampleOne" iconStyle="LIGHT" />
-        <Icon fieldPath="iconExampleTwo" iconStyle="OUTLINE" />
-        <Icon fieldPath="iconExampleThree" iconStyle="SOLID" />
+        {/* The Icon component takes a field path as defined in the "fields" export */}
+        <Icon fieldPath="iconExampleOne" />
+        <Icon fieldPath="iconExampleTwo" />
+        <Icon fieldPath="iconExampleThree" />
       </div>
     </>
   );

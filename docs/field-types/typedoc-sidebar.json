@@ -252,6 +252,12 @@
     "items": []
   },
   {
+    "text": "PodcastFieldType",
+    "link": "/../../field-types/type-aliases/type-alias.PodcastFieldType.md",
+    "collapsed": true,
+    "items": []
+  },
+  {
     "text": "RichTextFieldType",
     "link": "/../../field-types/type-aliases/type-alias.RichTextFieldType.md",
     "collapsed": true,

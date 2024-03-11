@@ -44,7 +44,6 @@
 - [NumberFieldType](type-aliases/type-alias.NumberFieldType.md)
 - [PageFieldType](type-aliases/type-alias.PageFieldType.md)
 - [PaymentFieldType](type-aliases/type-alias.PaymentFieldType.md)
-- [PodcastFieldType](type-aliases/type-alias.PodcastFieldType.md)
 - [RichTextFieldType](type-aliases/type-alias.RichTextFieldType.md)
 - [SfdcCamapaignFieldType](type-aliases/type-alias.SfdcCamapaignFieldType.md)
 - [SimpleMenuFieldType](type-aliases/type-alias.SimpleMenuFieldType.md)

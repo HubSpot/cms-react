@@ -17,28 +17,28 @@ import {
 const paddingDefault: SpacingLimitType = {
   min: 0,
   max: 50,
-  units: ['px']
-}
+  units: ['px'],
+};
 
 const paddingLimits = {
   top: paddingDefault,
   right: paddingDefault,
   bottom: paddingDefault,
-  left: paddingDefault
-}
+  left: paddingDefault,
+};
 
 const marginDefault: SpacingLimitType = {
   min: 0,
   max: 200,
-  units: ['px']
-}
+  units: ['px'],
+};
 
 const marginLimits = {
   top: marginDefault,
   right: marginDefault,
   bottom: marginDefault,
-  left: marginDefault
-}
+  left: marginDefault,
+};
 
 const showAlternateImageField: AdvancedVisibility = {
   boolean_operator: 'AND',
@@ -53,8 +53,8 @@ const showAlternateImageField: AdvancedVisibility = {
       controlling_value_regex: 'sideBySide',
       operator: 'EQUAL',
     },
-  ]
-}
+  ],
+};
 
 const showBackgroundImageField: AdvancedVisibility = {
   boolean_operator: 'AND',
@@ -70,7 +70,7 @@ const showBackgroundImageField: AdvancedVisibility = {
       operator: 'NOT_EQUAL',
     },
   ],
-}
+};
 
 const showBackgroundImageStyleField: AdvancedVisibility = {
   boolean_operator: 'AND',
@@ -86,7 +86,7 @@ const showBackgroundImageStyleField: AdvancedVisibility = {
       operator: 'MATCHES_REGEX',
     },
   ],
-}
+};
 
 const showImageStyleField: AdvancedVisibility = {
   boolean_operator: 'AND',
@@ -102,7 +102,7 @@ const showImageStyleField: AdvancedVisibility = {
       operator: 'MATCHES_REGEX',
     },
   ],
-}
+};
 
 const showAuthorStyleField: AdvancedVisibility = {
   boolean_operator: 'OR',
@@ -118,7 +118,7 @@ const showAuthorStyleField: AdvancedVisibility = {
       operator: 'MATCHES_REGEX',
     },
   ],
-}
+};
 
 const showBackgroundStyleField: AdvancedVisibility = {
   boolean_operator: 'OR',
@@ -134,7 +134,7 @@ const showBackgroundStyleField: AdvancedVisibility = {
       operator: 'EQUAL',
     },
   ],
-}
+};
 
 export const fields = (
   <ModuleFields>
@@ -249,6 +249,11 @@ export const fields = (
         name="authorAltText"
         default="Author avatar"
       />
+      <TextField
+        label="Aria described by text"
+        name="ariaDescribedByText"
+        default="This content is only available to logged in members."
+      />
     </FieldGroup>
     <FieldGroup name="groupStyle" label="Styles" tab="STYLE">
       <FieldGroup
@@ -267,7 +272,7 @@ export const fields = (
           }}
           limits={{
             margin: marginLimits,
-            padding: paddingLimits
+            padding: paddingLimits,
           }}
           default={{
             padding: {
@@ -281,20 +286,17 @@ export const fields = (
               },
               left: {
                 value: 10,
-                units: "px"
+                units: 'px',
               },
               right: {
                 value: 10,
-                units: "px"
-              }
+                units: 'px',
+              },
             },
           }}
         />
 
-        <ColorField
-          label="Overlay color"
-          name="color"
-        />
+        <ColorField label="Overlay color" name="color" />
       </FieldGroup>
       <FieldGroup
         label="Image"
@@ -302,10 +304,7 @@ export const fields = (
         visibilityRules="ADVANCED"
         advancedVisibility={showImageStyleField}
       >
-        <FieldGroup
-          label="Size"
-          name="groupSize"
-        >
+        <FieldGroup label="Size" name="groupSize">
           <ChoiceField
             label="Aspect ratio"
             name="aspectRatio"
@@ -338,10 +337,7 @@ export const fields = (
           />
         </FieldGroup>
 
-        <FieldGroup
-          label="Corner"
-          name="groupCorner"
-        >
+        <FieldGroup label="Corner" name="groupCorner">
           <NumberField
             label="Radius"
             name="radius"
@@ -354,10 +350,7 @@ export const fields = (
           />
         </FieldGroup>
 
-        <FieldGroup
-          label="Spacing"
-          name="groupSpacing"
-        >
+        <FieldGroup label="Spacing" name="groupSpacing">
           <SpacingField
             label="Spacing"
             name="spacing"
@@ -368,7 +361,7 @@ export const fields = (
             }}
             limits={{
               padding: paddingLimits,
-              margin: marginLimits
+              margin: marginLimits,
             }}
             default={{
               margin: {
@@ -399,7 +392,6 @@ export const fields = (
             default={50}
           />
         </FieldGroup>
-
       </FieldGroup>
       <FieldGroup
         label="Title"
@@ -425,10 +417,7 @@ export const fields = (
           default="h2"
         />
         <FieldGroup label="Text" name="groupText">
-          <FontField
-            label="Font"
-            name="font"
-          />
+          <FontField label="Font" name="font" />
         </FieldGroup>
         <FieldGroup label="Spacing" name="groupSpacing">
           <SpacingField
@@ -441,7 +430,7 @@ export const fields = (
             }}
             limits={{
               padding: paddingLimits,
-              margin: marginLimits
+              margin: marginLimits,
             }}
             default={{
               margin: {
@@ -520,10 +509,7 @@ export const fields = (
             operator: 'MATCHES_REGEX',
           }}
         >
-          <FontField
-            label="Font"
-            name="font"
-          />
+          <FontField label="Font" name="font" />
         </FieldGroup>
 
         <FieldGroup label="Spacing" name="groupSpacing">
@@ -537,7 +523,7 @@ export const fields = (
             }}
             limits={{
               padding: paddingLimits,
-              margin: marginLimits
+              margin: marginLimits,
             }}
             default={{
               margin: {
@@ -585,22 +571,13 @@ export const fields = (
         }}
       >
         <FieldGroup label="Text" name="groupText">
-          <FontField
-            label="Font"
-            name="font"
-          />
+          <FontField label="Font" name="font" />
         </FieldGroup>
         <FieldGroup label="Background" name="groupBackground">
-          <ColorField
-            label="Color"
-            name="color"
-          />
+          <ColorField label="Color" name="color" />
         </FieldGroup>
         <FieldGroup label="Border" name="groupBorder">
-          <BorderField
-            label="Border"
-            name="border"
-          />
+          <BorderField label="Border" name="border" />
         </FieldGroup>
         <FieldGroup label="Corner" name="groupCorner">
           <NumberField
@@ -629,7 +606,7 @@ export const fields = (
             name="spacing"
             limits={{
               padding: paddingLimits,
-              margin: marginLimits
+              margin: marginLimits,
             }}
             default={{
               margin: {
@@ -658,16 +635,10 @@ export const fields = (
             />
           </FieldGroup>
           <FieldGroup label="Background" name="groupBackground">
-            <ColorField
-              label="Color"
-              name="color"
-            />
+            <ColorField label="Color" name="color" />
           </FieldGroup>
           <FieldGroup label="Border" name="groupBorder">
-            <BorderField
-              label="Border"
-              name="border"
-            />
+            <BorderField label="Border" name="border" />
           </FieldGroup>
         </FieldGroup>
       </FieldGroup>
@@ -682,10 +653,7 @@ export const fields = (
         }}
       >
         <FieldGroup label="Text" name="groupText">
-          <FontField
-            label="Font"
-            name="font"
-          />
+          <FontField label="Font" name="font" />
         </FieldGroup>
         <FieldGroup label="Spacing" name="groupSpacing">
           <SpacingField
@@ -698,7 +666,7 @@ export const fields = (
             }}
             limits={{
               padding: paddingLimits,
-              margin: marginLimits
+              margin: marginLimits,
             }}
             default={{
               margin: {
@@ -725,10 +693,7 @@ export const fields = (
         }}
       >
         <FieldGroup label="Text" name="groupText">
-          <FontField
-            label="Font"
-            name="font"
-          />
+          <FontField label="Font" name="font" />
         </FieldGroup>
         <FieldGroup label="Spacing" name="groupSpacing">
           <SpacingField
@@ -741,7 +706,7 @@ export const fields = (
             }}
             limits={{
               padding: paddingLimits,
-              margin: marginLimits
+              margin: marginLimits,
             }}
             default={{
               margin: {
@@ -768,19 +733,13 @@ export const fields = (
         }}
       >
         <FieldGroup label="Text" name="groupText">
-          <FontField
-            label="Font"
-            name="font"
-          />
+          <FontField label="Font" name="font" />
         </FieldGroup>
         <FieldGroup label="Background" name="groupBackground">
-          <ColorField
-            label="Color"
-            name="color"
-          />
+          <ColorField label="Color" name="color" />
         </FieldGroup>
         <FieldGroup label="Border" name="groupBorder">
-          <BorderField label="Border" name="border"/>
+          <BorderField label="Border" name="border" />
         </FieldGroup>
 
         <FieldGroup label="Corner" name="groupCorner">
@@ -800,7 +759,7 @@ export const fields = (
             name="spacing"
             limits={{
               padding: paddingLimits,
-              margin: marginLimits
+              margin: marginLimits,
             }}
             default={{
               margin: {
@@ -839,16 +798,12 @@ export const fields = (
             />
           </FieldGroup>
           <FieldGroup label="Background" name="groupBackground">
-            <ColorField
-              label="Color"
-              name="color"
-            />
+            <ColorField label="Color" name="color" />
           </FieldGroup>
           <FieldGroup label="Border" name="groupBorder">
             <BorderField label="Border" name="border" />
           </FieldGroup>
         </FieldGroup>
-
       </FieldGroup>
       <FieldGroup label="Post" name="groupPost">
         <FieldGroup label="Spacing" name="groupSpacing">
@@ -877,7 +832,7 @@ export const fields = (
             }}
             limits={{
               padding: paddingLimits,
-              margin: marginLimits
+              margin: marginLimits,
             }}
           />
         </FieldGroup>
@@ -887,10 +842,7 @@ export const fields = (
           visibilityRules="ADVANCED"
           advancedVisibility={showBackgroundStyleField}
         >
-          <ColorField
-            label="Color"
-            name="color"
-          />
+          <ColorField label="Color" name="color" />
         </FieldGroup>
         <FieldGroup label="Border" name="groupBorder">
           <BorderField label="Border" name="border" />
@@ -907,10 +859,7 @@ export const fields = (
           />
         </FieldGroup>
       </FieldGroup>
-      <FieldGroup
-        label="Post content"
-        name="groupContent"
-      >
+      <FieldGroup label="Post content" name="groupContent">
         <SpacingField
           label="Spacing"
           name="spacing"
@@ -924,25 +873,25 @@ export const fields = (
               top: {
                 min: 0,
                 max: 100,
-                units: ['px']
+                units: ['px'],
               },
               right: {
                 min: 0,
                 max: 100,
-                units: ['px']
+                units: ['px'],
               },
               bottom: {
                 min: 0,
                 max: 100,
-                units: ['px']
+                units: ['px'],
               },
               left: {
                 min: 0,
                 max: 100,
-                units: ['px']
+                units: ['px'],
               },
             },
-            margin: marginLimits
+            margin: marginLimits,
           }}
         />
       </FieldGroup>

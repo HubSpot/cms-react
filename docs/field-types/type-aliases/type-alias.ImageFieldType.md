@@ -13,7 +13,7 @@
     `src`: `string`;
     `width`: `number`;
   };
-  `resizeable`: `boolean`;
+  `resizable`: `boolean`;
   `responsive`: `boolean`;
   `showLoading`: `boolean`;
   `type`: `"image"`;
@@ -57,9 +57,9 @@
 > >
 > >
 >
-> ## `ImageFieldType.resizeable`
+> ## `ImageFieldType.resizable`
 >
-> **resizeable**?: `boolean`
+> **resizable**?: `boolean`
 >
 > ## `ImageFieldType.responsive`
 >
@@ -77,4 +77,4 @@
 
 ## Source
 
-fieldTypes.ts:319
+fieldTypes.ts:320

@@ -11,6 +11,7 @@
     `rgb`: `string`;
     `rgba`: `string`;
   };
+  `showOpacity`: `boolean`;
   `type`: `"color"`;
  }
 
@@ -43,6 +44,10 @@
 > > **rgba**?: `string`
 > >
 > >
+>
+> ## `ColorFieldType.showOpacity`
+>
+> **showOpacity**?: `boolean`
 >
 > ## `ColorFieldType.type`
 >

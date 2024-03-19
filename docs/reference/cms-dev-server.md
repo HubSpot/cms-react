@@ -35,7 +35,7 @@ The `/module/[module_name]` route is rendered entirely locally without talking t
 
 You can work "offline" and "unauthenticated" at this route - with caveats for GraphQL.
 
-Field values that are used are derived entirely from the Field default values and from parameter level overrides. Param level overrides can be passed via `fields` param which expects stringified JSON that would match the fields definition.
+Field values that are used are derived entirely from the Field default values and from parameter level overrides. Param level overrides can be passed via `fields` param which expects stringified JSON of fieldValues that matches what is the passed fieldValues prop (matching the fields definition structure).
 
 GraphQL data in this context is fetched from your local machine using your local access token as the auth for the collector service. These queries are cached, but you can bust the cache with the `hsLocalQueryKey` query parameter.
 

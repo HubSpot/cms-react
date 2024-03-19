@@ -1,5 +1,9 @@
 # HubSpot CMS React
 
+## Documentation
+
+Check out an expanded documentation page at [https://github.hubspot.com/cms-react/](https://github.hubspot.com/cms-react/)
+
 ## Welcome!
 
 Thank you for taking the time to learn about HubSpot CMS React. As always our goal is to solve for our customers so we welcome any and all feedback. Chat away in [\#cms-react](https://hubspotdev.slack.com/archives/C04AY1H2204) with other HubSpot developers who are pushing forward with developing with React on the Hubspot CMS.
@@ -30,9 +34,6 @@ If you'd like to get started with your own React module or one of our defaults, 
 - Wait a few moments for the deploy to finish. You can view the projects within your portal at `https://app.hubspot/com/developer-projects/{YOUR_PORTAL_ID}`
 
 Once the module is uploaded you should be able to see it when you go to edit a page, adding it like any other module.
-
-## Documentation
-Check out an expanded documentation page at https://github.hubspot.com/cms-react/
 
 ## Examples
 

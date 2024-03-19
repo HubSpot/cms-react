@@ -67,7 +67,15 @@ Partials are very thin and do not support GraphQL or `hublDataTemplate`. In the 
 
 ## Proxying Private Pages
 
-Making use of the CMS React local dev with proxied pages is powerful. It allows you to make changed to your React modules locally and see how they will look within the context of a page. This is no less true for pages that are private via a password or other means. In order for the proxy view to work, you need to visit the page as a "preview". You can do this from the page editor by clicking the "Preview" button and then "Open in a new tab". Once there add `hslocal.net:3000` or `localhost:3000` to your root domain. This will allow you to do local development on a private pages. Further if you pass an `email` param it will use the associated contact as context for viewing the page. Your URL in this case wil look like `http://my-domain.com.localhost:3000/private-page-path?hs_preview=[preview_key]&email=bh@hubspot.com`.
+Making use of the CMS React local dev with proxied pages is powerful. It allows you to make changed to your React modules locally and see how they will look within the context of a page. This is no less true for pages that are private via a password or other means.
+
+### Proxied User View
+
+Visit a private page and login with the configured method. Once authenticated Once there add `hslocal.net:3000` or `localhost:3000` to your root domain just as you would with proxying a public page. This will allow you to develop your React modules locally in the context of an authenticated live page.
+
+### Proxied Preview
+
+Visit the page as a "preview". You can do this from the page editor by clicking the "Preview" button and then "Open in a new tab". Once there add `hslocal.net:3000` or `localhost:3000` to your root domain. This will allow you to do local development on a private pages. Further if you pass an `email` param it will use the associated contact as context for viewing the page. Your URL in this case wil look like `http://my-domain.com.localhost:3000/private-page-path?hs_preview=[preview_key]&email=bh@hubspot.com`.
 
 ## Storybook
 

@@ -65,6 +65,10 @@ The CMS Dev Server offer a route for partials; `/partial/[partial_file_name]`.
 
 Partials are very thin and do not support GraphQL or `hublDataTemplate`. In the context of the dev server `hublParameters` will always be and empty object `{}`.
 
+## Proxying Private Pages
+
+Making use of the CMS React local dev with proxied pages is powerful. It allows you to make changed to your React modules locally and see how they will look within the context of a page. This is no less true for pages that are private via a password or other means. In order for the proxy view to work, you need to visit the page as a "preview". You can do this from the page editor by clicking the "Preview" button and then "Open in a new tab". Once there add `hslocal.net:3000` or `localhost:3000` to your root domain. This will allow you to do local development on a private pages. Further if you pass an `email` param it will use the associated contact as context for viewing the page. Your URL in this case wil look like `http://my-domain.com.localhost:3000/private-page-path?hs_preview=[preview_key]&email=bh@hubspot.com`.
+
 ## Storybook
 
 `cms-dev-server` includes a [Storybook](https://storybook.js.org/) integration. Pass a `--storybook` option when starting the server to start a Storybook instance alongside the built-in dev server. You may then add `.stories.jsx` files alongside your components to build stories for testing or development. At the root http://hslocal.net:3000 page there should be a link to the Storybook UI for your project.

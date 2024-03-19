@@ -27,7 +27,7 @@ When the CMS Dev Server for CMS React starts it will look at the directory struc
 
 ### Modules
 
-The CMS Dev Server offers two different rotes for your modules; `/module/[module_name]` and `/preview/[module_name]`.
+The CMS Dev Server offers two different rotes for your modules; `/module/[module_name]` and `/preview/module/[module_name]`.
 
 #### `/module/[module_name]`
 

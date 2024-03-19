@@ -21,6 +21,49 @@ You may also start the dev server with the `--ssl` option, which enables:
 - https://cmssite.com.hslocal.net:3000/page
 - https://cmssite.com.localhost:3000/page
 
+## Routes
+
+When the CMS Dev Server for CMS React starts it will look at the directory structure and look for `partials` and `modules` within `components`. It will then dynamically create routes based on what it finds there.
+
+### Modules
+
+The CMS Dev Server offers two different rotes for your modules; `/preview/module/[module_name]` and `/module/[module_name]`.
+
+#### `/preview/module/[module_name]`
+
+You need to be "online" and "authenticated" to use this route.
+
+The `/preview/module/[module_name]` route does talk to the HubSpot backend and behaves similarly to viewing a module in the Design Previewer.
+
+Field values that are used rely on defaults as there is no module instance to pull from. There is no `fields` param available here for overrides.
+
+GraphQL data is derived on the BE and there is no query from the local server to the GraphQL service.
+
+`hublDataTemplate` is supported at this route, the assumed context is similar to that of the Design Previewer.
+
+`Icon`, `CTA`, and other `@hubspot/cms-component` Field helpers are supported at this route.
+
+#### `/module/[module_name]`
+
+The `/module/[module_name]` route is rendered entirely locally without talking to the HubSpot backend.
+
+You can work "offline" and "unauthenticated" at this route - with caveats for GraphQL.
+
+Field values that are used are derived entirely from the Field default values and from parameter level overrides. Param level overrides can be passed via `fields` param which expects stringified JSON of fieldValues that matches what is the passed fieldValues prop (matching the fields definition structure).
+
+GraphQL data in this context is fetched from your local machine using your local access token as the auth for the collector service. These queries are cached, but you can bust the cache with the `hsLocalQueryKey` query parameter.
+
+`hublDataTemplate` is not supported at this route.
+
+`hublParams` at this route will always be an empty object `{}`.
+
+`Icon`, `CTA`, and other `@hubspot/cms-component` Field helpers are not supported at this route.
+
+### Partials
+
+The CMS Dev Server offer a route for partials; `/partial/[partial_file_name]`.
+
+Partials are very thin and do not support GraphQL or `hublDataTemplate`. In the context of the dev server `hublParameters` will always be and empty object `{}`.
 
 ## Storybook
 

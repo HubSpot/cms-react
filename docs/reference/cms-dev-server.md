@@ -27,7 +27,21 @@ When the CMS Dev Server for CMS React starts it will look at the directory struc
 
 ### Modules
 
-The CMS Dev Server offers two different rotes for your modules; `/module/[module_name]` and `/preview/module/[module_name]`.
+The CMS Dev Server offers two different rotes for your modules; `/preview/module/[module_name]` and `/module/[module_name]`.
+
+#### `/preview/module/[module_name]`
+
+You need to be "online" and "authenticated" to use this route.
+
+The `/preview/module/[module_name]` route does talk to the HubSpot backend and behaves similarly to viewing a module in the Design Previewer.
+
+Field values that are used rely on defaults as there is no module instance to pull from. There is no `fields` param available here for overrides.
+
+GraphQL data is derived on the BE and there is no query from the local server to the GraphQL service.
+
+`hublDataTemplate` is supported at this route, the assumed context is similar to that of the Design Previewer.
+
+`Icon`, `CTA`, and other `@hubspot/cms-component` Field helpers are supported at this route.
 
 #### `/module/[module_name]`
 
@@ -44,20 +58,6 @@ GraphQL data in this context is fetched from your local machine using your local
 `hublParams` at this route will always be an empty object `{}`.
 
 `Icon`, `CTA`, and other `@hubspot/cms-component` Field helpers are not supported at this route.
-
-#### `/preview/module/[module_name]`
-
-You need to be "online" and "authenticated" to use this route.
-
-The `/preview/module/[module_name]` route does talk to the HubSpot backend and behaves similarly to viewing a module in the Design Previewer.
-
-Field values that are used rely on defaults as there is no module instance to pull from. There is no `fields` param available here for overrides.
-
-GraphQL data is derived on the BE and there is no query from the local server to the GraphQL service.
-
-`hublDataTemplate` is supported at this route, the assumed context is similar to that of the Design Previewer.
-
-`Icon`, `CTA`, and other `@hubspot/cms-component` Field helpers are supported at this route.
 
 ### Partials
 

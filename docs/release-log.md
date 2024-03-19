@@ -7,6 +7,18 @@ Added [`hublDataTemplate` API](./reference/js-modules.md#hubldatatemplate)
 
 Added `/preview/module/{moduleName}` route in `cms-dev-server` for local development experience of `hublDataTemplate`
 
+## 2024-02-21
+Type: Feature
+
+Part of: `@hubspot/cms-components@0.14.6`
+
+Added support for `wrapperClassName` prop to `<Island>` 
+
+## 2024-02-08
+
+Type Feature
+
+Validate locally found `hsproject.json` file `platformVersion` against external auth endpoint
 
 ## 2024-02-06
 

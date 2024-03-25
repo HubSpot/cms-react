@@ -1,5 +1,28 @@
 # Release Log
 
+## 2024-03-25
+Type: Debugging, Fix
+Part of: Build and server
+
+Added browser-side logging for any GraphQL query that contains `dataQueryResult.errors` or if an unknown exception occurs.
+
+Fixed some npm packages that would break the build.
+
+## 2024-03-14
+
+Part of: `@hubspot/cms-components@0.14.13` (and earlier versions missed below) plus build & server changes
+
+Minify CSS
+
+Added `/preview/module/{moduleName}` routes to dev server home page.
+
+Fixes `/preview/module/{moduleName}` on EU hublet
+
+Small fix for `LinkField` rel attribute
+
+Preparing Icon and RichText components
+
+
 ## 2024-02-21
 Type: Feature
 

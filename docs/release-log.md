@@ -1,6 +1,14 @@
 # Release Log
 
 ## 2024-03-25
+
+Part of: `@hubspot/cms-components@0.14.14` and `@hubspot/cms-dev-server@0.14.14`
+
+Added `allow_inline_form_editing` property to `FormField`
+
+Fix to pass cookies along in local dev server proxy (to make contact work)
+
+## 2024-03-25
 Type: Debugging, Fix
 Part of: Build and server
 

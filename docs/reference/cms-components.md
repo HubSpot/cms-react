@@ -188,3 +188,97 @@ export const fields = [
   },
 ];
 ```
+
+### RichText
+
+#### @hubspot/cms-components/RichText
+
+The RichText component handles inserting the RichText HTML into your DOM.
+
+##### Props
+
+###### fieldPath
+
+type: `string`
+
+The path of the Rich Text field to render
+
+##### tag
+
+The tag used as the wrapping element for the content.
+
+default: `div`
+
+###### Element attributes
+
+This component passes through all valid attributes to the wrapper tag and applies them, such as `id`, `style`, etc.
+
+##### Example Usage
+
+```javascript
+import { RichText } from '@hubspot/cms-components';
+
+export function Component() {
+  return <RichText fieldPath="richtext_field" tag="span" />;
+}
+
+export const meta = {
+  label: `RichText Module`,
+};
+
+export const fields = [
+  {
+    type: 'richtext',
+    label: 'Rich text',
+    name: 'richtext_field',
+    default: '<p><em><strong>Helllo, world!</strong></em></p>',
+  },
+];
+```
+
+### Cta
+
+#### @hubspot/cms-components/Cta
+
+The Cta component insert Cta HTML into the DOM.
+
+##### Props
+
+###### fieldPath
+
+type: `string`
+
+The path of the Cta field to render
+
+##### tag
+
+The tag used as the wrapping element for the content.
+
+default: `div`
+
+###### Element attributes
+
+This component passes through all valid attributes to the wrapper tag and applies them, such as `id`, `style`, etc.
+
+##### Example Usage
+
+```javascript
+import { Cta } from '@hubspot/cms-components';
+
+export function Component() {
+  return <Cta fieldPath="cta_field" tag="span" />;
+}
+
+export const meta = {
+  label: `CTA Module`,
+};
+
+export const fields = [
+  {
+    type: 'cta',
+    label: 'CTA',
+    name: 'cta_field',
+    default: '13bcd0b3-5192-4570-baff-9a779df01bd8',
+  },
+];
+```

@@ -113,6 +113,12 @@ export default function reducerFunc(state, action) {
 }
 ```
 
+## Field Helper Components
+
+The following components are designed to be used with associated module field definitions. They cannot be used for non-field related use cases.
+
+If an associated field is not found at the provided `fieldPath` then the components will render null.
+
 ### Icon
 
 #### @hubspot/cms-components/Icon

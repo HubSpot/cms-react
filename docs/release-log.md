@@ -1,5 +1,13 @@
 # Release Log
 
+## 2024-03-26
+
+Type Enhancement
+
+Part of: Platform Change
+
+Fail a build if a module has validation errors (such as a field missing a required value, or two fields with the same path) 
+
 ## 2024-03-25
 
 Part of: `@hubspot/cms-components@0.14.14` and `@hubspot/cms-dev-server@0.14.14`

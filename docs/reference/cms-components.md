@@ -203,7 +203,7 @@ type: `string`
 
 The path of the Rich Text field to render
 
-##### tag
+###### tag
 
 The tag used as the wrapping element for the content.
 
@@ -250,7 +250,7 @@ type: `string`
 
 The path of the Cta field to render
 
-##### tag
+###### tag
 
 The tag used as the wrapping element for the content.
 

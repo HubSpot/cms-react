@@ -266,7 +266,7 @@ This component passes through all valid attributes to the wrapper tag and applie
 import { Cta } from '@hubspot/cms-components';
 
 export function Component() {
-  return <Cta fieldPath="cta_field" tag="span" />;
+  return <Cta fieldPath="cta_field" />;
 }
 
 export const meta = {

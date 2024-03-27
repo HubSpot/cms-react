@@ -1,12 +1,21 @@
 # Release Log
 
+## 2024-03-27
+
+Type: Feature Release
+
+Part of: `@hubspot/cms-components@0.14.15` and `@hubspot/cms-dev-server@0.14.15`
+
+- Release `RichText` and `Cta` components from `@hubspot/cms-components`
+- Fix serialization issues in the proxy and `preview/module` routes
+
 ## 2024-03-26
 
-Type Enhancement
+Type: Enhancement
 
 Part of: Platform Change
 
-Fail a build if a module has validation errors (such as a field missing a required value, or two fields with the same path) 
+Fail a build if a module has validation errors (such as a field missing a required value, or two fields with the same path)
 
 ## 2024-03-25
 
@@ -51,7 +60,7 @@ Type: Feature
 
 Part of: `@hubspot/cms-components@0.14.6`
 
-Added support for `wrapperClassName` prop to `<Island>` 
+Added support for `wrapperClassName` prop to `<Island>`
 
 ## 2024-02-08
 

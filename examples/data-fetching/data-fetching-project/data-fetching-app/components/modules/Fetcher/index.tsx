@@ -14,6 +14,9 @@ import { ApolloClient, gql as apolloGql } from '@apollo/client/core/index.js';
 import { InMemoryCache } from '@apollo/client/cache/index.js';
 import { HttpLink } from '@apollo/client/link/http/index.js';
 
+import ButtonIsland from './Button.js?island';
+import { Island } from '@hubspot/cms-components';
+
 const POKEMON_GRAPHQL_SCHEMA_URL = 'https://beta.pokeapi.co/graphql/v1beta/';
 
 const apolloClient = new ApolloClient({
@@ -183,7 +186,7 @@ export async function getServerSideProps(
   );
 
   return {
-    resultByLib,
+    serverSideProps: { resultByLib },
   };
 }
 
@@ -226,10 +229,12 @@ export function Component({
     fetchUrl: string;
     useCustomFetchUrl: boolean;
     pokemon: string;
+    showIsland: boolean;
   };
   serverSideProps: { resultByLib?: Record<string, any> };
 }) {
   const { resultByLib } = serverSideProps;
+
   return (
     <>
       <h2>Fetched: {urlToFetch(fieldValues)}</h2>
@@ -238,6 +243,10 @@ export function Component({
         Object.entries(resultByLib).map(([lib, result]) => (
           <DataForFetch lib={lib} result={result} key={lib} />
         ))}
+
+      {fieldValues.showIsland && (
+        <Island module={ButtonIsland} style={{ margin: '1em' }} />
+      )}
     </>
   );
 }
@@ -299,6 +308,8 @@ export const fields = (
         ['apollo', 'Apollo (memory cache)'],
       ]}
     ></ChoiceField>
+
+    <BooleanField name="showIsland" default={false} label={'Show Island'} />
   </ModuleFields>
 );
 

@@ -17,6 +17,8 @@ import { HttpLink } from '@apollo/client/link/http/index.js';
 import ButtonIsland from './Button.js?island';
 import { Island } from '@hubspot/cms-components';
 
+import './style-nonce-test.css';
+
 const POKEMON_GRAPHQL_SCHEMA_URL = 'https://beta.pokeapi.co/graphql/v1beta/';
 
 const apolloClient = new ApolloClient({
@@ -99,7 +101,7 @@ export async function getServerSideProps(
   if (libs.includes('nodeFetch')) {
     dataPromises.push(
       nodeFetch(fetchUrl).then(async (response) => {
-        console.log('response');
+        // console.log('response');
         return { json: await response.json(), duration: Date.now() - start };
       }),
     );
@@ -170,7 +172,15 @@ export async function getServerSideProps(
   }
 
   const jsonData = (await Promise.allSettled(dataPromises)).map((result) => {
-    console.log(`result`, result);
+    if (result.status === 'fulfilled') {
+      console.log(
+        'Fetch success',
+        Object.keys(result.value.json).join(', '),
+        `duration = ${result.value.duration}`,
+      );
+    } else {
+      console.error('Fetch failure');
+    }
     return result.status === 'fulfilled'
       ? result.value
       : {

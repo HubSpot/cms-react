@@ -1,19 +1,14 @@
 import blogIcon from './assets/blog.svg';
 import StyledJSXRegistry from '../../StyledJSXRegistry.jsx';
+import GatedLockIcon from './islands/GatedLockIcon.tsx?island';
+import GatedContentAPICheck from './islands/GatedContentAPICheck.tsx?island';
+import A11yButtonLink from './islands/A11yContentLinks/A11yButtonLink.tsx?island';
+import A11yTitleLink from './islands/A11yContentLinks/A11yTitleLink.tsx?island';
+import A11yImageLink from './islands/A11yContentLinks/A11yImageLink.tsx?island';
+import DescribedByElement from './islands/DescribedByElement.tsx?island';
+import { createExcerpt } from '../../../utils/utils.js';
+import { Island, SharedIslandState } from '@hubspot/cms-components';
 import styles from './styles.module.css';
-
-function stripTags(stringWithTags) {
-  return stringWithTags.replace(/<\/?[^>]+>/gi, '');
-}
-
-function createExcerpt(excerptString, maxLength) {
-  const excerptWithoutTags = stripTags(excerptString);
-  const showEllipsis = excerptWithoutTags.length > maxLength;
-
-  return showEllipsis
-    ? `${excerptWithoutTags.substring(0, maxLength)}...`
-    : excerptWithoutTags;
-}
 
 function applyCssIfPresent(styleField, cssProperty) {
   if (!styleField) {
@@ -34,14 +29,6 @@ function applyCssIfPresent(styleField, cssProperty) {
     default:
       return styleField.css || '';
   }
-}
-
-function getImageSide(hasAlternatingImage, loopIndex) {
-  if (!hasAlternatingImage) {
-    return 'left';
-  }
-  const isEvenLoop = loopIndex % 2 === 0;
-  return isEvenLoop ? 'left' : 'right';
 }
 
 function getLayoutStyles(layout, groupStyle) {
@@ -150,29 +137,6 @@ function makePostImageCss(imageStyle) {
   `;
 }
 
-function makePostImageStyles(imageStyle, imageSide) {
-  const spaceBetweenContent = imageStyle.groupSpacing.betweenImageAndContent;
-  const spacingCss = spaceBetweenContent ? `${spaceBetweenContent}px` : '1rem';
-
-  const postImageStyles = {};
-
-  if (imageSide === 'left') {
-    postImageStyles['--margin-right'] = spacingCss;
-    postImageStyles['--order'] = '1';
-  } else if (imageSide === 'right') {
-    postImageStyles['--margin-left'] = spacingCss;
-    postImageStyles['--order'] = '2';
-  }
-
-  postImageStyles['--aspect-ratio'] = imageStyle.groupSize.aspectRatio;
-  postImageStyles['--border-radius'] =
-    imageStyle.groupCorner.radius >= 0
-      ? `${imageStyle.groupCorner.radius}px`
-      : '';
-
-  return postImageStyles;
-}
-
 function makeImageOverlayStyles(backgroundImageStyle) {
   return `
     .${styles.hsBlogPostImageOverlay} {
@@ -221,11 +185,9 @@ function makeTitleStyles(titleStyle) {
   const { groupText, groupSpacing, groupHover } = titleStyle;
 
   return `
-    .${styles.hsBlogPostTitle} {
-      ${applyCssIfPresent(groupSpacing.spacing)}
-    }
     .${styles.hsBlogPostTitleLink} {
       ${applyCssIfPresent(groupText.font)}
+      ${applyCssIfPresent(groupSpacing.spacing)}
     }
     .${styles.hsBlogPostTitleLink}:hover {
       ${applyCssIfPresent(groupHover.groupText.font)}
@@ -374,62 +336,6 @@ function setStyledJsx(styleFieldGroup) {
   return clearWhiteSpaceFromString(cssString);
 }
 
-const BlogPostImage = ({
-  blogPost,
-  layout,
-  imageStyle,
-  loopIndex,
-  hasAlternatingImage,
-  groupDefaultText,
-  firstRowImage,
-}) => {
-  const {
-    featuredImage,
-    featuredImageWidth,
-    featuredImageHeight,
-    absoluteUrl,
-  } = blogPost;
-  const ariaLabel = `${groupDefaultText.featuredImageText} ${blogPost.featuredImageAltText}`;
-  const imageSide = getImageSide(hasAlternatingImage, loopIndex);
-  const imageStyles = makePostImageStyles(imageStyle, imageSide);
-
-  return (
-    <a
-      data-testid="blog-post-image"
-      style={imageStyles}
-      href={absoluteUrl}
-      aria-label={ariaLabel}
-      className={
-        layout === 'sideBySide'
-          ? `${styles.hsBlogPostImageWrapper} ${styles.hsBlogPostImageWrapperSideBySide}`
-          : `${styles.hsBlogPostImageWrapper}`
-      }
-    >
-      <img
-        src={featuredImage}
-        alt={blogPost.featuredImageAltText}
-        className={styles.hsBlogPostListingImage}
-        width={featuredImageWidth}
-        height={featuredImageHeight}
-        loading={firstRowImage ? 'eager' : 'lazy'}
-      />
-    </a>
-  );
-};
-
-const BlogPostTitle = ({ blogPost, titleStyle }) => {
-  const { absoluteUrl, name } = blogPost;
-  const TitleHeading = titleStyle.headingLevel;
-
-  return (
-    <TitleHeading className={styles.hsBlogPostTitle}>
-      <a className={styles.hsBlogPostTitleLink} href={absoluteUrl}>
-        {name}
-      </a>
-    </TitleHeading>
-  );
-};
-
 const BlogPostAuthor = ({
   blogPost,
   showPostAuthorImage,
@@ -514,22 +420,36 @@ const BlogPostDescription = ({ blogPost }) => {
   );
 };
 
-const BlogPostButton = ({ blogPost, buttonText, groupDefaultText }) => {
-  const { absoluteUrl } = blogPost;
-  const ariaLabel = `${groupDefaultText.readFullPostText} ${blogPost.name}`;
+function getImageSide(hasAlternatingImage, loopIndex) {
+  if (!hasAlternatingImage) {
+    return 'left';
+  }
+  const isEvenLoop = loopIndex % 2 === 0;
+  return isEvenLoop ? 'left' : 'right';
+}
 
-  return (
-    <div className={styles.hsBlogPostButtonWrapper}>
-      <a
-        className={`${styles.hsBlogPostButton} button`}
-        href={absoluteUrl}
-        aria-label={ariaLabel}
-      >
-        {buttonText}
-      </a>
-    </div>
-  );
-};
+function makePostImageStyles(imageStyle, imageSide) {
+  const spaceBetweenContent = imageStyle.groupSpacing.betweenImageAndContent;
+  const spacingCss = spaceBetweenContent ? `${spaceBetweenContent}px` : '1rem';
+
+  const postImageStyles = {};
+
+  if (imageSide === 'left') {
+    postImageStyles['--margin-right'] = spacingCss;
+    postImageStyles['--order'] = '1';
+  } else if (imageSide === 'right') {
+    postImageStyles['--margin-left'] = spacingCss;
+    postImageStyles['--order'] = '2';
+  }
+
+  postImageStyles['--aspect-ratio'] = imageStyle.groupSize.aspectRatio;
+  postImageStyles['--border-radius'] =
+    imageStyle.groupCorner.radius >= 0
+      ? `${imageStyle.groupCorner.radius}px`
+      : '';
+
+  return postImageStyles;
+}
 
 const BlogPostContent = ({
   blogPost,
@@ -564,10 +484,31 @@ const BlogPostContent = ({
       ? `${styles.hsBlogPostListingContent} ${styles.hsBlogPostContentSideBySide}`
       : `${styles.hsBlogPostListingContent}`;
 
+  // for use in islands. Strips away non-essential pieces of blog post.
+  const parsedBlogPost = {
+    id: blogPost.id,
+    absoluteUrl: blogPost.absoluteUrl,
+    name: blogPost.name,
+    featuredImageAltText: blogPost.featuredImageAltText,
+  };
+
   return (
     <div className={contentWrapperClass} style={blogPostContentWrapperStyles}>
+      {!showPostTitle && (
+        <Island
+          module={GatedLockIcon}
+          hydrateOn="load"
+          contentIdToGateCheck={blogPost.id}
+          wrapperTag="div"
+          wrapperStyle={{ display: 'inline-block' }}
+        />
+      )}
       {showPostTitle && (
-        <BlogPostTitle blogPost={blogPost} titleStyle={titleStyle} />
+        <Island
+          module={A11yTitleLink}
+          blogPost={parsedBlogPost}
+          titleStyle={titleStyle}
+        />
       )}
       {(showPostAuthorName || showPostAuthorImage) && (
         <BlogPostAuthor
@@ -599,8 +540,9 @@ const BlogPostContent = ({
         />
       )}
       {showPostButton && (
-        <BlogPostButton
-          blogPost={blogPost}
+        <Island
+          module={A11yButtonLink}
+          blogPost={parsedBlogPost}
           buttonText={buttonText}
           buttonStyle={buttonStyle}
           groupDefaultText={groupDefaultText}
@@ -614,6 +556,7 @@ const BlogPost = ({
   blogPost,
   layout,
   buttonText,
+  contentIdsToGateCheck,
   displayForEachListItem,
   useImageAsBackground,
   hasAlternatingImage,
@@ -635,6 +578,8 @@ const BlogPost = ({
   const layoutStyle = getLayoutStyles(layout, groupStyle);
   const { featuredImage, parentBlog = {} } = blogPost;
   const blogListingBaseUrl = parentBlog.absoluteUrl;
+  const imageSide = getImageSide(hasAlternatingImage, loopIndex);
+  const imageWrapperStyles = makePostImageStyles(imageStyle, imageSide);
 
   if (useImageAsBackground) {
     const { backgroundImageStyles } = makeBackgroundImageStyles(featuredImage);
@@ -653,6 +598,7 @@ const BlogPost = ({
           <BlogPostContent
             blogPost={blogPost}
             layout={layout}
+            contentIdsToGateCheck={contentIdsToGateCheck}
             blogPostContentWrapperStyles={blogPostContentWrapperStyles}
             displayForEachListItem={displayForEachListItem}
             buttonText={buttonText}
@@ -672,15 +618,29 @@ const BlogPost = ({
       style={{ ...blogPostWrapperStyles, ...layoutStyle }}
     >
       {showPostImage && featuredImage && (
-        <BlogPostImage
-          blogPost={blogPost}
-          layout={layout}
-          imageStyle={imageStyle}
-          groupDefaultText={groupDefaultText}
-          loopIndex={loopIndex}
-          hasAlternatingImage={hasAlternatingImage}
-          firstRowImage={loopIndex < columns}
-        />
+        // There is currently no way to add classnames to
+        // Islands. Added this wrapper div so we can latch
+        // on to the media query styles in styles.module.css.
+        // We can move them onto the island when that is an option.
+        <div
+          style={imageWrapperStyles}
+          data-testid="blog-post-image-wrapper"
+          className={
+            layout === 'sideBySide'
+              ? `${styles.hsBlogPostImageWrapper} ${styles.hsBlogPostImageWrapperSideBySide}`
+              : `${styles.hsBlogPostImageWrapper}`
+          }
+        >
+          <Island
+            module={A11yImageLink}
+            blogPost={{ ...blogPost, featuredImage }}
+            layout={layout}
+            imageStyle={imageStyle}
+            groupDefaultText={groupDefaultText}
+            loopIndex={loopIndex}
+            hasAlternatingImage={hasAlternatingImage}
+          />
+        </div>
       )}
       <BlogPostContent
         blogPost={blogPost}
@@ -723,6 +683,7 @@ export const Component = ({
     showPostImage && layout === 'sideBySide' && alternateImage;
   const useImageAsBackground =
     showPostImage && layout != 'sideBySide' && fullImage;
+  const ariaDescribedByText = groupDefaultText.ariaDescribedByText;
 
   const blogPostWrapperClass =
     layout === 'grid'
@@ -731,31 +692,50 @@ export const Component = ({
         }`
       : `${styles.hsBlogPostListing}`;
 
+  const contentIdsToGateCheck = blogPosts.map(post => post.id);
+
   return (
     <StyledJSXRegistry>
-      <style jsx>{`
+      <style jsx="true">{`
         ${setStyledJsx(groupStyle)}
       `}</style>
-      <section className={blogPostWrapperClass}>
-        {blogPosts.map((blogPost, loopIndex) => {
-          return (
-            <BlogPost
-              key={blogPost.id}
-              groupStyle={groupStyle}
-              loopIndex={loopIndex}
-              columns={columns}
-              groupDefaultText={groupDefaultText}
-              blogPost={blogPost}
-              layout={layout}
-              displayForEachListItem={displayForEachListItem}
-              showPostImage={showPostImage}
-              useImageAsBackground={useImageAsBackground}
-              hasAlternatingImage={hasAlternatingImage}
-              buttonText={buttonText}
-            />
-          );
-        })}
-      </section>
+
+      <SharedIslandState value={[]}>
+        <Island
+          module={GatedContentAPICheck}
+          hydrateOn="load"
+          idsToGateCheck={contentIdsToGateCheck}
+        />
+        <section className={blogPostWrapperClass}>
+          {blogPosts.map((blogPost, loopIndex) => {
+            return (
+              <BlogPost
+                key={blogPost.id}
+                groupStyle={groupStyle}
+                loopIndex={loopIndex}
+                columns={columns}
+                contentIdsToGateCheck={contentIdsToGateCheck}
+                groupDefaultText={groupDefaultText}
+                blogPost={blogPost}
+                layout={layout}
+                displayForEachListItem={displayForEachListItem}
+                showPostImage={showPostImage}
+                useImageAsBackground={useImageAsBackground}
+                hasAlternatingImage={hasAlternatingImage}
+                buttonText={buttonText}
+              />
+            );
+          })}
+        </section>
+      </SharedIslandState>
+      <SharedIslandState value={false}>
+        <Island
+          module={DescribedByElement}
+          hydrateOn="load"
+          clientOnly={true}
+          describedByText={ariaDescribedByText}
+        />
+      </SharedIslandState>
     </StyledJSXRegistry>
   );
 };

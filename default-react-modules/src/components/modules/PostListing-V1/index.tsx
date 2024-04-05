@@ -1,6 +1,6 @@
 import { Island } from '@hubspot/cms-components';
 import blogIcon from './assets/blog.svg';
-import StyledComponentsRegistry from '../../StyledComponentRegistry.jsx';
+import StyledComponentsRegistry from './StyledComponentRegistry.jsx';
 import PostListingIsland from './islands/PostListingIsland.js?island';
 import { styled } from 'styled-components';
 import { ModuleMeta } from '../../../types/modules.js';

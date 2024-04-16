@@ -1,0 +1,25 @@
+{
+  "name": "cms-with-serverless",
+  "description": "CMS React Module Components Example",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@hubspot/cli": "latest",
+    "@hubspot/prettier-plugin-hubl": "latest",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.31.10",
+    "prettier": "^2.7.1",
+    "yarpm": "^1.2.0"
+  },
+  "scripts": {
+    "start": "cd cms-with-serverless-project/src/cms-react && yarpm start",
+    "postinstall": "cd cms-with-serverless-project/src/cms-react && yarpm install",
+    "lint:js": "eslint . --ext .js,.jsx",
+    "prettier": "prettier . --check",
+    "deploy": "hs project upload cms-with-serverless-project"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

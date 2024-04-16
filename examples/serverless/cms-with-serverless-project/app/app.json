@@ -1,0 +1,16 @@
+{
+  "name": "CMS React With Serverless",
+  "description": "This app contains CMS React Component which talks talks to serverless functions",
+  "scopes": [
+    "crm.objects.companies.read",
+    "crm.objects.companies.write",
+    "collector.graphql_schema.read",
+    "collector.graphql_query.execute",
+    "crm.objects.custom.write",
+    "crm.objects.custom.read",
+    "crm.schemas.custom.read",
+    "crm.schemas.custom.write"
+  ],
+  "uid": "cms_react_serverless_app",
+  "public": false
+}

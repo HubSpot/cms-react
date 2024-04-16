@@ -20,7 +20,7 @@ Developer Platform Serverless Functions, on the other hand, are part of the broa
 
 Please see an example of a CMS React component along side a Developer Platform Serverless functions here https://github.com/HubSpot/cms-react/examples/serverless
 
-Looking forward the Developer Platform will offer one system to learn across CRM, CMS, and other parts of Hubspot. erverless function capabilities can be more easily upgraded overtime by HubSpot due to being tied into the Projects versioning system. Unlocking a better developer experience, performance, security, etc. A unified system for managing secrets. Private apps could also be shared between website and UI Extensions.
+Looking forward the Developer Platform will offer one system to learn across CRM, CMS, and other parts of Hubspot. Serverless function capabilities can be more easily upgraded overtime by HubSpot due to being tied into the Projects versioning system. Unlocking a better developer experience, performance, security, etc. A unified system for managing secrets. Private apps could also be shared between website and UI Extensions.
 
 ### Limitations with Developer Platform Functions
 

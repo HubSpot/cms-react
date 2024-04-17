@@ -34,9 +34,9 @@ We provide a number of React hooks from the `@hubspot/cms-components` package to
 
 Will return `true` only after hydration is completed. More specifically it will:
 
-- Return `true` during the initial render on the server.
-- Return `true` during the first render that happens inside the browser.
-- Return `false` during any subsequent renders that happen after the component has been “mounted” in the browser.
+- Return `false` during the initial render on the server.
+- Return `false` during the first render that happens inside the browser.
+- Return `true` during any subsequent renders that happen after the component has been “mounted” in the browser.
 
 This hook is useful because React requires server-rendered HTML to match the initial client render. See the [Server/Client Rendering section](../appendix#server-side-client-side-rendering) in the appendix for more information.
 

@@ -1,6 +1,6 @@
 {
   "name": "CMS React With Serverless",
-  "description": "This app contains CMS React Component which talks talks to serverless functions",
+  "description": "This app contains a serverless function wich can parrot requests",
   "scopes": [
     "crm.objects.companies.read",
     "crm.objects.companies.write",

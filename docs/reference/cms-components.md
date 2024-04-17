@@ -373,7 +373,7 @@ export function Component() {
 }
 
 export const meta = {
-  label: `Form Module`,
+  label: `Menu Module`,
 };
 
 export const fields = [

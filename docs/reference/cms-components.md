@@ -338,3 +338,50 @@ export const fields = [
   },
 ];
 ```
+
+### Menu
+
+#### @hubspot/cms-components/Menu
+
+The Menu field helper component inserts the HubL menu HTML into the DOM.
+
+##### Props
+
+###### fieldPath
+
+type: `string`
+
+The path of the Menu field to render
+
+###### tag
+
+The tag used as the wrapping element for the content.
+
+default: `div`
+
+###### Element attributes
+
+This component passes through all valid attributes to the wrapper tag and applies them, such as `id`, `style`, etc.
+
+##### Example Usage
+
+```javascript
+import { Menu } from '@hubspot/cms-components';
+
+export function Component() {
+  return <Menu fieldPath="my_menu_field" />;
+}
+
+export const meta = {
+  label: `Form Module`,
+};
+
+export const fields = [
+  {
+    type: 'menu',
+    default: 57978762829,
+    label: 'Menu',
+    name: 'my_menu_field',
+  },
+];
+```

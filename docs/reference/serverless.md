@@ -12,7 +12,7 @@ CMS Serverless Functions were specifically designed to work with the HubSpot CMS
 
 - CMS Serverless functions do not allow you to add your own dependencies i.e. 3rd party packages.
 
-- Because Developer Platform Serverless functions are defined within a "Private App" they inherit the scopes assigned to that Private App. That level of granular control is no available with CMS Serverless Functions. They rely on storing a personal access token in hs secrets which is then referenced in the serverless function.
+- Because Developer Platform Serverless functions are defined within a "Private App" they inherit the scopes assigned to that Private App. That level of granular control is not available with CMS Serverless Functions. They rely on storing a personal access token in hs secrets which is then referenced in the serverless function.
 
 ## Developer Platform Serverless Functions
 

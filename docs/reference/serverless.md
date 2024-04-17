@@ -18,9 +18,9 @@ CMS Serverless Functions were specifically designed to work with the HubSpot CMS
 
 Developer Platform Serverless Functions, on the other hand, are part of the broader HubSpot Developer Platform. They are built on projects, the same system that CMS React is built on. Thus a developer may have a single project with a CMS React component as well as a Private App with a serverless function.
 
-Please see an example of a CMS React component along side a Developer Platform Serverless functions here https://github.com/HubSpot/cms-react/examples/serverless
+Please see an example of a CMS React component along side a Developer Platform Serverless functions here [https://github.com/HubSpot/cms-react/examples/serverless](https://github.com/HubSpot/cms-react/tree/main/examples/serverless)
 
-Looking forward the Developer Platform will offer one system to learn across CRM, CMS, and other parts of Hubspot. erverless function capabilities can be more easily upgraded overtime by HubSpot due to being tied into the Projects versioning system. Unlocking a better developer experience, performance, security, etc. A unified system for managing secrets. Private apps could also be shared between website and UI Extensions.
+Looking forward the Developer Platform will offer one system to learn across CRM, CMS, and other parts of Hubspot. Serverless function capabilities can be more easily upgraded overtime by HubSpot due to being tied into the Projects versioning system. Unlocking a better developer experience, performance, security, etc. A unified system for managing secrets. Private apps could also be shared between website and UI Extensions.
 
 ### Limitations with Developer Platform Functions
 

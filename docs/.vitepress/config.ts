@@ -75,6 +75,7 @@ export default defineConfig({
               { text: 'Testing', link: 'testing' },
               { text: 'Data Fetching', link: 'data-fetching' },
               { text: 'Secrets', link: 'secrets' },
+              { text: 'Working with Serverless', link: 'serverless' },
               { text: 'Build Health Checks', link: 'build-healthchecks' },
             ],
           },

@@ -1,14 +1,37 @@
 # Release Log
 
+## 2024-04-18
+
+Type Enhancement
+
+Part of: `@hubspot/cms-dev-server@0.15.3`
+
+Support proxying of calls to serverless functions
+
+
+---
+
+Type Bug Fix
+
+Part of: `@hubspot/cms-dev-server@0.15.2`
+
+Support hsproject.json in parent(s) directory
+
+---
+
+Type Bug Fix
+
+Prevent CloudFlare infinite loop for some users
+
+Part of: `@hubspot/cms-dev-server@0.15.1`
+
 ## 2024-04-11
 
 Type: Feature
 
 Part of: `@hubspot/cms-components@0.14.14` and `@hubspot/cms-dev-server@0.14.14`
 
-
 Release `@hubspot/cms-components`: `<Form />` component
-
 
 ## 2024-03-26
 

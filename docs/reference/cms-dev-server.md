@@ -82,3 +82,58 @@ Visit the page as a "preview". You can do this from the page editor by clicking 
 `cms-dev-server` includes a [Storybook](https://storybook.js.org/) integration. Pass a `--storybook` option when starting the server to start a Storybook instance alongside the built-in dev server. You may then add `.stories.jsx` files alongside your components to build stories for testing or development. At the root http://hslocal.net:3000 page there should be a link to the Storybook UI for your project.
 To make building stories for HubSpot modules easier, `cms-dev-server` provides helpers to auto-generate `argTypes` based on module fields. See the [GraphQL and Storybook](https://github.com/HubSpot/cms-react/tree/main/examples/graphql-storybook/gql-storybook-project/gql-storybook-app) example project for usage of `moduleStory()`.
 Storybook is built with client components in mind, so components that cross island boundaries can have unexpected lifecycle behavior when rendered in a story. Because server-only components never make it to the browser, they cannot be hot reloaded and a full re-render is necessary to update the server response. To fully emulate hybrid rendering in Storybook at the cost of hot module reloading, you may use `moduleStoryWithIsland()` in your story in place of `moduleStory()`.
+
+## Fields Type Generation
+
+If you are using Typescript in your CMS React project, you can make use of the `--generateFieldTypes` argument of the dev server. This command will watch for changes to the fields object that is exported from module file and create a `.types.ts` file inside of the directory of the module. You can then import this module directly into your module component and use it in the generic `ModuleProps<T>` type. As an example, if this is your `fields.jsx` file:
+
+```tsx
+// components/modules/MyModule/fields.tsx
+export const fields = (
+  <ModuleFields>
+    <ChoiceField
+      label="Choice Test"
+      name="choice"
+      display="select"
+      choices={[
+        ["choice1", "One"],
+        ["choice2", "Two"],
+      ]}
+      default="choice1"
+    />
+    <NumberField label="Display on each blog post" name="numberField" />
+    <FieldGroup name="defaultGroup" label="Default text" locked>
+      <TextField
+        label="Text Field One"
+        name="textFieldOne"
+        default="Text Field"
+      />
+      <TextField label="Text Field Two" name="textFieldTwo" />
+      <NumberField label="Number Field" name="numberField" />
+    </FieldGroup>
+  </ModuleFields>
+);
+```
+
+then running `hs-cms-dev-server [path-to-project] --generateFieldTypes` will generate a file `modules/MyModule/fields.types.ts` with a default exported type `MyModuleFieldsType`. Then, you can import the type in your component as follows:
+
+```tsx
+// components/modules/MyModule/index.tsx
+import { ModuleProps } from '@hubspot/cms-components';
+import MyModule from './fields.types';
+
+export const Component = ({
+  fieldValues,
+  hublParameters = {},
+}: ModuleProps<MyModule>) => {
+  const number = fieldValues.numberField;
+  //   ^?const number: number | number[] | null | undefined
+  //   Note that can be undefined because no default set
+
+  const choice = fieldValues.choice;
+  //   ^?const choice: string | number | (string | number)[]
+
+  const text = fieldValues.defaultGroup.textFieldOne
+  //   ^?const text: string | null
+}
+```

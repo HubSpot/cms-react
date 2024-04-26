@@ -85,7 +85,7 @@ Storybook is built with client components in mind, so components that cross isla
 
 ## Fields Type Generation
 
-As of version `0.15.5` of `@hubspot/cms-dev-server`, if you are using Typescript in your CMS React project, you can make use of the `--generateFieldTypes` argument of the dev server. This command will watch for changes to the fields object that is exported from module file and create a `.types.ts` file inside of the directory of the module. You can then import this module directly into your module component and use it in the generic `ModuleProps<T>` type. As an example, if this is your `fields.jsx` file:
+If you are using Typescript in your CMS React project, you can make use of the `--generateFieldTypes` argument of the dev server. This command will watch for changes to the fields object that is exported from module file and create a `.types.ts` file inside of the directory of the module. You can then import this module directly into your module component and use it in the generic `ModuleProps<T>` type. As an example, if this is your `fields.jsx` file:
 
 ```tsx
 // components/modules/MyModule/fields.tsx

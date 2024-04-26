@@ -4,7 +4,7 @@
 
 Type: Bug Fix
 
-Part of: `@hubspot/cms-dev-server@0.15.4`
+Part of: `@hubspot/cms-dev-server@0.15.8`
 
 Fix issue with proxying pages on hs-sites domain
 
@@ -12,7 +12,7 @@ Fix issue with proxying pages on hs-sites domain
 
 Type Enhancement
 
-Part of: `@hubspot/cms-dev-server@0.15.4`
+Part of: `@hubspot/cms-dev-server@0.15.8`
 
 Adds `--generateFieldsTypes` to dev server, which generates Typescript types based on fields.(jsx|json) files exported by module components.
 

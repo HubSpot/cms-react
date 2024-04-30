@@ -1,5 +1,22 @@
 # Release Log
 
+## 2024-04-27
+
+Type: Bug Fix
+
+Part of: `@hubspot/cms-dev-server@0.15.8`
+
+Fix issue with proxying pages on hs-sites domain
+
+---
+
+Type Enhancement
+
+Part of: `@hubspot/cms-dev-server@0.15.8`
+
+Adds `--generateFieldsTypes` to dev server, which generates Typescript types based on fields.(jsx|json) files exported by module components.
+
+
 ## 2024-04-18
 
 Type Enhancement

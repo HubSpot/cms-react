@@ -4,6 +4,13 @@ import {
   ModuleFields,
   TextField,
 } from '@hubspot/cms-components/fields';
+import {
+  withUrlAndQuery,
+  logInfo,
+  logError,
+  ModuleDataFetchResult,
+  ModulePropsWithoutSSP,
+} from '@hubspot/cms-components';
 import axios from 'axios';
 import nodeFetch from 'node-fetch';
 import { NodeFetchCache, FileSystemCache } from 'node-fetch-cache';
@@ -72,133 +79,164 @@ export const meta = {
   label: 'Fetcher',
 };
 
-export async function getServerSideProps(
-  {
-    libs,
-    fieldValues,
-  }: {
-    libs: string[];
-    fieldValues: {
-      pokemon: string;
-      useCustomFetchUrl: boolean;
-      fetchUrl: string;
+export const getServerSideProps = withUrlAndQuery(
+  async (
+    moduleProps: ModulePropsWithoutSSP & {
+      fieldValues: FieldValues;
+    },
+    extraDeps,
+  ): Promise<ModuleDataFetchResult> => {
+    const { fieldValues } = moduleProps;
+    const { url } = extraDeps;
+
+    const dataPromises = [];
+    const start = Date.now();
+
+    const libs: string[] = fieldValues.libs;
+
+    logInfo('in getServerSideProps', url, url.toString(), url.search);
+
+    const fetchUrl = urlToFetch(fieldValues);
+
+    if (libs.includes('axios')) {
+      dataPromises.push(
+        axios.get(fetchUrl).then((response) => {
+          return {
+            json: response.data,
+            duration: Date.now() - start,
+          };
+        }),
+      );
+    }
+    if (libs.includes('nodeFetch')) {
+      dataPromises.push(
+        nodeFetch(fetchUrl).then(async (response) => {
+          return {
+            json: await response.json(),
+            duration: Date.now() - start,
+          };
+        }),
+      );
+    }
+    if (libs.includes('nodeFetchCache')) {
+      dataPromises.push(
+        nodeFetchCache(fetchUrl).then(async (response) => {
+          return {
+            json: await response.json(),
+            duration: Date.now() - start,
+          };
+        }),
+      );
+    }
+    if (libs.includes('fetch')) {
+      if (!fetch) {
+        throw new Error(
+          `Fetch API is not defined, node version = ${process.versions.node}`,
+        );
+      }
+
+      dataPromises.push(
+        fetch(fetchUrl).then(async (response) => {
+          return {
+            json: await response.json(),
+            duration: Date.now() - start,
+          };
+        }),
+      );
+    }
+
+    if (libs.includes('graphql-request')) {
+      dataPromises.push(
+        graphqlRequest(POKEMON_GRAPHQL_SCHEMA_URL, pokemonQuery, {
+          pokemonName: fieldValues.pokemon,
+        }).then((value) => {
+          return {
+            json: value,
+            duration: Date.now() - start,
+          };
+        }),
+      );
+    }
+    if (libs.includes('apollo')) {
+      dataPromises.push(
+        apolloClient
+          .query({
+            query: apolloQuery,
+            variables: {
+              pokemonName: fieldValues.pokemon,
+            },
+          })
+          .then((value) => {
+            return {
+              json: value.data,
+              duration: Date.now() - start,
+            };
+          }),
+      );
+    }
+
+    const unknownLibs = libs.filter(
+      (lib) =>
+        ![
+          'axios',
+          'nodeFetch',
+          'nodeFetchCache',
+          'fetch',
+          'graphql-request',
+          'apollo',
+        ].includes(lib),
+    );
+
+    if (unknownLibs.length > 0) {
+      throw new Error(
+        `Unknown fetch lib${
+          unknownLibs.length > 1 ? 's' : ''
+        }: ${unknownLibs.join(', ')}`,
+      );
+    }
+
+    console.log('before data fetch await');
+
+    const jsonData = (await Promise.allSettled(dataPromises)).map((result) => {
+      if (result.status === 'fulfilled') {
+        logInfo(
+          'Fetch success',
+          Object.keys(result.value.json).join(', '),
+          `duration = ${result.value.duration}`,
+        );
+      } else {
+        logError('Fetch failure');
+      }
+      return result.status === 'fulfilled'
+        ? result.value
+        : {
+            status: result.status,
+            reason: result.reason,
+          };
+    });
+    console.log('after data fetch await');
+
+    const resultByLib = Object.fromEntries(
+      libs.map((lib, i: number) => {
+        return [lib, jsonData[i]];
+      }),
+    );
+
+    logInfo({
+      urlFromgSSP: url.toString(),
+      urlSearchParams: url.search,
+    });
+
+    return {
+      serverSideProps: { resultByLib, urlSearchParams: url.search },
+      caching: {
+        cacheControl: {
+          maxAge: 60,
+        },
+      },
     };
   },
-  url?: URL,
-) {
-  const dataPromises = [];
-  const start = Date.now();
-
-  const fetchUrl = urlToFetch(fieldValues);
-
-  if (libs.includes('axios')) {
-    dataPromises.push(
-      axios.get(fetchUrl).then((response) => {
-        return { json: response.data, duration: Date.now() - start };
-      }),
-    );
-  }
-  if (libs.includes('nodeFetch')) {
-    dataPromises.push(
-      nodeFetch(fetchUrl).then(async (response) => {
-        // console.log('response');
-        return { json: await response.json(), duration: Date.now() - start };
-      }),
-    );
-  }
-  if (libs.includes('nodeFetchCache')) {
-    dataPromises.push(
-      nodeFetchCache(fetchUrl).then(async (response) => {
-        return { json: await response.json(), duration: Date.now() - start };
-      }),
-    );
-  }
-  if (libs.includes('fetch')) {
-    if (!fetch) {
-      throw new Error(
-        `Fetch API is not defined, node version = ${process.versions.node}`,
-      );
-    }
-
-    dataPromises.push(
-      fetch(fetchUrl).then(async (response) => {
-        return { json: await response.json(), duration: Date.now() - start };
-      }),
-    );
-  }
-
-  if (libs.includes('graphql-request')) {
-    dataPromises.push(
-      graphqlRequest(POKEMON_GRAPHQL_SCHEMA_URL, pokemonQuery, {
-        pokemonName: fieldValues.pokemon,
-      }).then((value) => {
-        return { json: value, duration: Date.now() - start };
-      }),
-    );
-  }
-  if (libs.includes('apollo')) {
-    dataPromises.push(
-      apolloClient
-        .query({
-          query: apolloQuery,
-          variables: {
-            pokemonName: fieldValues.pokemon,
-          },
-        })
-        .then((value) => {
-          return { json: value.data, duration: Date.now() - start };
-        }),
-    );
-  }
-
-  const unknownLibs = libs.filter(
-    (lib) =>
-      ![
-        'axios',
-        'nodeFetch',
-        'nodeFetchCache',
-        'fetch',
-        'graphql-request',
-        'apollo',
-      ].includes(lib),
-  );
-
-  if (unknownLibs.length > 0) {
-    throw new Error(
-      `Unknown fetch lib${
-        unknownLibs.length > 1 ? 's' : ''
-      }: ${unknownLibs.join(', ')}`,
-    );
-  }
-
-  const jsonData = (await Promise.allSettled(dataPromises)).map((result) => {
-    if (result.status === 'fulfilled') {
-      console.log(
-        'Fetch success',
-        Object.keys(result.value.json).join(', '),
-        `duration = ${result.value.duration}`,
-      );
-    } else {
-      console.error('Fetch failure');
-    }
-    return result.status === 'fulfilled'
-      ? result.value
-      : {
-          status: result.status,
-          reason: result.reason,
-        };
-  });
-
-  const resultByLib = Object.fromEntries(
-    libs.map((lib, i) => {
-      return [lib, jsonData[i]];
-    }),
-  );
-
-  return {
-    serverSideProps: { resultByLib },
-  };
-}
+);
 
 function DataForFetch({
   lib,
@@ -216,6 +254,8 @@ function DataForFetch({
   } catch (error) {
     errorMessage = `Invalid json: ${json}`;
   }
+
+  logInfo('Rendering', lib, duration);
   return (
     <details>
       <summary>
@@ -233,21 +273,22 @@ function DataForFetch({
 
 export function Component({
   fieldValues,
-  serverSideProps = {},
+  serverSideProps = { urlSearchParams: '' },
 }: {
-  fieldValues: {
-    fetchUrl: string;
-    useCustomFetchUrl: boolean;
-    pokemon: string;
-    showIsland: boolean;
+  fieldValues: FieldValues;
+  serverSideProps: {
+    resultByLib?: Record<string, any>;
+    urlSearchParams: string;
   };
-  serverSideProps: { resultByLib?: Record<string, any> };
 }) {
-  const { resultByLib } = serverSideProps;
+  const { resultByLib, urlSearchParams } = serverSideProps;
 
   return (
     <>
-      <h2>Fetched: {urlToFetch(fieldValues)}</h2>
+      <h2>
+        Fetched: {urlToFetch(fieldValues)}
+        {urlSearchParams && <small>with urlParams: {urlSearchParams}</small>}
+      </h2>
 
       {resultByLib &&
         Object.entries(resultByLib).map(([lib, result]) => (
@@ -260,6 +301,14 @@ export function Component({
     </>
   );
 }
+
+type FieldValues = {
+  fetchUrl: string;
+  useCustomFetchUrl: boolean;
+  pokemon: string;
+  showIsland: boolean;
+  libs: string[];
+};
 
 export const fields = (
   <ModuleFields>
@@ -303,10 +352,11 @@ export const fields = (
       label="Fetch libraries"
       default={[
         'axios',
+        'fetch',
         'nodeFetch',
         'nodeFetchCache',
-        'graphql-request',
-        'apollo',
+        // 'graphql-request',
+        // 'apollo',
       ]}
       multiple={true}
       choices={[
@@ -323,14 +373,17 @@ export const fields = (
   </ModuleFields>
 );
 
-function urlToFetch(fieldValues: {
-  useCustomFetchUrl: boolean;
-  fetchUrl: string;
-  pokemon: string;
-}) {
+function urlToFetch(fieldValues: FieldValues) {
   if (fieldValues.useCustomFetchUrl) {
+    console.log('custom fetch url', fieldValues.fetchUrl);
     return fieldValues.fetchUrl;
   }
+
+  console.log(
+    'not custom fetch url',
+    fieldValues.useCustomFetchUrl,
+    fieldValues.fetchUrl,
+  );
 
   return `https://pokeapi.co/api/v2/pokemon/${fieldValues.pokemon}`;
 }

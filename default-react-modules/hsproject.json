@@ -1,4 +1,5 @@
 {
   "name": "public-default-react-modules",
-  "srcDir": "."
+  "srcDir": ".",
+  "platformVersion": "2023.2"
 }

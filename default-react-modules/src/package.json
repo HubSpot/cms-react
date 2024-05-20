@@ -13,12 +13,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hubspot/cms-components": "^0.14",
+    "@hubspot/cms-components": "^0.15",
     "react": "^18.2.0",
     "styled-jsx": "^5"
   },
   "devDependencies": {
-    "@hubspot/cms-dev-server": "^0.14",
+    "@hubspot/cms-dev-server": "^0.15",
     "@vitejs/plugin-react": "^4.0.4",
     "jsdom": "^22.1.0",
     "vite": "^4.4.9",

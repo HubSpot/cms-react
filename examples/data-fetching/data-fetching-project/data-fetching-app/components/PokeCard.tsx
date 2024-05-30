@@ -1,4 +1,3 @@
-import { logInfo } from '@hubspot/cms-components';
 import pokeCardStyles from '../styles/pokecard.module.css';
 
 type PokeCardProps = {

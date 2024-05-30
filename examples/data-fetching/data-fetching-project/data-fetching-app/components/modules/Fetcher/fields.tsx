@@ -13,12 +13,12 @@ export const fields = (
       default={'mewtwo'}
       choices={[
         ['bulbasaur', 'Bulbasaur'],
+        ['charizard', 'Charizard'],
         ['eevee', 'Eevee'],
-        ['pikachu', 'Pikachu'],
         ['mew', 'Mew'],
         ['mewtwo', 'Mewtwo'],
+        ['pikachu', 'Pikachu'],
         ['squirtle', 'Squirtle'],
-        ['charizard', 'Charizard'],
       ]}
       visibility={{
         controlling_field_path: 'useCustomFetchUrl',
@@ -45,10 +45,10 @@ export const fields = (
     />
 
     <ChoiceField
-      name="libs"
+      name="dataFetchingLib"
       label="Fetch libraries"
-      default={['graphql-request']}
-      multiple={true}
+      default={'graphql-request'}
+      multiple={false}
       choices={[
         ['axios', 'axios'],
         ['graphql-request', 'graphql-request'],

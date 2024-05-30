@@ -14,7 +14,7 @@ type FieldValues = {
   fetchUrl: string;
   useCustomFetchUrl: boolean;
   pokemon: string;
-  libs: string[];
+  dataFetchingLib: string;
 };
 
 type CustomModulePropsWithoutSSP = Omit<
@@ -55,14 +55,14 @@ export const getServerSideProps = withUrlAndQuery(
     const dataPromises = [];
     const start = Date.now();
 
-    const libs: string[] = fieldValues?.libs;
+    const dataFetchingLib: string = fieldValues?.dataFetchingLib;
     const fetchUrl = fieldValues && urlToFetch(fieldValues);
 
-    if (libs && !fieldValues.useCustomFetchUrl) {
-      if (libs.includes('axios')) {
+    if (dataFetchingLib && !fieldValues.useCustomFetchUrl) {
+      if (dataFetchingLib === 'axios') {
         if (fetchUrl) {
           dataPromises.push(
-            axios.get(fetchUrl).then((response) => {
+            axios.get(fetchUrl).then((response: any) => {
               return {
                 json: response.data,
                 duration: Date.now() - start,
@@ -72,7 +72,7 @@ export const getServerSideProps = withUrlAndQuery(
         }
       }
 
-      if (libs.includes('graphql-request')) {
+      if (dataFetchingLib == 'graphql-request') {
         dataPromises.push(
           graphqlRequest(POKEMON_GRAPHQL_SCHEMA_URL, pokemonQuery, {
             pokemonName: fieldValues && fieldValues.pokemon,
@@ -86,7 +86,7 @@ export const getServerSideProps = withUrlAndQuery(
       }
     } else {
       dataPromises.push(
-        axios.get(fetchUrl).then((response) => {
+        axios.get(fetchUrl).then((response: any) => {
           return {
             json: response.data,
             duration: Date.now() - start,
@@ -97,32 +97,30 @@ export const getServerSideProps = withUrlAndQuery(
 
     logInfo('before data fetch');
 
-    const jsonData = (await Promise.allSettled(dataPromises)).map((result) => {
-      if (result.status === 'fulfilled') {
-        logInfo(
-          'Fetch success',
-          Object.keys(result.value.json).join(', '),
-          `duration = ${result.value.duration}`,
-        );
-      } else {
-        logError('Fetch failure');
-      }
-      return result.status === 'fulfilled'
-        ? result.value
-        : {
-            status: result.status,
-            reason: result.reason,
-          };
-    });
+    const jsonData = (await Promise.allSettled(dataPromises)).map(
+      (result: any) => {
+        if (result.status === 'fulfilled') {
+          logInfo(
+            'Fetch success',
+            Object.keys(result.value.json).join(', '),
+            `duration = ${result.value.duration}`,
+          );
+        } else {
+          logError('Fetch failure');
+        }
+        return result.status === 'fulfilled'
+          ? result.value
+          : {
+              status: result.status,
+              reason: result.reason,
+            };
+      },
+    );
     logInfo('after data fetch');
 
     const results =
-      libs && !fieldValues.useCustomFetchUrl
-        ? Object.fromEntries(
-            libs.map((lib, i: number) => {
-              return [lib, jsonData[i]];
-            }),
-          )
+      dataFetchingLib && !fieldValues.useCustomFetchUrl
+        ? [dataFetchingLib, jsonData[0]]
         : jsonData[0];
 
     return {
@@ -136,29 +134,43 @@ export const getServerSideProps = withUrlAndQuery(
   },
 );
 
-function DataForFetch({ lib, result }: { lib: string; result: any }) {
+function DataForFetch({
+  dataFetchingLib,
+  data,
+}: {
+  dataFetchingLib: string;
+  data: any;
+}) {
   let pokemonName;
   let height;
   let weight;
   let profileImage;
   let pokemonType;
 
-  if (lib === 'graphql-request') {
-    pokemonName = result.json.pokemon_v2_pokemon[0].name;
-    height = result.json.pokemon_v2_pokemon[0].height;
-    weight = result.json.pokemon_v2_pokemon[0].weight;
-    profileImage =
-      result.json.pokemon_v2_pokemon[0].pokemon_v2_pokemonsprites[0].sprites
-        .other.dream_world.front_default;
-    pokemonType =
-      result.json.pokemon_v2_pokemon[0].pokemon_v2_pokemontypes[0]
-        .pokemon_v2_type.name;
+  if (dataFetchingLib === 'graphql-request') {
+    const {
+      name: pokemon,
+      height: pokemonHeight,
+      weight: pokemonWeight,
+      pokemon_v2_pokemonsprites,
+      pokemon_v2_pokemontypes,
+    } = data.pokemon_v2_pokemon[0];
+
+    const { sprites } = pokemon_v2_pokemonsprites[0];
+    const { pokemon_v2_type } = pokemon_v2_pokemontypes[0];
+
+    pokemonName = pokemon;
+    height = pokemonHeight;
+    weight = pokemonWeight;
+    profileImage = sprites.other.dream_world.front_default;
+    pokemonType = pokemon_v2_type.name;
   }
-  if (lib === 'axios') {
-    pokemonName = result.json.name;
-    height = result.json.height;
-    weight = result.json.weight;
-    profileImage = result.json;
+  if (dataFetchingLib === 'axios') {
+    pokemonName = data.name;
+    height = data.height;
+    weight = data.weight;
+    profileImage = data.sprites.other.dream_world.front_default;
+    pokemonType = data.types[0].type.name;
   }
 
   return (
@@ -187,7 +199,7 @@ export function Component({
     <div className={componentStyles.summary}>
       <h2>
         Fetched data from <code>{urlToFetch(fieldValues)}</code> via{' '}
-        {fieldValues.libs}
+        {fieldValues.useCustomFetchUrl ? 'axios' : fieldValues.dataFetchingLib}
       </h2>
       {fieldValues.useCustomFetchUrl ? (
         <details>
@@ -203,10 +215,13 @@ export function Component({
           </code>
         </details>
       ) : (
-        results &&
-        Object.entries(results).map(([lib, result]) => (
-          <DataForFetch lib={lib} result={result} key={lib} />
-        ))
+        results && (
+          <DataForFetch
+            dataFetchingLib={fieldValues.dataFetchingLib}
+            data={results[1].json}
+            key={fieldValues.dataFetchingLib}
+          />
+        )
       )}
     </div>
   );

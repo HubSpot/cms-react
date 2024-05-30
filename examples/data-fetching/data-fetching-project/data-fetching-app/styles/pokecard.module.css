@@ -10,10 +10,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 25px 15px;
+  padding: 20px 20px 25px 20px;
   margin: 10px;
   min-height: 300px;
   min-width: 225px;
+  gap: 20px;
 }
 
 .profile {
@@ -23,8 +24,8 @@
 }
 
 .profile .highlight {
-  width: 150px;
-  height: 150px;
+  width: 175px;
+  height: 175px;
   background: transparent;
   border-radius: 50%;
   position: absolute;
@@ -37,7 +38,7 @@
   max-width: 100px;
   align-self: center;
   z-index: 1;
-  margin: 20px 0px;
+  height: 175px;
 }
 
 .attributes {
@@ -66,8 +67,7 @@
 }
 
 .card h2 {
-  margin-top: 20px;
-  margin-bottom: 5px;
+  margin: 0px;
   color: white;
 }
 

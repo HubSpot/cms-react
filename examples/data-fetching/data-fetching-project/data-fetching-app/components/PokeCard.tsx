@@ -1,42 +1,14 @@
 import pokeCardStyles from '../styles/pokecard.module.css';
+import { getTypeColor } from '../utils/index.js';
 
 type PokeCardProps = {
-  pokemonName: string;
-  height: number;
-  weight: number;
-  profileImage: string;
-  pokemonType: string;
+  pokemonData: any;
 };
 
-export default function PokeCard({
-  pokemonName,
-  height,
-  weight,
-  profileImage,
-  pokemonType,
-}: PokeCardProps) {
-  let typeColor: string = '';
-
-  switch (pokemonType) {
-    case 'psychic':
-      typeColor = 'purple';
-      break;
-    case 'normal':
-      typeColor = 'gray';
-      break;
-    case 'electric':
-      typeColor = 'yellow';
-      break;
-    case 'water':
-      typeColor = 'blue';
-      break;
-    case 'fire':
-      typeColor = 'red';
-      break;
-    case 'grass':
-      typeColor = 'green';
-      break;
-  }
+export default function PokeCard({ pokemonData }: PokeCardProps) {
+  const { pokemonName, height, weight, profileImage, pokemonType } =
+    pokemonData;
+  const typeColor = getTypeColor(pokemonType);
 
   return (
     <div>

@@ -9,12 +9,18 @@ import {
 } from '@hubspot/cms-components';
 import componentStyles from '../../../styles/component.module.css';
 import PokeCard from '../../PokeCard.js';
+import {
+  transformPokemonData,
+  DataFetchingLibs,
+} from '../../../utils/index.js';
+
+const FALLBACK_FETCH_LIBRARY = 'axios';
 
 type FieldValues = {
   fetchUrl: string;
   useCustomFetchUrl: boolean;
   pokemon: string;
-  dataFetchingLib: string;
+  dataFetchingLib: DataFetchingLibs;
 };
 
 type CustomModulePropsWithoutSSP = Omit<
@@ -55,28 +61,26 @@ export const getServerSideProps = withUrlAndQuery(
     const dataPromises = [];
     const start = Date.now();
 
-    const dataFetchingLib: string = fieldValues?.dataFetchingLib;
-    const fetchUrl = fieldValues && urlToFetch(fieldValues);
+    const dataFetchingLib: string = fieldValues.dataFetchingLib;
+    const fetchUrl = urlToFetch(fieldValues);
 
     if (dataFetchingLib && !fieldValues.useCustomFetchUrl) {
       if (dataFetchingLib === 'axios') {
-        if (fetchUrl) {
-          dataPromises.push(
-            axios.get(fetchUrl).then((response: any) => {
-              return {
-                json: response.data,
-                duration: Date.now() - start,
-              };
-            }),
-          );
-        }
+        dataPromises.push(
+          axios.get(fetchUrl).then((response: any) => {
+            return {
+              json: response.data,
+              duration: Date.now() - start,
+            };
+          }),
+        );
       }
 
-      if (dataFetchingLib == 'graphql-request') {
+      if (dataFetchingLib === 'graphql-request') {
         dataPromises.push(
           graphqlRequest(POKEMON_GRAPHQL_SCHEMA_URL, pokemonQuery, {
-            pokemonName: fieldValues && fieldValues.pokemon,
-          }).then((value) => {
+            pokemonName: fieldValues.pokemon,
+          }).then((value: any) => {
             return {
               json: value,
               duration: Date.now() - start,
@@ -108,6 +112,7 @@ export const getServerSideProps = withUrlAndQuery(
         } else {
           logError('Fetch failure');
         }
+
         return result.status === 'fulfilled'
           ? result.value
           : {
@@ -134,56 +139,6 @@ export const getServerSideProps = withUrlAndQuery(
   },
 );
 
-function DataForFetch({
-  dataFetchingLib,
-  data,
-}: {
-  dataFetchingLib: string;
-  data: any;
-}) {
-  let pokemonName;
-  let height;
-  let weight;
-  let profileImage;
-  let pokemonType;
-
-  if (dataFetchingLib === 'graphql-request') {
-    const {
-      name: pokemon,
-      height: pokemonHeight,
-      weight: pokemonWeight,
-      pokemon_v2_pokemonsprites,
-      pokemon_v2_pokemontypes,
-    } = data.pokemon_v2_pokemon[0];
-
-    const { sprites } = pokemon_v2_pokemonsprites[0];
-    const { pokemon_v2_type } = pokemon_v2_pokemontypes[0];
-
-    pokemonName = pokemon;
-    height = pokemonHeight;
-    weight = pokemonWeight;
-    profileImage = sprites.other.dream_world.front_default;
-    pokemonType = pokemon_v2_type.name;
-  }
-  if (dataFetchingLib === 'axios') {
-    pokemonName = data.name;
-    height = data.height;
-    weight = data.weight;
-    profileImage = data.sprites.other.dream_world.front_default;
-    pokemonType = data.types[0].type.name;
-  }
-
-  return (
-    <PokeCard
-      pokemonName={pokemonName}
-      height={height}
-      weight={weight}
-      profileImage={profileImage}
-      pokemonType={pokemonType}
-    />
-  );
-}
-
 export function Component({
   fieldValues,
   serverSideProps = { results: {}, urlSearchParams: '' },
@@ -195,13 +150,18 @@ export function Component({
   };
 }) {
   const { results } = serverSideProps;
+  const { useCustomFetchUrl, dataFetchingLib } = fieldValues;
+  const responseData = useCustomFetchUrl ? results : results[1];
+  const { json, duration } = responseData;
+  const lib = useCustomFetchUrl ? FALLBACK_FETCH_LIBRARY : dataFetchingLib;
+
   return (
     <div className={componentStyles.summary}>
       <h2>
-        Fetched data from <code>{urlToFetch(fieldValues)}</code> via{' '}
-        {fieldValues.useCustomFetchUrl ? 'axios' : fieldValues.dataFetchingLib}
+        Fetched data from <code>{urlToFetch(fieldValues)}</code> via {lib} in{' '}
+        {duration}ms
       </h2>
-      {fieldValues.useCustomFetchUrl ? (
+      {useCustomFetchUrl ? (
         <details>
           <summary>
             <h3 style={{ display: 'inline', cursor: 'pointer' }}>
@@ -216,10 +176,9 @@ export function Component({
         </details>
       ) : (
         results && (
-          <DataForFetch
-            dataFetchingLib={fieldValues.dataFetchingLib}
-            data={results[1].json}
-            key={fieldValues.dataFetchingLib}
+          <PokeCard
+            pokemonData={transformPokemonData(json, dataFetchingLib)}
+            key={dataFetchingLib}
           />
         )
       )}

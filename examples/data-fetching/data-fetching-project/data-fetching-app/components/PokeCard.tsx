@@ -15,7 +15,8 @@ export default function PokeCard({
   profileImage,
   pokemonType,
 }: PokeCardProps) {
-  let typeColor = 'blue';
+  let typeColor: string = '';
+
   switch (pokemonType) {
     case 'psychic':
       typeColor = 'purple';
@@ -36,6 +37,7 @@ export default function PokeCard({
       typeColor = 'green';
       break;
   }
+
   return (
     <div>
       <div className={pokeCardStyles.wrapper}>

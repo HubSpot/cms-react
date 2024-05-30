@@ -7,8 +7,8 @@ import {
   ModuleDataFetchResult,
   ModulePropsWithoutSSP,
 } from '@hubspot/cms-components';
-import PokeCard from '../../PokeCard.js';
 import componentStyles from '../../../styles/component.module.css';
+import PokeCard from '../../PokeCard.js';
 
 type FieldValues = {
   fetchUrl: string;

@@ -10,7 +10,7 @@ export const fields = (
     <ChoiceField
       name="pokemon"
       label="Pokemon"
-      default={'mewtwo'}
+      default={'eevee'}
       choices={[
         ['bulbasaur', 'Bulbasaur'],
         ['charizard', 'Charizard'],

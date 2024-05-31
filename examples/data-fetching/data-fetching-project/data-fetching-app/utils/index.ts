@@ -50,7 +50,7 @@ export function transformPokemonData(
   };
 }
 
-type PokemonTypes =
+export type PokemonTypes =
   | 'psychic'
   | 'normal'
   | 'electric'

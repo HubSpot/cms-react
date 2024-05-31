@@ -1,8 +1,16 @@
 import pokeCardStyles from '../styles/pokecard.module.css';
-import { getTypeColor } from '../utils/index.js';
+import { getTypeColor, PokemonTypes } from '../utils/index.js';
+
+type PokemonData = {
+  pokemonName: string;
+  height: number;
+  weight: number;
+  profileImage: string;
+  pokemonType: PokemonTypes;
+};
 
 type PokeCardProps = {
-  pokemonData: any;
+  pokemonData: PokemonData;
 };
 
 export default function PokeCard({ pokemonData }: PokeCardProps) {

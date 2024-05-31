@@ -1,3 +1,5 @@
+import { logError, logInfo } from '@hubspot/cms-components';
+
 export type DataFetchingLibs = 'graphql-request' | 'axios';
 
 export function transformPokemonData(
@@ -67,4 +69,15 @@ export function getTypeColor(pokemonType: PokemonTypes) {
     case 'grass':
       return 'green';
   }
+}
+
+export async function settlePromise(
+  promise: Promise<{ json: JSON; duration: number }>,
+) {
+  return promise
+    .then((value: { json: JSON; duration: number }) => {
+      logInfo({ status: 'fulfilled' });
+      return { status: 'fulfilled', value };
+    })
+    .catch((reason) => logError({ status: 'rejected', reason }));
 }

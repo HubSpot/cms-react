@@ -47,7 +47,7 @@ export const fields = (
     <ChoiceField
       name="dataFetchingLib"
       label="Fetch libraries"
-      default={'graphql-request'}
+      default={'fetch'}
       multiple={false}
       choices={[
         ['axios', 'axios'],

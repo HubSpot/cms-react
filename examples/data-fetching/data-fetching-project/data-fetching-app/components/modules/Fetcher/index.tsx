@@ -4,7 +4,6 @@ import { NodeFetchCache, FileSystemCache } from 'node-fetch-cache';
 import {
   withUrlAndQuery,
   logInfo,
-  logError,
   ModuleDataFetchResult,
   ModulePropsWithoutSSP,
 } from '@hubspot/cms-components';
@@ -13,9 +12,8 @@ import PokeCard from '../../PokeCard.js';
 import {
   transformPokemonData,
   DataFetchingLibs,
+  settlePromise,
 } from '../../../utils/index.js';
-
-const FALLBACK_FETCH_LIBRARY = 'axios';
 
 type FieldValues = {
   fetchUrl: string;
@@ -60,6 +58,72 @@ const nodeFetchCache = NodeFetchCache.create({
   }),
 });
 
+export function getDataPromise(fieldValues: FieldValues) {
+  const { dataFetchingLib, useCustomFetchUrl } = fieldValues;
+  const fetchUrl = urlToFetch(fieldValues);
+  const start = Date.now();
+
+  if (dataFetchingLib && !useCustomFetchUrl) {
+    if (dataFetchingLib === 'axios') {
+      return axios.get(fetchUrl).then((response: any) => {
+        return {
+          json: response.data,
+          duration: Date.now() - start,
+        };
+      });
+    }
+
+    if (dataFetchingLib === 'graphql-request') {
+      return graphqlRequest(POKEMON_GRAPHQL_SCHEMA_URL, pokemonQuery, {
+        pokemonName: fieldValues.pokemon,
+      }).then((value: any) => {
+        return {
+          json: value,
+          duration: Date.now() - start,
+        };
+      });
+    }
+
+    if (dataFetchingLib === 'nodeFetchCache') {
+      return nodeFetchCache(fetchUrl).then(async (response) => {
+        return {
+          json: await response.json(),
+          duration: Date.now() - start,
+        };
+      });
+    }
+
+    if (dataFetchingLib === 'fetch') {
+      logInfo('here');
+      if (!fetch) {
+        throw new Error(
+          `Fetch API is not defined, node version = ${process.versions.node}`,
+        );
+      }
+
+      return fetch(fetchUrl).then(async (response) => {
+        return {
+          json: await response.json(),
+          duration: Date.now() - start,
+        };
+      });
+    }
+  } else {
+    if (!fetch) {
+      throw new Error(
+        `Fetch API is not defined, node version = ${process.versions.node}`,
+      );
+    }
+
+    return fetch(fetchUrl).then(async (response) => {
+      return {
+        json: await response.json(),
+        duration: Date.now() - start,
+      };
+    });
+  }
+}
+
 export const getServerSideProps = withUrlAndQuery(
   async (
     moduleProps: CustomModulePropsWithoutSSP,
@@ -68,103 +132,14 @@ export const getServerSideProps = withUrlAndQuery(
     const fieldValues = moduleProps.fieldValues as FieldValues;
     const { url } = extraDeps;
 
-    const dataPromises = [];
-    const start = Date.now();
-
-    const dataFetchingLib: string = fieldValues.dataFetchingLib;
-    const fetchUrl = urlToFetch(fieldValues);
-
-    if (dataFetchingLib && !fieldValues.useCustomFetchUrl) {
-      if (dataFetchingLib === 'axios') {
-        dataPromises.push(
-          axios.get(fetchUrl).then((response: any) => {
-            return {
-              json: response.data,
-              duration: Date.now() - start,
-            };
-          }),
-        );
-      }
-
-      if (dataFetchingLib === 'graphql-request') {
-        dataPromises.push(
-          graphqlRequest(POKEMON_GRAPHQL_SCHEMA_URL, pokemonQuery, {
-            pokemonName: fieldValues.pokemon,
-          }).then((value: any) => {
-            return {
-              json: value,
-              duration: Date.now() - start,
-            };
-          }),
-        );
-      }
-
-      if (dataFetchingLib === 'fetch') {
-        if (!fetch) {
-          throw new Error(
-            `Fetch API is not defined, node version = ${process.versions.node}`,
-          );
-        }
-
-        dataPromises.push(
-          fetch(fetchUrl).then(async (response) => {
-            return {
-              json: await response.json(),
-              duration: Date.now() - start,
-            };
-          }),
-        );
-      }
-
-      if (dataFetchingLib === 'nodeFetchCache') {
-        dataPromises.push(
-          nodeFetchCache(fetchUrl).then(async (response) => {
-            return {
-              json: await response.json(),
-              duration: Date.now() - start,
-            };
-          }),
-        );
-      }
-    } else {
-      dataPromises.push(
-        axios.get(fetchUrl).then((response: any) => {
-          return {
-            json: response.data,
-            duration: Date.now() - start,
-          };
-        }),
-      );
-    }
-
     logInfo('before data fetch');
+    const dataPromise = getDataPromise(fieldValues) as Promise<{
+      json: JSON;
+      duration: number;
+    }>;
 
-    const jsonData = (await Promise.allSettled(dataPromises)).map(
-      (result: any) => {
-        if (result.status === 'fulfilled') {
-          logInfo(
-            'Fetch success',
-            Object.keys(result.value.json).join(', '),
-            `duration = ${result.value.duration}`,
-          );
-        } else {
-          logError('Fetch failure');
-        }
-
-        return result.status === 'fulfilled'
-          ? result.value
-          : {
-              status: result.status,
-              reason: result.reason,
-            };
-      },
-    );
+    const results = await settlePromise(dataPromise);
     logInfo('after data fetch');
-
-    const results =
-      dataFetchingLib && !fieldValues.useCustomFetchUrl
-        ? [dataFetchingLib, jsonData[0]]
-        : jsonData[0];
 
     return {
       serverSideProps: { results, urlSearchParams: url.search },
@@ -188,10 +163,9 @@ export function Component({
   };
 }) {
   const { results } = serverSideProps;
-  const { useCustomFetchUrl, dataFetchingLib } = fieldValues;
-  const responseData = useCustomFetchUrl ? results : results[1];
-  const { json, duration } = responseData;
-  const lib = useCustomFetchUrl ? FALLBACK_FETCH_LIBRARY : dataFetchingLib;
+  const { json, duration } = results.value;
+  const { useCustomFetchUrl, dataFetchingLib, fetchUrl } = fieldValues;
+  const lib = useCustomFetchUrl ? 'fetch' : dataFetchingLib;
 
   return (
     <div className={componentStyles.summary}>
@@ -203,17 +177,16 @@ export function Component({
         <details>
           <summary>
             <h3 style={{ display: 'inline', cursor: 'pointer' }}>
-              ...via {fieldValues.fetchUrl}{' '}
-              <small>(duration = {results.duration}ms)</small>
+              ...via {fetchUrl} <small>(duration = {duration}ms)</small>
             </h3>
           </summary>
           <br />
           <code>
-            <pre>{JSON.stringify(results.json, null, 2)}</pre>
+            <pre>{JSON.stringify(results.value, null, 2)}</pre>
           </code>
         </details>
       ) : (
-        results && (
+        json && (
           <PokeCard
             pokemonData={transformPokemonData(json, dataFetchingLib)}
             key={dataFetchingLib}

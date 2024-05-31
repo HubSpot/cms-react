@@ -1,3 +1,4 @@
+import React from 'react';
 import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
 
@@ -5,7 +6,7 @@ import {
   useIsServerRender,
   usePageUrl,
   useBasePath,
-  logInfo
+  logInfo,
 } from '@hubspot/cms-components';
 
 function Home() {
@@ -18,7 +19,6 @@ function Home() {
     </main>
   );
 }
-
 
 function About() {
   return (
@@ -47,7 +47,7 @@ const App = () => {
   const basePath = useBasePath();
 
   logInfo(basePath);
-  logInfo(pageUrl);
+  logInfo(pageUrl.pathname);
 
   let app;
 

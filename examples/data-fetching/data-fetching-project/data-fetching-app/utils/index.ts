@@ -1,6 +1,10 @@
 import { logError, logInfo } from '@hubspot/cms-components';
 
-export type DataFetchingLibs = 'graphql-request' | 'axios';
+export type DataFetchingLibs =
+  | 'graphql-request'
+  | 'axios'
+  | 'fetch'
+  | 'nodeFetchCache';
 
 export function transformPokemonData(
   data: any,

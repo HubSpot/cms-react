@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { request as graphqlRequest, gql } from 'graphql-request';
+import { NodeFetchCache, FileSystemCache } from 'node-fetch-cache';
 import {
   withUrlAndQuery,
   logInfo,
@@ -50,6 +51,15 @@ const pokemonQuery = gql`
   }
 `;
 
+// Using node-fetch-catch can optimize your data fetching by caching data locally within the
+// Lambda function's file system which will help improve performance and reduce latency.
+const nodeFetchCache = NodeFetchCache.create({
+  cache: new FileSystemCache({
+    cacheDirectory: '/tmp/nodeFetchCache',
+    ttl: 1000 * 60 * 5, // 5 mins
+  }),
+});
+
 export const getServerSideProps = withUrlAndQuery(
   async (
     moduleProps: CustomModulePropsWithoutSSP,
@@ -83,6 +93,34 @@ export const getServerSideProps = withUrlAndQuery(
           }).then((value: any) => {
             return {
               json: value,
+              duration: Date.now() - start,
+            };
+          }),
+        );
+      }
+
+      if (dataFetchingLib === 'fetch') {
+        if (!fetch) {
+          throw new Error(
+            `Fetch API is not defined, node version = ${process.versions.node}`,
+          );
+        }
+
+        dataPromises.push(
+          fetch(fetchUrl).then(async (response) => {
+            return {
+              json: await response.json(),
+              duration: Date.now() - start,
+            };
+          }),
+        );
+      }
+
+      if (dataFetchingLib === 'nodeFetchCache') {
+        dataPromises.push(
+          nodeFetchCache(fetchUrl).then(async (response) => {
+            return {
+              json: await response.json(),
               duration: Date.now() - start,
             };
           }),

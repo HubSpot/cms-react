@@ -51,7 +51,9 @@ export const fields = (
       multiple={false}
       choices={[
         ['axios', 'axios'],
+        ['fetch', 'fetch (needs node 18.x)'],
         ['graphql-request', 'graphql-request'],
+        ['nodeFetchCache', 'nodeFetchCache (fs cache)'],
       ]}
       visibility={{
         controlling_field_path: 'useCustomFetchUrl',

@@ -1,5 +1,3 @@
-import { logInfo } from '@hubspot/cms-components';
-
 export type DataFetchingLibs = 'graphql-request' | 'axios';
 
 export function transformPokemonData(
@@ -29,8 +27,7 @@ export function transformPokemonData(
     weight = pokemonWeight;
     profileImage = sprites.other.dream_world.front_default;
     pokemonType = pokemon_v2_type.name;
-  }
-  if (dataFetchingLib === 'axios') {
+  } else {
     pokemonName = data.name;
     height = data.height;
     weight = data.weight;

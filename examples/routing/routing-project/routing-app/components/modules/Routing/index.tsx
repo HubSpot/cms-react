@@ -4,10 +4,9 @@ import AppIsland from '../../islands/App.tsx?island';
 
 export const Component = () => {
   return (
-    <>
-      <h1>{`Hello`}</h1>
+    <div style={{ padding: '25px 75px' }}>
       <Island module={AppIsland} />
-    </>
+    </div>
   );
 };
 

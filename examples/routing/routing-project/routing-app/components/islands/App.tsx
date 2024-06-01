@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
 
 import {
@@ -9,34 +9,19 @@ import {
   logInfo,
 } from '@hubspot/cms-components';
 
-function Home() {
-  return (
-    <main>
-      <h1>Home</h1>
-      <p>
-        <Link to={'/about'}>About</Link>
-      </p>
-    </main>
-  );
-}
-
-function About() {
-  return (
-    <main>
-      <h1>About</h1>
-      <p>
-        <Link to={'/home'}>Home</Link>
-      </p>
-    </main>
-  );
-}
+import Home from '../Home.tsx';
+import About from '../About.tsx';
+import Services from '../Services.tsx';
+import Contact from '../Contact.tsx';
+import Header from '../Header.tsx';
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
+      <Route path="/services" element={<Services />} />
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   );
 };
@@ -49,17 +34,19 @@ const App = () => {
   logInfo(basePath);
   logInfo(pageUrl.pathname);
 
-  let app;
+  let app: JSX.Element;
 
   if (isServerRender) {
     app = (
       <StaticRouter basename={basePath} location={pageUrl.pathname}>
+        <Header />
         <AppRoutes />
       </StaticRouter>
     );
   } else {
     app = (
       <BrowserRouter basename={basePath}>
+        <Header />
         <AppRoutes />
       </BrowserRouter>
     );

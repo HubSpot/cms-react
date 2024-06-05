@@ -1,10 +1,10 @@
-import React from 'react';
 import { Island } from '@hubspot/cms-components';
-import AppIsland from '../../islands/App.tsx?island';
+import React from 'react';
+import AppIsland from '../../islands/App?island';
 
 export const Component = () => {
   return (
-    <div style={{ padding: '25px 75px' }}>
+    <div>
       <Island module={AppIsland} />
     </div>
   );
@@ -13,5 +13,5 @@ export const Component = () => {
 export const fields = [];
 
 export const meta = {
-  label: `Routing Module`,
+  label: 'Membership app entry point',
 };

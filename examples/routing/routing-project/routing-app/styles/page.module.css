@@ -1,16 +1,17 @@
 .page {
-  h1 {
+  & h1 {
     text-align: center;
   }
 
-  .hero {
+  & .hero {
     height: 50vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 5px;
 
-    h1 {
+    & h1 {
       color: white;
       font-size: 3em;
       margin: auto;

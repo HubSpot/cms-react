@@ -6,17 +6,17 @@
   justify-content: space-between;
   font-family: sans-serif;
 
-  nav {
-    ul {
+  & nav {
+    & ul {
       list-style: none;
       display: flex;
       flex-direction: row;
-      gap: 15px;
+      gap: 30px;
       margin: 0;
       padding: 0;
 
-      li {
-        a {
+      & li {
+        & a {
           color: #33475b;
           text-decoration: none;
           padding-bottom: 4px;
@@ -32,7 +32,7 @@
       }
     }
   }
-  .btn {
+  & .btn {
     list-style: none;
     background-color: #33475b;
     padding: 10px 20px;
@@ -46,7 +46,7 @@
       transition: all 0.3s ease;
     }
 
-    a {
+    & a {
       text-decoration: none;
       color: white;
     }

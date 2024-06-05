@@ -1,5 +1,7 @@
 # Release Log
 
+
+=======
 ## 2024-04-27
 
 Type: Bug Fix
@@ -50,9 +52,19 @@ Part of: `@hubspot/cms-components@0.14.14` and `@hubspot/cms-dev-server@0.14.14`
 
 Release `@hubspot/cms-components`: `<Form />` component
 
+## 2024-03-27
+
+Type: Feature Release
+
+Part of: `@hubspot/cms-components@0.14.15` and `@hubspot/cms-dev-server@0.14.15`
+
+- Release `RichText` and `Cta` components from `@hubspot/cms-components`
+- Fix serialization issues in the proxy and `preview/module` routes
+
+
 ## 2024-03-26
 
-Type Enhancement
+Type: Enhancement
 
 Part of: Platform Change
 

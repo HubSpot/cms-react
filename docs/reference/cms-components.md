@@ -34,9 +34,9 @@ We provide a number of React hooks from the `@hubspot/cms-components` package to
 
 Will return `true` only after hydration is completed. More specifically it will:
 
-- Return `true` during the initial render on the server.
-- Return `true` during the first render that happens inside the browser.
-- Return `false` during any subsequent renders that happen after the component has been “mounted” in the browser.
+- Return `false` during the initial render on the server.
+- Return `false` during the first render that happens inside the browser.
+- Return `true` during any subsequent renders that happen after the component has been “mounted” in the browser.
 
 This hook is useful because React requires server-rendered HTML to match the initial client render. See the [Server/Client Rendering section](../appendix#server-side-client-side-rendering) in the appendix for more information.
 
@@ -246,7 +246,7 @@ export const fields = [
 
 #### @hubspot/cms-components/Cta
 
-The Cta component insert Cta HTML into the DOM.
+The Cta component inserts Cta HTML into the DOM.
 
 ##### Props
 
@@ -285,6 +285,103 @@ export const fields = [
     label: 'CTA',
     name: 'cta_field',
     default: '13bcd0b3-5192-4570-baff-9a779df01bd8',
+  },
+];
+```
+
+### Form
+
+#### @hubspot/cms-components/Form
+
+The Form field helper component inserts the HubL Form HTML into the DOM.
+
+##### Props
+
+###### fieldPath
+
+type: `string`
+
+The path of the Form field to render
+
+###### tag
+
+The tag used as the wrapping element for the content.
+
+default: `div`
+
+###### Element attributes
+
+This component passes through all valid attributes to the wrapper tag and applies them, such as `id`, `style`, etc.
+
+##### Example Usage
+
+```javascript
+import { Form } from '@hubspot/cms-components';
+
+export function Component() {
+  return <Form fieldPath="form_field" />;
+}
+
+export const meta = {
+  label: `Form Module`,
+};
+
+export const fields = [
+  {
+    type: 'form',
+    default: {
+      form_id: '56208269-add7-458d-b514-7f215e6ad98c',
+      message: 'Thanks for submitting the form.',
+    },
+    label: 'Form',
+    name: 'form_field',
+  },
+];
+```
+
+### Menu
+
+#### @hubspot/cms-components/Menu
+
+The Menu field helper component inserts the HubL menu HTML into the DOM.
+
+##### Props
+
+###### fieldPath
+
+type: `string`
+
+The path of the Menu field to render
+
+###### tag
+
+The tag used as the wrapping element for the content.
+
+default: `div`
+
+###### Element attributes
+
+This component passes through all valid attributes to the wrapper tag and applies them, such as `id`, `style`, etc.
+
+##### Example Usage
+
+```javascript
+import { Menu } from '@hubspot/cms-components';
+
+export function Component() {
+  return <Menu fieldPath="my_menu_field" />;
+}
+
+export const meta = {
+  label: `Menu Module`,
+};
+
+export const fields = [
+  {
+    type: 'menu',
+    default: 57978762829,
+    label: 'Menu',
+    name: 'my_menu_field',
   },
 ];
 ```

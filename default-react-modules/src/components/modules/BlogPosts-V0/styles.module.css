@@ -19,6 +19,15 @@
   flex-wrap: wrap;
 }
 
+/* Lock icon */
+.gatedContentLockIcon {
+  margin-bottom: 0.5rem;
+}
+
+.gatedContentLockIcon--marginLeft {
+  margin-left: 5px;
+}
+
 /* Grid layout  */
 .hsBlogPostGridColumn2 {
   justify-content: space-between;
@@ -86,6 +95,9 @@
 /* Post image */
 .hsBlogPostImageWrapper {
   display: inline-block;
+}
+.hsBlogPostImageWrapper:not(.hsBlogPostImageWrapperSideBySide) {
+  width: 100%;
 }
 
 .hsBlogPostImageOverlay {

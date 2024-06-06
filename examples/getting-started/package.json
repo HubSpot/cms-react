@@ -1,0 +1,27 @@
+{
+  "name": "getting-started-example",
+  "description": "Getting started with CMS-React",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@hubspot/cli": "latest",
+    "@hubspot/prettier-plugin-hubl": "latest",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.31.10",
+    "prettier": "^2.7.1",
+    "yarpm": "^1.2.0"
+  },
+  "scripts": {
+    "start": "cd project/src && yarpm start",
+    "postinstall": "cd project/src && yarpm install",
+    "lint:js": "eslint . --ext .js,.jsx",
+    "prettier": "prettier . --check",
+    "watch:hubl": "hs watch getting-started-theme getting-started-theme",
+    "upload:hubl": "hs upload getting-started-theme getting-started-theme",
+    "deploy": "hs project upload project"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

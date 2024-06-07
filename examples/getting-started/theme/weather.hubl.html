@@ -1,0 +1,14 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Hello World - Cars
+-->
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+
+  {% module
+    path="@projects/getting-started-project/app/components/modules/Weather.tsx",
+  %}
+
+{% endblock body %}

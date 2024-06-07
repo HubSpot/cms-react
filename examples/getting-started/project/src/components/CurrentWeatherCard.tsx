@@ -1,7 +1,7 @@
 import weatherStyles from '../styles/weather.module.css';
 import { getWeatherIcon } from '../utils.ts';
 
-export function CurrentWeatherCard({ weatherData }) {
+export function CurrentWeatherCard({ weatherData }: any) {
   const { location, forecast } = weatherData;
   const { forecastday } = forecast;
   const currentDay = forecastday[0].day;

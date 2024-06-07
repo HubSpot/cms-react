@@ -1,8 +1,6 @@
-import { logInfo } from '@hubspot/cms-components';
 import { ICON_MAP } from './constants.ts';
 
 export function getWeatherIcon(type: string) {
-  logInfo(type);
   switch (type) {
     case 'Sunny':
     case 'Clear':
@@ -65,22 +63,24 @@ export function getWeatherIcon(type: string) {
       return ICON_MAP.FOG;
 
     default:
-      return ''; // Default case
+      return '';
   }
 }
+
+const apiKey = '20c6efc89fmshc5028f84c47f8a1p19a4a7jsnf3fead1e08a5';
 
 const baseApiUrl = 'https://weatherapi-com.p.rapidapi.com/forecast.json';
 const options = {
   method: 'GET',
   headers: {
-    'x-rapidapi-key': '20c6efc89fmshc5028f84c47f8a1p19a4a7jsnf3fead1e08a5',
+    'x-rapidapi-key': apiKey,
     'x-rapidapi-host': 'weatherapi-com.p.rapidapi.com',
   },
 };
 
 export async function getWeatherForecast(city: string) {
   try {
-    const response = await fetch(`${baseApiUrl}?q=${city}&days=5`, options);
+    const response = await fetch(`${baseApiUrl}?q=${city}&days=3`, options);
     const result = await response.text();
     return result as string;
   } catch (error) {

@@ -1,0 +1,72 @@
+.wrapper {
+  background-color: #282c34;
+  min-height: 40vh;
+  padding: 50px;
+
+  & h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: white;
+    font-size: 2rem;
+  }
+
+  & input[type="text"] {
+    border-radius: 5px;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #f3f3f3;
+  }
+
+  & button {
+    border-radius: 5px;
+    border:none;
+    background-color: coral;
+    color: white;
+    padding: 10px 12px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    font-size: 14px;
+
+    &:hover {
+      background-color: orange;
+      transition: background-color 0.3s;
+    }
+  }
+
+  & .form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 50px;
+  }
+
+  & .cardContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 800px;
+    margin: auto;
+  }
+
+  & .card {
+      background-color: #f3f3f3;
+      padding: 25px;
+      border-radius: 5px;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    }
+
+  & .current {
+    background-color: #f3f3f3;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin:auto;
+    min-height: 400px;
+    margin-bottom: 50px;
+  }
+}

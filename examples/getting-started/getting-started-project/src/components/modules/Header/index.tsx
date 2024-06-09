@@ -1,16 +1,29 @@
-import { ImageField, ModuleFields } from '@hubspot/cms-components/fields';
+import { Menu } from '@hubspot/cms-components';
+import {
+  ImageField,
+  MenuField,
+  ModuleFields,
+} from '@hubspot/cms-components/fields';
+import logo from '../../../assets/sprocket.svg';
+import headerStyles from '../../../styles/header.module.css';
 
 export function Component({ fieldValues }) {
-  return <img src={fieldValues.logo} alt="Logo" />;
+  return (
+    <header className={headerStyles.wrapper}>
+      <nav>
+        <img src={fieldValues.logo.src} alt="Logo" />
+        <Menu fieldPath={fieldValues.menu} />
+      </nav>
+    </header>
+  );
 }
+
+const DEFAULT_MENU_ID = '53522818668';
 
 export const fields = (
   <ModuleFields>
-    <ImageField
-      name="logo"
-      label="Logo"
-      default={{ src: '../../../assets/sprocket.svg' }}
-    />
+    <ImageField name="logo" label="Logo" default={{ src: logo }} />
+    <MenuField name="menu" label="Menu" default={DEFAULT_MENU_ID} />
   </ModuleFields>
 );
 

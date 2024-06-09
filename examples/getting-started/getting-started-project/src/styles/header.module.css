@@ -1,0 +1,12 @@
+.wrapper {
+  width: 100%;
+  background-color: transparent;
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 15px 25px;
+  }
+}

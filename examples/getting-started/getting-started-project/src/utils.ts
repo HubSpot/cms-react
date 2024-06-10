@@ -67,7 +67,7 @@ export function getWeatherIcon(type: string) {
   }
 }
 
-const apiKey = '20c6efc89fmshc5028f84c47f8a1p19a4a7jsnf3fead1e08a5';
+const apiKey = '<YOUR_API_KEY>';
 
 const baseApiUrl = 'https://weatherapi-com.p.rapidapi.com/forecast.json';
 const options = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, logInfo } from '@hubspot/cms-components';
+import { Menu } from '@hubspot/cms-components';
 import {
   ImageField,
   MenuField,
@@ -8,7 +8,7 @@ import {
 import logo from '../../../assets/sprocket.svg';
 import headerStyles from '../../../styles/header.module.css';
 
-export function Component({ fieldValues }) {
+export function Component({ fieldValues }: any) {
   return (
     <header className={headerStyles.wrapper}>
       <nav>
@@ -19,7 +19,7 @@ export function Component({ fieldValues }) {
   );
 }
 
-const DEFAULT_MENU_ID = '53522818668';
+const DEFAULT_MENU_ID = '<YOUR_DEFAULT_MENU_ID';
 
 export const fields = (
   <ModuleFields>

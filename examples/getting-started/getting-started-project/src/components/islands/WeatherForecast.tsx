@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import weatherStyles from '../../styles/weather.module.css';
 import { getWeatherForecast } from '../../utils.ts';
-import { UpcomingWeatherCard } from '../UpcomingWeatherCard.tsx';
-import { CurrentWeatherCard } from '../CurrentWeatherCard.tsx';
+import { CurrentWeatherCard, UpcomingWeatherCard } from '../WeatherCards.tsx';
 
 type WeatherCondition = {
   text: string;
@@ -79,7 +78,7 @@ export default function WeatherForecast({
           </div>
         </>
       ) : (
-        <h2>No data available for {city || 'this area'}</h2>
+        <h2>No data found, please search another location</h2>
       )}
     </div>
   );

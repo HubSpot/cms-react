@@ -1,5 +1,5 @@
-import { Island } from '@hubspot/cms-components';
 import React from 'react';
+import { Island } from '@hubspot/cms-components';
 import AppIsland from '../../islands/App?island';
 
 export const Component = () => {
@@ -13,5 +13,5 @@ export const Component = () => {
 export const fields = [];
 
 export const meta = {
-  label: 'Membership app entry point',
+  label: 'Router Module',
 };

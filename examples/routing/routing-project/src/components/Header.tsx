@@ -12,19 +12,16 @@ export default function Header() {
       <nav className={navigationStyles.nav}>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Dashboard</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/account">Account</Link>
           </li>
-          <li>
-            <Link to="/services">Services</Link>
+          <li className={navigationStyles.btn}>
+            <Link to="/contact">Contact Us</Link>
           </li>
         </ul>
       </nav>
-      <li className={navigationStyles.btn}>
-        <Link to="/contact">Contact Us</Link>
-      </li>
     </header>
   );
 }

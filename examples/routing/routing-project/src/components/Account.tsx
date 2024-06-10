@@ -1,12 +1,13 @@
 import React from 'react';
 import pageStyles from '../styles/page.module.css';
+import Hero from './Hero.tsx';
 
-export default function Contact() {
+export default function Account() {
   return (
     <main className={pageStyles.page}>
-      <div className={pageStyles.hero} style={{ background: '#ff7a59' }}>
-        <h1>Contact</h1>
-      </div>
+      <Hero size="small">
+        <h1>Account</h1>
+      </Hero>
     </main>
   );
 }

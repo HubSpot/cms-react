@@ -1,26 +1,22 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
-
 import {
   useIsServerRender,
   usePageUrl,
   useBasePath,
-  logInfo,
 } from '@hubspot/cms-components';
 
-import Home from '../Home.tsx';
-import About from '../About.tsx';
-import Services from '../Services.tsx';
-import Contact from '../Contact.tsx';
 import Header from '../Header.tsx';
+import Dashboard from '../Dashboard.tsx';
+import Account from '../Account.tsx';
+import Contact from '../Contact.tsx';
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/services" element={<Services />} />
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/account" element={<Account />} />
       <Route path="/contact" element={<Contact />} />
     </Routes>
   );
@@ -30,9 +26,6 @@ const App = () => {
   const isServerRender = useIsServerRender();
   const pageUrl = usePageUrl();
   const basePath = useBasePath();
-
-  logInfo(basePath);
-  logInfo(pageUrl.pathname);
 
   let app: JSX.Element;
 

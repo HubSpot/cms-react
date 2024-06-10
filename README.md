@@ -6,7 +6,7 @@ Check out an expanded documentation page at [https://github.hubspot.com/cms-reac
 
 ## Welcome!
 
-Thank you for taking the time to learn about HubSpot CMS React. As always our goal is to solve for our customers so we welcome any and all feedback. Chat away in [\#cms-react](https://hubspotdev.slack.com/archives/C04AY1H2204) with other HubSpot developers who are pushing forward with developing with React on the Hubspot CMS.
+Thank you for taking the time to learn about HubSpot CMS React. As always our goal is to solve for our customers so we welcome any and all feedback. Chat away in [\#cms-react](https://hubspotdev.slack.com/archives/C04AY1H2204) with other HubSpot developers who are pushing forward with developing with React on the Hubspot CMS. If you do not have access to the developer slack, you can request access [here](https://developers.hubspot.com/slack).
 
 ## How do React modules on the CMS work?
 

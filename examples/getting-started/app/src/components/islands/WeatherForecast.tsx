@@ -55,7 +55,7 @@ export default function WeatherForecast({
           </div>
         </>
       ) : (
-        <h2>Loading data...</h2>
+        <h2>No data available for {city || 'this area'}</h2>
       )}
     </div>
   );

@@ -12,10 +12,13 @@
     & ul {
       gap: 20px;
       list-style: none;
-
-      & li > ul.hs-menu-children-wrapper {
-        display: none;
-      }
+      margin: 0;
+      padding: 0;
+      display: flex;
     }
   }
+}
+
+ul.hs-menu-children-wrapper li {
+  display: none;
 }

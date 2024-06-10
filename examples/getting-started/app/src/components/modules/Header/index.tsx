@@ -8,7 +8,6 @@ import logo from '../../../assets/sprocket.svg';
 import headerStyles from '../../../styles/header.module.css';
 
 export function Component({ fieldValues }) {
-  logInfo(fieldValues);
   return (
     <header className={headerStyles.wrapper}>
       <nav>

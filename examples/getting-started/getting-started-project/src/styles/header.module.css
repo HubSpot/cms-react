@@ -1,3 +1,13 @@
+:root {
+  --primary-color: #ff7a59;
+  --primary-color-dark: #e66e50;
+  --primary-color-med: #ffbcac;
+  --primary-color-light: #fff1ee;
+  --secondary-color: #dfe3eb;
+  --accent-color: #2d3e50;
+  --light-accent-color: #eaf0f6;
+}
+
 .wrapper {
   width: 100%;
   background-color: transparent;
@@ -17,6 +27,13 @@
       display: flex;
 
       & li {
+        & a {
+          text-decoration: none;
+          color: var(--accent-color);
+          &:hover {
+            color: var(--primary-color);
+            }
+          }
         & ul {
           margin-top: 10px;
           display: flex;
@@ -25,14 +42,21 @@
           border: 1px solid #ccc;
           padding: 10px;
           & li {
+            position: relative;
             &  a {
                 color: gray;
                 text-decoration: none;
               }
             & ul {
+              position: absolute;
+              top: 10px;
+              left: 0px;
               margin-top: 0px;
               border: none;
               & li {
+                display: block;
+                top: unset;
+                left: unset;
                 & a {
                   color: gray;
                   text-decoration: none;

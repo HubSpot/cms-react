@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu } from '@hubspot/cms-components';
+import { Menu, logInfo } from '@hubspot/cms-components';
 import {
   ImageField,
   MenuField,
@@ -9,10 +9,12 @@ import logo from '../../../assets/sprocket.svg';
 import headerStyles from '../../../styles/header.module.css';
 
 export function Component({ fieldValues }: any) {
+  const { src, alt, width, height } = fieldValues.logo;
+
   return (
     <header className={headerStyles.wrapper}>
       <nav>
-        <img src={fieldValues.logo.src} alt="Logo" width={100} />
+        <img src={src} alt={alt} width={width} height={height} />
         <Menu fieldPath="menu" />
       </nav>
     </header>
@@ -26,7 +28,7 @@ export const fields = (
     <ImageField
       name="logo"
       label="Logo"
-      default={{ src: logo }}
+      default={{ src: logo, height: 100, alt: 'Logo for navigation' }}
       resizable={true}
     />
     <MenuField name="menu" label="Menu" default={DEFAULT_MENU_ID} />

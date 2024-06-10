@@ -1,11 +1,6 @@
 :root {
   --primary-color: #ff7a59;
-  --primary-color-dark: #e66e50;
-  --primary-color-med: #ffbcac;
-  --primary-color-light: #fff1ee;
-  --secondary-color: #dfe3eb;
   --accent-color: #2d3e50;
-  --light-accent-color: #eaf0f6;
 }
 
 .wrapper {
@@ -14,7 +9,7 @@
 
   & nav {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     flex-direction: row;
     padding: 15px 25px;
@@ -29,47 +24,12 @@
       & li {
         & a {
           text-decoration: none;
-          color: var(--accent-color);
-          &:hover {
-            color: var(--primary-color);
+          color: #ff7a59;
+            &:hover {
+              color: #2d3e50;
             }
           }
-        & ul {
-          margin-top: 10px;
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-          border: 1px solid #ccc;
-          padding: 10px;
-          & li {
-            position: relative;
-            &  a {
-                color: gray;
-                text-decoration: none;
-              }
-            & ul {
-              position: absolute;
-              top: 10px;
-              left: 0px;
-              margin-top: 0px;
-              border: none;
-              & li {
-                display: block;
-                top: unset;
-                left: unset;
-                & a {
-                  color: gray;
-                  text-decoration: none;
-                }
-              }
-            }
-          }
-        }
       }
     }
   }
-}
-
-ul.hs-menu-children-wrapper li {
-  display: none;
 }

@@ -3,7 +3,31 @@ import weatherStyles from '../../styles/weather.module.css';
 import { getWeatherForecast } from '../../utils.ts';
 import { UpcomingWeatherCard } from '../UpcomingWeatherCard.tsx';
 import { CurrentWeatherCard } from '../CurrentWeatherCard.tsx';
-import { WeatherData } from '../../types.ts';
+
+type WeatherCondition = {
+  text: string;
+  icon: string;
+  code: number;
+};
+
+type DailyForecast = Record<string, string | number | Day>;
+
+type Day = {
+  day: Record<string, number | WeatherCondition>;
+};
+
+type Forecast = {
+  forecastday: DailyForecast[];
+};
+
+export type CurrentWeather = Record<string, number | string | WeatherCondition>;
+type Location = Record<string, number | string>;
+
+export type WeatherData = {
+  location: Location;
+  current: CurrentWeather;
+  forecast: Forecast;
+};
 
 type WeatherForecastProps = {
   headline: string;

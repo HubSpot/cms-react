@@ -4,7 +4,7 @@
 
   & nav {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     flex-direction: row;
     padding: 15px 25px;
@@ -15,6 +15,33 @@
       margin: 0;
       padding: 0;
       display: flex;
+
+      & li {
+        & ul {
+          margin-top: 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          border: 1px solid #ccc;
+          padding: 10px;
+          & li {
+            &  a {
+                color: gray;
+                text-decoration: none;
+              }
+            & ul {
+              margin-top: 0px;
+              border: none;
+              & li {
+                & a {
+                  color: gray;
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

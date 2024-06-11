@@ -1,21 +1,36 @@
 .page {
+
   & h1 {
     text-align: center;
   }
 
-  & .hero {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    background-color: #ff7a59;
-
-    & h1 {
-      color: white;
-      font-size: 3em;
-      margin: auto;
-      font-family: sans-serif;
-    }
+  & .back {
+    text-align: center;
   }
+}
+
+.profile {
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.home {
+  width: 100%;
+  text-align: center;
+
+  h1 {
+    margin-bottom: 50px;
+  }
+
+  & a {
+    text-decoration: none;
+    color: white;
+    background-color: red;
+    padding: 12px 15px;
+    border-radius: 5px;
+  }
+
 }

@@ -1,23 +1,25 @@
-import React from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
 import {
   useIsServerRender,
   usePageUrl,
   useBasePath,
 } from '@hubspot/cms-components';
-
 import Header from '../Header.tsx';
-import Dashboard from '../Dashboard.tsx';
-import Account from '../Account.tsx';
-import Contact from '../Contact.tsx';
+import Pokedex from '../Pokedex.tsx';
+import Pokemon from '../Pokemon.tsx';
+import Home from '../Home.tsx';
+import { pokemonList } from '../../constants.ts';
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
-      <Route path="/account" element={<Account />} />
-      <Route path="/contact" element={<Contact />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/pokedex" element={<Pokedex pokemonList={pokemonList} />} />
+      <Route
+        path="/pokedex/:name"
+        element={<Pokemon pokemonList={pokemonList} />}
+      />
     </Routes>
   );
 };

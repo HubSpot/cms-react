@@ -1,4 +1,3 @@
-import React from 'react';
 import { Island } from '@hubspot/cms-components';
 import AppIsland from '../../islands/App?island';
 

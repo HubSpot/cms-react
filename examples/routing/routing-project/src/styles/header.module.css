@@ -1,10 +1,12 @@
 .header {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   font-family: sans-serif;
+  gap: 20px;
+  padding: 15px 0;
 
   & nav {
     & ul {

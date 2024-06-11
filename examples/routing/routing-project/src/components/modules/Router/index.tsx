@@ -3,11 +3,7 @@ import { Island } from '@hubspot/cms-components';
 import AppIsland from '../../islands/App?island';
 
 export const Component = () => {
-  return (
-    <div>
-      <Island module={AppIsland} />
-    </div>
-  );
+  return <Island module={AppIsland} />;
 };
 
 export const fields = [];

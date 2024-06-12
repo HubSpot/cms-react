@@ -4,12 +4,12 @@
   justify-content: center;
   align-items: flex-start;
   gap: 15px;
+}
 
-  & a {
-    text-decoration: none;
-    width: 30%;
-    min-width: 300px;
-  }
+.cards a {
+  text-decoration: none;
+  width: 30%;
+  min-width: 300px;
 }
 
 .card {
@@ -23,16 +23,13 @@
   border-radius: 5px;
   height: 125px;
   cursor: pointer;
+}
 
+.card p,
+.card h2 {
+  margin: 0;
+}
 
-
-  & p, h2 {
-    margin: 0;
-  }
-
-  & img {
-    border-radius: 5px;
-  }
-
-
+.card img {
+  border-radius: 5px;
 }

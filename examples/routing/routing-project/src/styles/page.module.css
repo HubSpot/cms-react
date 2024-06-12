@@ -5,23 +5,23 @@
   justify-content: center;
   align-items: center;
   margin-top: 40px;
+}
 
-  & h1 {
-    margin-top: 0;
-  }
+.page h1 {
+  margin-top: 0;
+}
 
-  & .back {
-    text-align: center;
-  }
+.page .back {
+  text-align: center;
+}
 
-  ul {
-    list-style-type: none;
-    padding: 0;
+.page ul {
+  list-style-type: none;
+  padding: 0;
+}
 
-    & li {
-      margin-bottom: 10px;
-    }
-  }
+.page ul li {
+  margin-bottom: 10px;
 }
 
 .profile {
@@ -35,19 +35,18 @@
 .home {
   width: 100%;
   text-align: center;
+}
 
-  h1 {
-    margin-bottom: 50px;
-  }
+.home h1 {
+  margin-bottom: 50px;
+}
 
-  & a {
-    text-decoration: none;
-    color: white;
-    background-color: red;
-    padding: 12px 15px;
-    border-radius: 5px;
-  }
-
+.home a {
+  text-decoration: none;
+  color: white;
+  background-color: red;
+  padding: 12px 15px;
+  border-radius: 5px;
 }
 
 .attributes {
@@ -56,12 +55,12 @@
   justify-content: space-between;
   flex-direction: column;
   gap: 20px;
+}
 
-  & > div {
-    display: flex;
-    flex-direction: row;
-    gap: 25px;
-  }
+.attributes > div {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
 }
 
 .stacked {
@@ -80,20 +79,19 @@
   padding: 25px 50px 25px 15px;
   width: 600px;
   color: #f0e68c;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   gap: 50px;
   margin-bottom: 40px;
+}
 
-  & img {
-    height: auto;
-  }
+.card img {
+  height: auto;
+}
 
-  & .info {
-    flex-grow: 1;
-  }
-
+.card .info {
+  flex-grow: 1;
 }
 
 .moves {

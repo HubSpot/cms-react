@@ -1,3 +1,30 @@
+/** The pokemonList data was fetched from https://beta.pokeapi.co/graphql/v1beta using this query:
+ * query samplePokeAPIquery {
+  pokemon_v2_pokemon(limit: 21) {
+    base_experience
+    height
+    id
+    name
+    weight
+    pokemon_v2_pokemontypes {
+      pokemon_v2_type {
+        name
+      }
+    }
+    pokemon_v2_pokemonsprites {
+      sprites(path: "other.showdown.front_default")
+    }
+    pokemon_v2_pokemonmoves(limit: 3) {
+      pokemon_v2_move {
+        name
+        accuracy
+        move_effect_chance
+      }
+    }
+  }
+}
+ */
+
 export const pokemonList = [
   {
     base_experience: 64,

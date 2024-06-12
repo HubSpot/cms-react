@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  font-family: sans-serif;
+  font-family: 'Mono', monospace;
   gap: 20px;
   padding: 15px 0;
 }

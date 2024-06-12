@@ -1,20 +1,34 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import navigationStyles from '../styles/header.module.css';
 import pokeball from '../assets/pokeball.svg';
 
 export default function Header() {
   return (
     <header className={navigationStyles.header}>
-      <Link to="/">
-        <img src={pokeball} height="75" width="auto" />
-      </Link>
+      <NavLink to="/">
+        <img src={pokeball} height="75" width="auto" alt="Pokeball" />
+      </NavLink>
       <nav className={navigationStyles.nav}>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? navigationStyles.active : undefined
+              }
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to={`pokedex/`}>Pokedex</Link>
+            <NavLink
+              to="/pokedex"
+              className={({ isActive }) =>
+                isActive ? navigationStyles.active : undefined
+              }
+            >
+              Pokedex
+            </NavLink>
           </li>
         </ul>
       </nav>

@@ -24,7 +24,7 @@ const AppRoutes = () => {
 };
 ```
 
-In the first route `<Route path="/" element={<Home />}` />, we explicitly tell React-Router to render the `<Home />` component at the `/` path. This means that when a user visits `your-website.com/`, they will see a home page rendered by the `<Home />` component. The final `<Route />` component leverages React-Router's dynamic segments. As you can see in the example above, the path `/pokedex/:name` includes `:name` which is our dynamic segment. This allows us to render different content based on the value of `:name` at render time.
+In the first route `<Route path="/" element={<Home />}` />, we explicitly tell React-Router to render the `<Home />` component at the `/` path. This means that when a user visits `your-website.com/`, they will see a home page rendered by the `<Home />` component. The final `<Route />` component leverages [React-Router's dynamic segments](https://reactrouter.com/en/main/route/route#dynamic-segments). As you can see in the example above, the path `/pokedex/:name` includes `:name` which is our dynamic segment. This allows us to render different content based on the value of `:name` at render time.
 
 Once our routes are setup, we need to update our `<Pokemon />` component to know what pokemon page to render. As you can see in the example below `useParams` extracts the dynamic segment (:name) from the URL, and we use it to find the corresponding Pokemon in our pokemonList.
 

@@ -9,7 +9,7 @@ The getting started example within this directory covers a variety of key featur
 To set up your development environment to work with CMS React, you’ll need the following:
 
 - A HubSpot account with CMS Free, Starter, Pro, or Enterprise access
-- Node.js v16.0 or higher and the associated version of NPM
+- Node.js v18.0 or higher and the associated version of NPM
 
 ## Creating and Deploying a CMS React Project
 
@@ -61,7 +61,7 @@ Double-check you are still in `getting-started/` and run:
 npm run deploy
 ```
 
-This will upload the `getting-started-project` to your HubSpot account. Once uploaded, built, and deployed, you can add the modules and partials to your HubSpot templates.
+This will upload the `getting-started-project` to your HubSpot account. Once uploaded, built, and deployed, you can use your react modules in your website pages just as you would with any other modules.
 
 From the repository root, run:
 
@@ -75,8 +75,8 @@ This uploads the corresponding example HubL files to your account. You should no
 
 You can preview your local CMS React components inside live HubL-rendered pages. To do this, create a page:
 
-- Go to Control Center
-- Click “Create”, then “Create Landing page”
+- Go to Website Pages
+- Click “Create”, then “Create Website Page"
 - Write a page name and click “Create page”
 - Switch your active theme to "CMS React - Getting Started Theme" and select one of the templates
 - Name the page in the settings tab, then publish and preview it

@@ -22,7 +22,7 @@ export default function Header() {
           </li>
           <li>
             <NavLink
-              to="/pokedex"
+              to="/pokemon"
               className={({ isActive }) =>
                 isActive ? navigationStyles.active : undefined
               }

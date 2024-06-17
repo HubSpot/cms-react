@@ -10,7 +10,7 @@ export default function Pokemon({ pokemonList }: { pokemonList: any }) {
       <h1>Profile</h1>
       <ProfileCard pokemon={pokemon} />
       <div className={pageStyles.back}>
-        <Link to="/pokedex">Back to Pokedex</Link>
+        <Link to="/pokemon">Back to Pokedex</Link>
       </div>
     </main>
   );

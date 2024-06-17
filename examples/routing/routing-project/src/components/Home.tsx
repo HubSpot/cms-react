@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className={pageStyles.home}>
       <h1>CMS React Routing</h1>
-      <Link to="/pokedex">See Pokedex</Link>
+      <Link to="/pokemon">See Pokedex</Link>
     </div>
   );
 }

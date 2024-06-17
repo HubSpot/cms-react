@@ -13,10 +13,10 @@ const AppRoutes = () => {
       {/* Static Route for Home */}
       <Route path="/" element={<Home />} />
       {/* Static Route for Pokedex */}
-      <Route path="/pokedex" element={<Pokedex pokemonList={pokemonList} />} />
+      <Route path="/pokemon" element={<Pokedex pokemonList={pokemonList} />} />
       {/* Dynamic Route for individual Pokemon */}
       <Route
-        path="/pokedex/:name"
+        path="/pokemon/:name"
         element={<Pokemon pokemonList={pokemonList} />}
       />
     </Routes>
@@ -40,7 +40,7 @@ export default function Pokemon({ pokemonList }: { pokemonList: any }) {
       <h1>Profile</h1>
       <ProfileCard pokemon={pokemon} />
       <div className={pageStyles.back}>
-        <Link to="/pokedex">Back to Pokedex</Link>
+        <Link to="/pokemon">Back to Pokedex</Link>
       </div>
     </main>
   );

@@ -20,7 +20,6 @@
     "upload:hubl": "hs upload getting-started-theme getting-started-theme",
     "deploy": "hs project upload getting-started-project"
   },
-  "dependencies": {},
   "engines": {
     "node": ">=16.0.0"
   }

@@ -47,8 +47,9 @@ export default function Pokemon({ pokemonList }: { pokemonList: any }) {
 }
 ```
 
-`Router/index.tsx`
-To integrate the App.tsx router component into your website, import it with the `?island` suffix and pass it to the module prop of the `<Island />` component. This setup ensures that the necessary JavaScript is sent down to enable routing via React-Router. See example below:
+### `Router/index.tsx`
+
+To integrate the `App.tsx` router component into your website, import it with the `?island` suffix and pass it to the module prop of the `<Island />` component. This setup ensures that the necessary JavaScript is sent down to enable routing via React-Router. See example below:
 
 ```js
 import AppIsland from './App?island';
@@ -58,4 +59,10 @@ export const Component = () => {
 };
 ```
 
-And that's all it takes to implement SPA routing for your CMS React project pages!
+## Create a website page
+The final step is to create a CMS website or landing page using your Router module and add `[:dynamic-slug]` to the `Page URL` which will look something like this:
+
+![dynamic slug example](./routing-project/src/assets/dynamic-slug-screenshot.png "Dynamic slug example")
+
+`[:dynamic-slug]` is a special keyword that lets the CMS know that it should expect to receive arbitrary paths and it should render the page contents when a match is found. Once your slug is updated to include `[:dynamic-slug]` and the CMS page is published, you can view the live page, swap out `[:dynamic-slug]` with a valid dynamic slug (e.g. `/pokedex/[:dynamic-slug] --> /pokedex/pokemon/ivysaur`) and that is all! You now have SPA routing within your CMS website page 🚀
+

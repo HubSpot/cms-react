@@ -1,0 +1,35 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.cards a {
+  text-decoration: none;
+  width: 30%;
+  min-width: 300px;
+}
+
+.card {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  height: 125px;
+  cursor: pointer;
+}
+
+.card p,
+.card h2 {
+  margin: 0;
+}
+
+.card img {
+  border-radius: 5px;
+}

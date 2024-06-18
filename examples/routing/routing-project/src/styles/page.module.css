@@ -1,0 +1,107 @@
+.page {
+  font-family: 'Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.page h1 {
+  margin-top: 0;
+}
+
+.page .back {
+  text-align: center;
+}
+
+.page ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.page ul li {
+  margin-bottom: 10px;
+}
+
+.profile {
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.home {
+  width: 100%;
+  text-align: center;
+}
+
+.home h1 {
+  margin-bottom: 50px;
+}
+
+.home a {
+  text-decoration: none;
+  color: white;
+  background-color: red;
+  padding: 12px 15px;
+  border-radius: 5px;
+}
+
+.attributes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.attributes > div {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
+.stacked {
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+}
+
+.card {
+  background-color: #3e2073;
+  border-radius: 15px;
+  padding: 25px 50px 25px 15px;
+  width: 600px;
+  color: #f0e68c;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  margin-bottom: 40px;
+}
+
+.card img {
+  height: auto;
+}
+
+.card .info {
+  flex-grow: 1;
+}
+
+.moves {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.attributeTitle {
+  padding: 5px;
+  background-color: #f0e68c;
+  color: #3e2073;
+}

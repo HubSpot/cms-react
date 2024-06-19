@@ -62,7 +62,7 @@ export const Component = () => {
 ## Create a website page
 The final step is to create a CMS website or landing page using your Router module and add `[:dynamic-slug]` to the `Page URL` which will look something like this:
 
-![dynamic slug example](./routing-project/src/assets/dynamic-slug-screenshot.png "Dynamic slug example")
+![dynamic slug example](./routing-project/routing-app/assets/dynamic-slug-screenshot.png "Dynamic slug example")
 
 `[:dynamic-slug]` is a special keyword that lets the CMS know that it should expect to receive arbitrary paths and it should render the page contents when a match is found. Once your slug is updated to include `[:dynamic-slug]` and the CMS page is published, you can view the live page, swap out `[:dynamic-slug]` with a valid dynamic slug (e.g. `/pokedex/[:dynamic-slug] --> /pokedex/pokemon/ivysaur`) and that is all! You now have SPA routing within your CMS website page 🚀
 

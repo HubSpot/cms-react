@@ -47,7 +47,13 @@ To run this example project locally, navigate to the `getting-started-project/sr
 npm run start
 ```
 
-Then navigate to [http://hslocal.net:3000](http://hslocal.net:3000) to see an index page that links to all your modules.
+*This example makes use of a weather API through [RapidAPI](https://rapidapi.com/search?term=weatherapi-com&sortBy=ByRelevance). You will need to go through the process of singing up for this service (free) to fully see this example in action. Once you have an API Key you can add it to `getting-started-project/src/utils.ts` at the `apiKey` constant.*
+
+Then navigate to [http://hslocal.net:3000](http://hslocal.net:3000) to see an index page that links to all your modules. Click on the "local version" of the "Weather" module.
+
+In your local code editor from the `getting-started-project/src` directory open `components/modules/Weather/index.tsx` and change the `city` field default from "Boston" to your local city.
+
+See your changes live update in the browser.
 
 ### 4. Uploading and Deploying on HubSpot
 
@@ -55,7 +61,7 @@ Run `hs init` from the root of the repository to configure it to upload to your 
 
 > **Warning:** If you are using an existing access key from a previous call to `hs init` or `hs auth`, you will need to deactivate and regenerate the access key to include new scopes necessary for local CMS React development.
 
-Double-check you are still in `getting-started/` and run:
+Navigate back to `/examples/getting-started/` and run:
 
 ```bash
 npm run deploy

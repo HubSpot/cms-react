@@ -2,7 +2,7 @@
 
 ## Documentation
 
-Check out an expanded documentation page at [https://github.hubspot.com/cms-react/](https://github.hubspot.com/cms-react/)
+Check out an expanded documentation page at <a href="https://github.hubspot.com/cms-react/" target="_blank">https://github.hubspot.com/cms-react/</a>
 
 ## Welcome!
 
@@ -37,9 +37,15 @@ Once the module is uploaded you should be able to see it when you go to edit a p
 
 ## Examples
 
-In this repository is example usage of some of key features of React modules. These examples are are best understood alongside our official [documentation](docs). You can quickly try things out without any local setup by [opening this repo in Codesandbox.io](https://codesandbox.io/p/sandbox/stoic-pateu-g20chg?file=%2Fcms-react%2FREADME.md).
+In this repository is example usage of some of key features of React modules. These examples are are best understood alongside our official <a href="https://github.hubspot.com/cms-react/" target="_blank">docs</a>. You can quickly try things out without any local setup by [opening this repo in Codesandbox.io](https://codesandbox.io/p/sandbox/stoic-pateu-g20chg?file=%2Fcms-react%2FREADME.md).
+
+### [Getting Started](examples/getting-started)
+
+The "Getting Started" example is the most up to date example of CMS React basics. It illustrates the definition and development of Modules with React, uses 3rd party dependencies, islands, and CSS Modules.
 
 ### [Hello World](examples/hello-world)
+
+**NOTE:** this is an older example, and [Getting Started](getting-started) is a better first example
 
 The "Hello World" example combines partials, modules, islands and CSS modules for styling to show a more cohesive yet straightforward example of how CMS React components and APIs work together.
 
@@ -58,4 +64,3 @@ GraphQL is the future for querying HubSpot data in your CMS pages. As part of JS
 ### [Todo MVC](examples/todo-mvc)
 
 It seems with every new FE technology on the web comes an implemetation of TodoMVC. We didn't want to be left out and ported a recent version that made use of React and React hooks to work as a JS Module with Islands. Additionally there is an example of our `sharedIslandReducer` which provides a redux like interface for sharing state across islands.
-

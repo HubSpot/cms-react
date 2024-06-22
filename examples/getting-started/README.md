@@ -24,7 +24,7 @@ git clone https://github.com/HubSpot/cms-react.git
 CMS React projects have a 3 significant directories:
 
 - `getting-started-project`: The HubSpot project directory that gets uploaded via the Projects system to build and deploy your CMS React code found in the `/src` directory.
-- `getting-started-project/src`: A package inside your project directory containing all your assets, styles, components, modules, islands, and any local development tooling you need, such as ESLint, Prettier, TypeScript, etc.
+- `getting-started-project/getting-started-app`: A package inside your project directory containing all your assets, styles, components, modules, islands, and any local development tooling you need, such as ESLint, Prettier, TypeScript, etc.
 - `getting-started-theme`: This is where your HubL templates and theme configuration lives.
 
 At the root of this example, you will configure any local dev tooling you want, such as ESLint, Prettier, TypeScript, etc.
@@ -41,7 +41,7 @@ This will install all the local development tooling you need, including `@hubspo
 
 ### 3. Local Development
 
-To run this example project locally, navigate to the `getting-started-project/src` directory and run:
+To run this example project locally, navigate to the `getting-started-project/getting-started-app` directory and run:
 
 ```bash
 npm run start

@@ -15,13 +15,19 @@ This section will take you through the process of deploying your first JS render
 
 ### 1. Clone the Repo
 
-First, clone the Hello World repository:
+First, clone the CMS React repository.
 
 ```
 git clone https://github.com/HubSpot/cms-react.git
 ```
 
-This repo has a few significant directories:
+Next, navigate to this Hello World folder.
+
+```
+cd cms-react/examples/hello-world
+```
+
+This folder has a few significant directories:
 
 - `hello-world-theme/`: Some example HubL templates that refer to JS components elsewhere
 - `hello-world-project/`: The HubSpot project folder
@@ -29,20 +35,20 @@ This repo has a few significant directories:
 
 ### 2. Install dependencies
 
-Open your terminal and change into the Hello World repo root folder (`cms-react/hello-world`) if you are not already there.
+Open your terminal and change into the Hello World folder (`cms-react/examples/hello-world`) if you are not already there.
 
 Then run `npm install`. This will install all the local development tools you need—like `@hubspot/cli` and `@hubspot/cms-dev-server`—and the dependencies used inside hello-world-app/ JS component code.
 
 ### 3. Uploading and Deploying on HubSpot
 
-Run `hs init` from the root of the repository to configure it to upload to your HubSpot account using your personal access key. When setting up JavaScript assets for the first time, you will need to deactivate and regenerate your personal access key making sure it includes `CMS Pages`, `Design Manager`, `Developer Projects`, and `GraphQL Data Fetching` permissions. This will create a `hubspot.config.yaml` file that is required for both uploading changes and local development. See the [HubSpot CLI documentation](https://developers.hubspot.com/docs/cms/guides/getting-started-with-local-development?__hstc=75491725.e2098b212e147a7b9be6fd756c0c6815.1649440584659.1667397195793.1667489478959.105&__hssc=75491725.4.1667489478959&__hsfp=1149209764#configure-the-local-development-tools) for more information.
+Run `hs init` from the root of the repository to configure it to upload to your HubSpot account using your personal access key. When setting up JavaScript assets for the first time, you will need to deactivate and regenerate your personal access key making sure it includes `CMS Pages`, `Design Manager`, `Developer Projects`, and `GraphQL Data Fetching` permissions. This will create a `hubspot.config.yml` file that is required for both uploading changes and local development. See the [HubSpot CLI documentation](https://developers.hubspot.com/docs/cms/guides/getting-started-with-local-development?__hstc=75491725.e2098b212e147a7b9be6fd756c0c6815.1649440584659.1667397195793.1667489478959.105&__hssc=75491725.4.1667489478959&__hsfp=1149209764#configure-the-local-development-tools) for more information.
 
 > **Warning**
 > If you are using an existing access key from a previous call to `hs init` or `hs auth`, you will need to deactivate and regenerate the access key to include new scopes necessary for local CMS React development.
 
-Next double-check you are still in `hello-world/` and run `npm run deploy` to upload the Hello World project to your HubSpot account. Once the project is uploaded, built, and deployed, you will be able to add the modules and partials to your HubSpot templates.
+Next double-check you are still in `examples/hello-world/` and run `npm run deploy` to upload the Hello World project to your HubSpot account. Once the project is uploaded, built, and deployed, you will be able to add the modules and partials to your HubSpot templates.
 
-From the repository root, run `npm run upload:hubl` to upload the corresponding example HubL files to your account.
+Still within `examples/hello-world/`, run `npm run upload:hubl` to upload the corresponding example HubL files to your account.
 
 At this point, you should be able to create a page from one of the `hello-world-theme` templates and see the output of the React components included in them in the page preview.
 

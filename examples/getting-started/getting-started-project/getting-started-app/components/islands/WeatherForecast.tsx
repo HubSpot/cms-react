@@ -20,13 +20,13 @@ export default function WeatherForecast({
 
   useEffect(() => {
     getWeatherForecast(defaultCity, apiKey).then((data) => {
-      setWeatherData(JSON.parse(data as string));
+      setWeatherData(data);
     });
   }, []);
 
   const handleFetchWeather = () => {
     getWeatherForecast(city, apiKey).then((data) => {
-      setWeatherData(JSON.parse(data as string));
+      setWeatherData(data);
     });
   };
 

@@ -1,4 +1,4 @@
-import { ICON_MAP } from './constants.ts';
+import { ICON_MAP, WeatherResponse } from './constants.ts';
 
 export function getWeatherIcon(type: string) {
   switch (type) {
@@ -67,22 +67,36 @@ export function getWeatherIcon(type: string) {
   }
 }
 
-const apiKey = '<YOUR_API_KEY>';
-
 const baseApiUrl = 'https://weatherapi-com.p.rapidapi.com/forecast.json';
-const options = {
-  method: 'GET',
-  headers: {
-    'x-rapidapi-key': apiKey,
-    'x-rapidapi-host': 'weatherapi-com.p.rapidapi.com',
-  },
-};
 
-export async function getWeatherForecast(city: string) {
+export async function getWeatherForecast(
+  city: string,
+  apiKey: string,
+): Promise<WeatherResponse> {
   try {
-    const response = await fetch(`${baseApiUrl}?q=${city}&days=3`, options);
-    const result = await response.text();
-    return result as string;
+    const response = await fetch(`${baseApiUrl}?q=${city}&days=3`, {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-key': apiKey,
+        'x-rapidapi-host': 'weatherapi-com.p.rapidapi.com',
+      },
+    });
+
+    if (response.status === 401) {
+      return {
+        error: 'Unauthorized',
+        forecast: undefined,
+      };
+    } else if (response.status === 403) {
+      return {
+        error: 'Forbidden',
+        forecast: undefined,
+      };
+    } else if (!response.ok) {
+      return { error: 'Unknown', forecast: undefined };
+    }
+
+    return await response.json();
   } catch (error) {
     console.error(error);
   }

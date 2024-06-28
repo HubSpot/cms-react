@@ -7,23 +7,25 @@ import { WeatherResponse } from '../../constants.ts';
 type WeatherForecastProps = {
   headline: string;
   defaultCity: string;
+  apiKey: string;
 };
 
 export default function WeatherForecast({
   headline,
   defaultCity,
+  apiKey,
 }: WeatherForecastProps) {
   const [city, setCity] = useState('');
-  const [weatherData, setWeatherData] = useState<WeatherData>();
+  const [weatherData, setWeatherData] = useState<WeatherResponse>();
 
   useEffect(() => {
-    getWeatherForecast(defaultCity).then((data) => {
+    getWeatherForecast(defaultCity, apiKey).then((data) => {
       setWeatherData(JSON.parse(data as string));
     });
   }, []);
 
   const handleFetchWeather = () => {
-    getWeatherForecast(city).then((data) => {
+    getWeatherForecast(city, apiKey).then((data) => {
       setWeatherData(JSON.parse(data as string));
     });
   };

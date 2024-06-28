@@ -1,4 +1,5 @@
 {
   "label": "Getting started",
-  "outputPath": ""
+  "outputPath": "",
+  "secretNames": ["WEATHER_API_KEY"]
 }

@@ -47,11 +47,11 @@ To run this example project locally, navigate to the `getting-started-project/ge
 npm run start
 ```
 
-*This example makes use of a weather API through [RapidAPI](https://rapidapi.com/search?term=weatherapi-com&sortBy=ByRelevance). You will need to go through the process of singing up for this service (free) to fully see this example in action. Once you have an API Key you can add it to `getting-started-project/src/utils.ts` at the `apiKey` constant.*
+*This example makes use of a weather API through [RapidAPI](https://rapidapi.com/search?term=weatherapi-com&sortBy=ByRelevance). You will need to go through the process of singing up for this service (free) to fully see this example in action. Once you have an API Key you can add it to `getting-started-project/getting-started-app/utils.ts` at the `apiKey` constant.*
 
 Then navigate to [http://hslocal.net:3000](http://hslocal.net:3000) to see an index page that links to all your modules. Click on the "local version" of the "Weather" module.
 
-In your local code editor from the `getting-started-project/src` directory open `components/modules/Weather/index.tsx` and change the `city` field default from "Boston" to your local city.
+In your local code editor from the `getting-started-project/getting-started-app` directory open `components/modules/Weather/index.tsx` and change the `city` field default from "Boston" to your local city.
 
 See your changes live update in the browser.
 

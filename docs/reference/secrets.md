@@ -16,7 +16,6 @@ To access the secret, `@hubspot/cms-components` exports a `getSecret()` function
 
 ```javascript
 import { getSecret } from '@hubspot/cms-components';
-
 // ...
 
 // in a React component outside of an island

@@ -20,7 +20,11 @@ Returns `true` for components rendered live for a deployed project and `false` w
 
 `(secretName: string) => string`
 
-Returns a value for a given secret key. The secret must be defined using `hs secrets` in the CLI and the key must be included in a `secretNames` array in your `cms-assets.json` configuration. To prevent accidentally leaking secrets, `getSecret()` can only be called from components executed on the server and not from the browser (i.e. within an island).
+Returns a value for a given secret key. The secret must be defined using `hs secrets` in the CLI and the key must be included in a `secretNames` array in your `cms-assets.json` configuration. To prevent accidentally leaking secrets, `getSecret()`:
+  - **Cannot** be called at the top-level of a module
+  - **Cannot** be called from inside an island
+
+In other words, `getSecert` _must be called from_ a React component function that is rendered on the server. And if you want to pass a secret to client-side code—which makes it available public "view-source" viewing—you must explicitly pass the secret string via an island prop.
 
 See the [Secrets section](./secrets) for more information on usage.
 

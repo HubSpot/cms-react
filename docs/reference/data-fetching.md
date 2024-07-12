@@ -56,7 +56,7 @@ Whether you are passing data via the HubL tags or querying via GraphQL these sol
 
 ### Server Data Fetching with getServerSideProps
 
-"Sever Data Fetching" allows developers to export a function `getServerSideProps` from their CMS React Module definition. `getServerSideProps` must return an object with a `serverSideProps` property and a `cacheConfig` property which configures caching of the module.
+"Sever Data Fetching" allows developers to export a function `getServerSideProps` from their CMS React Module definition. `getServerSideProps` must return an object with a `serverSideProps` property and a `cacheConfig` property which configures caching of the module. In the React component the information returned in `serverSideProps` can be accessed via `props.serverSideProps`.
 
 #### Dependency Helpers
 

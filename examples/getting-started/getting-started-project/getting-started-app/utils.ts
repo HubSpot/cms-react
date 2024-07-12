@@ -87,7 +87,7 @@ export async function getWeatherForecast(
 
     const { longitude, latitude } = locationData.results[0];
     const forecastResponse = await fetch(
-      `${FORECAST_BASE_URL}?latitude=${latitude}&longitude=${longitude}&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&forecast_days=3&daily=apparent_temperature_max,weather_code`,
+      `${FORECAST_BASE_URL}?latitude=${latitude}&longitude=${longitude}&temperature_unit=fahrenheit&forecast_days=3&daily=apparent_temperature_max,weather_code`,
     );
 
     const forecast: ApiResponse = await forecastResponse.json();

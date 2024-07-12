@@ -1,6 +1,6 @@
 import { ICON_MAP } from './constants.ts';
 
-const FORECAST_BASE_URL = 'https://api.open-meteo.com/v1/forecast';
+const FORECAST_BASE_URL = 'https://api.open-meteo.com/v1/forecast'; // https://open-meteo.com/en/docs
 const LAT_LNG_BASE_URL = 'https://geocoding-api.open-meteo.com/v1/search';
 
 interface Forecast {
@@ -31,6 +31,7 @@ interface ForecastResponse {
 export interface WeatherForecast {
   city: string;
   forecast: ForecastData[];
+  error?: string;
 }
 
 interface DailyUnits {
@@ -123,11 +124,11 @@ export async function getWeatherForecast(
     );
 
     const forecast: ForecastResponse = await forecastResponse.json();
-
     const transformedForecast = transformResponseData(forecast.daily);
 
     return { city, forecast: transformedForecast };
   } catch (error) {
     console.error(error);
+    return { city: undefined, forecast: undefined, error };
   }
 }

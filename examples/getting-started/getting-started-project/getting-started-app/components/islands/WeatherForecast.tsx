@@ -16,23 +16,37 @@ export default function WeatherForecast({
   defaultCity,
 }: WeatherForecastProps) {
   const [city, setCity] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
   const [weatherData, setWeatherData] = useState<WeatherForecastType>();
 
   useEffect(() => {
     getWeatherForecast(defaultCity).then((data) => {
       setWeatherData(data);
-      setIsLoading(false);
     });
   }, []);
 
   const handleFetchWeather = () => {
-    setIsLoading(true);
     getWeatherForecast(city).then((data) => {
       setWeatherData(data);
-      setIsLoading(false);
     });
   };
+
+  const isFetching = !weatherData;
+  const hasError = !isFetching && weatherData?.error;
+  const hasWeatherData = !isFetching && !hasError && weatherData?.forecast;
+  const missingData = !isFetching && !hasWeatherData && !hasError;
+
+  function WeatherForecast({ weatherData }) {
+    return (
+      <>
+        <div>
+          <CurrentWeatherCard weatherData={weatherData} />
+        </div>
+        <div className={weatherStyles.cardContainer}>
+          <UpcomingWeatherCard weatherData={weatherData} />
+        </div>
+      </>
+    );
+  }
 
   return (
     <div className={weatherStyles.wrapper}>
@@ -46,20 +60,10 @@ export default function WeatherForecast({
         <button onClick={handleFetchWeather}>Update Forecast</button>
       </div>
       <div className={weatherStyles.currentWeather}>
-        {!isLoading && weatherData?.forecast ? (
-          <>
-            <div>
-              <CurrentWeatherCard weatherData={weatherData} />
-            </div>
-            <div className={weatherStyles.cardContainer}>
-              <UpcomingWeatherCard weatherData={weatherData} />
-            </div>
-          </>
-        ) : isLoading ? (
-          <h2>Loading...</h2>
-        ) : (
-          <h2>No data found, please search another location</h2>
-        )}
+        {isFetching && <h2>Loading...</h2>}
+        {hasError && <h2>Error occurred when fetching weather forecast</h2>}
+        {hasWeatherData && <WeatherForecast weatherData={weatherData} />}
+        {missingData && <h2>No data found, please search another location</h2>}
       </div>
     </div>
   );

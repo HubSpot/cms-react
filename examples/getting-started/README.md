@@ -30,26 +30,28 @@ git sparse-checkout set examples/getting-started;
 
 This will clone only the `getting-started` directory from within cms-react repository down to your local file system.
 
-### Local development
-
-First we need to start off by installing our dependencies. Navigate to the root of the `getting-started` directory and from your terminal, run `npm install`. This will install all the dependencies found in your `package.json` file. With your dependencies installs, you are ready to run this project locally. From the `getting-started-project/getting-started-app` directory, run `npm run start` to spin up a local instance of your CMS react project.
-
-Once running, open up your browser to [http://hslocal.net:3000](http://hslocal.net:3000) to see the index page that links to all the modules associated to this project. Click on the "local version" of the "Weather" module to see a locally running instance of that module. The locally running instance will pick up any changes you make to your files instantly to streamline the feedback loop when iterating on your CMS components.
-
-Let's give this a test drive by navigating to the `getting-started-project/getting-started-app` directory and open the `components/modules/Weather/index.tsx`. From within this file find the `<TextField>` module field. That component has a `default` prop which signifies the starting value of the text field that a marketer will see in the page editor. Change the `default` prop's value to something else and save your changes. Take a look at your locally running instance of the [Weather` module](http://hslocal.net:3000/module/Weather) and it should now reflect your recent changes.
-
-### 4. Uploading and deploying to your portal
-
-With some changes in place, let's deploy our code to your HubSpot portal. Run `hs init` from the root of the repository and follow the prompts to setup your `hubspot.config.yaml` file. When setting up JS assets for the first time, you will need to deactivate and regenerate your personal access key, ensuring it includes `CMS Pages`, `Design Manager`, `Developer Projects`, and `GraphQL Data Fetching` permissions. The `hubspot.config.yaml` file is required for both uploading changes and local development. See the [HubSpot CLI documentation](https://developers.hubspot.com/docs/cms/guides/getting-started-with-local-development) for more information.
+### Setting up your `hubspot.config.yaml` file
+In order to develop locally and deploy your code to your HubSpot portal. You will need to configure a `hubspot.config.yaml` file. Run `hs init` from the root of the repository and follow the prompts to setup your `hubspot.config.yaml` file. Keep in mind that when setting up JS assets for the first time, you will need to deactivate and regenerate your personal access key, ensuring it includes `CMS Pages`, `Design Manager`, `Developer Projects`, and `GraphQL Data Fetching` permissions. See the [HubSpot CLI documentation](https://developers.hubspot.com/docs/cms/guides/getting-started-with-local-development) for more information.
 
 > **Warning:** If you are using an existing access key from a previous call to `hs init` or `hs auth`, you will need to deactivate and regenerate the access key to include new scopes necessary for local CMS React development.
 
-Navigate back to the `/getting-started/` directory and run `npm run deploy`. This will upload the `getting-started-project` to your HubSpot account. Once uploaded, built, and deployed, you can use your react modules in your website pages just as you would with any other modules.
+
+### Local development
+
+Now that our `hubspot.config.yaml` file is configured we can get to running and developing our project locally! Let's first install our dependencies. From the root of the `getting-started` directory, run `npm install` in your terminal. This will install all your local dev tooling and any other dependencies found in your project's root package.json file. Next we will also need to run `npm install` from within the `/getting-started-app` directory which will install all dependencies required for our CMS react code. With all of our deps installed, you can now run `npm run start` from the `getting-started-project/getting-started-app` directory.
+
+Once running, open up your browser to [http://hslocal.net:3000](http://hslocal.net:3000) to see the index page that links to all the modules associated to this project. Click on the "local version" of the "Weather" module to see a locally running instance of the module. The locally running instance will pick up any changes you make to your files instantly to streamline the feedback loop when iterating on your CMS components 🚀
+
+Let's give this a test drive by opening up our `Weather` module found at `components/modules/Weather/index.tsx`. From within this file find the `<TextField>` module field. That component has a `default` prop which signifies the starting value of the text field that a marketer will see in the page editor. Change the `default` prop's value to something else and save your changes. Take a look at your locally running instance of the [Weather` module](http://hslocal.net:3000/module/Weather) and it should now reflect your recent changes.
+
+### 4. Uploading and deploying to your portal
+
+With some changes in place, let's deploy our code to your HubSpot portal. Navigate back to the `/getting-started/` directory and run `npm run deploy`. This will upload the `getting-started-project` to your HubSpot account. Once uploaded, built, and deployed, you can use your react modules in your website pages just as you would with any other modules.
 
 From the repository root, run `npm run upload:hubl`. This uploads the corresponding example HubL files to your account. You should now be able to create a page from one of the `getting-started-theme` templates and see the output of the React components in the page preview.
 
 
-### Adding new fields
+### Making more changes
 Let's say we want to show some default data on the initial load instead of forcing users to input a search before seeing weather data rendered. To do this, we can add a new module field for a `defaultCity` that a marketer can use within the context of the page editor to assign the module instance a default city to use at load time.
 
 To start, open the `/components/modules/Weather/index.tsx` in your code editor. Within this file you will see a `fields` variable that contains all of our module fields. These are the fields that a marketer can use to modify data for the Weather module from the WYSIWYG page editor. Since we already have a `TextField` component imported from `@hubspot/cms-components/fields` for our Weather Headline field, all we need to do is add a new `<TextField />` for our defaultCity
@@ -156,7 +158,7 @@ Once you are satisfied with your changes, you only need to re-run `npm run deplo
 
 ### 5. Previewing Local Changes on Proxied Pages
 
-You can preview your local CMS React components inside live HubL-rendered pages. To do this, create a page:
+In addition to locally viewing your modules, you can also preview your local CMS React components inside live HubL-rendered pages. To do this, create a page:
 
 - Go to Website Pages
 - Click “Create”, then “Create Website Page"

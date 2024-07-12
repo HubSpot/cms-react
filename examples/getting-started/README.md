@@ -73,6 +73,7 @@ The final step is modify our `WeatherForecast` island component to enable the fe
 1. Include `defaultCity` in our props list
 2. Update our `WeatherForecastProps` interface to include `defaultCity`
 3. Add a `useEffect` that fetches the weather forecast with the `defaultCity` value
+4. Add a loading state during a fetch
 
 The final component should resemble the following:
 
@@ -139,7 +140,7 @@ export default function WeatherForecast({
         <button onClick={handleFetchWeather}>Update Forecast</button>
       </div>
       <div className={weatherStyles.currentWeather}>
-        {isFetching && <h2>Loading...</h2>}
+        {isFetching && <h2>Loading...</h2>} {/* add loading state during fetch */}
         {hasError && <h2>Error occurred when fetching weather forecast</h2>}
         {hasWeatherData && <WeatherForecast weatherData={weatherData} />}
         {missingData && (

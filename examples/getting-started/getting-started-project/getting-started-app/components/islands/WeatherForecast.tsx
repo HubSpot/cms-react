@@ -1,26 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import weatherStyles from '../../styles/weather.module.css';
 import { getWeatherForecast } from '../../utils.ts';
 import { WeatherForecast as WeatherForecastType } from '../../constants.ts';
 import { CurrentWeatherCard, UpcomingWeatherCard } from '../WeatherCards.tsx';
+import { logInfo } from '@hubspot/cms-components';
 
 interface WeatherForecastProps {
   headline: string;
-  defaultCity: string;
 }
 
-export default function WeatherForecast({
-  headline,
-  defaultCity,
-}: WeatherForecastProps) {
+export default function WeatherForecast({ headline }: WeatherForecastProps) {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState<WeatherForecastType>();
-
-  useEffect(() => {
-    getWeatherForecast(defaultCity).then((data) => {
-      setWeatherData(data);
-    });
-  }, []);
 
   const handleFetchWeather = () => {
     getWeatherForecast(city).then((data) => {
@@ -31,7 +22,7 @@ export default function WeatherForecast({
   const isFetching: boolean = !weatherData;
   const hasError: boolean = !isFetching && !!weatherData.error;
   const hasWeatherData: boolean =
-    !isFetching && !hasError && !!weatherData.forecast;
+    !!city && !isFetching && !hasError && !!weatherData.forecast;
   const missingData = !isFetching && !hasWeatherData && !hasError;
 
   function WeatherForecast({ weatherData }) {
@@ -59,7 +50,6 @@ export default function WeatherForecast({
         <button onClick={handleFetchWeather}>Update Forecast</button>
       </div>
       <div className={weatherStyles.currentWeather}>
-        {isFetching && <h2>Loading...</h2>}
         {hasError && <h2>Error occurred when fetching weather forecast</h2>}
         {hasWeatherData && <WeatherForecast weatherData={weatherData} />}
         {missingData && (

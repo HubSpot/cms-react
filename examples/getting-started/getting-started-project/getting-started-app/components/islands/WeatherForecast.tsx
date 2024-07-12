@@ -3,7 +3,6 @@ import weatherStyles from '../../styles/weather.module.css';
 import { getWeatherForecast } from '../../utils.ts';
 import { WeatherForecast as WeatherForecastType } from '../../constants.ts';
 import { CurrentWeatherCard, UpcomingWeatherCard } from '../WeatherCards.tsx';
-import { logInfo } from '@hubspot/cms-components';
 
 interface WeatherForecastProps {
   headline: string;

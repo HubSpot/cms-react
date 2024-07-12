@@ -26,7 +26,6 @@ export const fields = (
         operator: 'EQUAL',
       }}
     ></ChoiceField>
-
     <TextField
       name="fetchUrl"
       label="Fetch URL"
@@ -37,13 +36,11 @@ export const fields = (
         operator: 'EQUAL',
       }}
     />
-
     <BooleanField
       name="useCustomFetchUrl"
       label="Use custom fetch URL"
       default={false}
     />
-
     <ChoiceField
       name="dataFetchingLib"
       label="Fetch libraries"

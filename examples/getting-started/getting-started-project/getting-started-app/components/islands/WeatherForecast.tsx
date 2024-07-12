@@ -1,17 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import weatherStyles from '../../styles/weather.module.css';
 import { getWeatherForecast } from '../../utils.ts';
 import { WeatherForecast as WeatherForecastType } from '../../constants.ts';
 import { CurrentWeatherCard, UpcomingWeatherCard } from '../WeatherCards.tsx';
-import { logInfo } from '@hubspot/cms-components';
 
 interface WeatherForecastProps {
   headline: string;
+  defaultCity: string; // added defaultCity to the interface
 }
 
-export default function WeatherForecast({ headline }: WeatherForecastProps) {
+export default function WeatherForecast({
+  headline,
+  defaultCity, // included defaultCity in props list
+}: WeatherForecastProps) {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState<WeatherForecastType>();
+
+  // adding useEffect to fetch weather forecast on component mount
+  useEffect(() => {
+    getWeatherForecast(defaultCity).then((data) => {
+      setWeatherData(data);
+    });
+  }, []);
 
   const handleFetchWeather = () => {
     getWeatherForecast(city).then((data) => {
@@ -22,7 +32,7 @@ export default function WeatherForecast({ headline }: WeatherForecastProps) {
   const isFetching: boolean = !weatherData;
   const hasError: boolean = !isFetching && !!weatherData.error;
   const hasWeatherData: boolean =
-    !!city && !isFetching && !hasError && !!weatherData.forecast;
+    !isFetching && !hasError && !!weatherData.forecast;
   const missingData = !isFetching && !hasWeatherData && !hasError;
 
   function WeatherForecast({ weatherData }) {
@@ -50,6 +60,8 @@ export default function WeatherForecast({ headline }: WeatherForecastProps) {
         <button onClick={handleFetchWeather}>Update Forecast</button>
       </div>
       <div className={weatherStyles.currentWeather}>
+        {isFetching && <h2>Loading...</h2>}{' '}
+        {/* add loading state during fetch */}
         {hasError && <h2>Error occurred when fetching weather forecast</h2>}
         {hasWeatherData && <WeatherForecast weatherData={weatherData} />}
         {missingData && (

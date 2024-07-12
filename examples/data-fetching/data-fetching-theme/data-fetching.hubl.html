@@ -1,0 +1,11 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Data fetching
+-->
+{% extends "./layouts/base.hubl.html" %}
+{% block body %}
+  {% module 'fetcher'
+    path="@projects/data-fetching-project/data-fetching-app/components/modules/Fetcher"
+  %}
+{% endblock body %}

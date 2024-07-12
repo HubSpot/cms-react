@@ -1,0 +1,26 @@
+{
+  "name": "cms-react-data-fetching",
+  "description": "CMS React Data Fetching",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@hubspot/cli": "latest",
+    "@hubspot/prettier-plugin-hubl": "latest",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.31.10",
+    "prettier": "^2.7.1",
+    "yarpm": "^1.2.0"
+  },
+  "scripts": {
+    "start": "cd data-fetching-project/data-fetching-app && yarpm start --",
+    "postinstall": "cd data-fetching-project/data-fetching-app && yarpm install",
+    "lint:js": "eslint . --ext .js,.jsx",
+    "prettier": "prettier . --write",
+    "watch:hubl": "hs watch data-fetching-theme data-fetching-theme",
+    "upload:hubl": "hs upload data-fetching-theme",
+    "deploy": "hs project upload data-fetching-project"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

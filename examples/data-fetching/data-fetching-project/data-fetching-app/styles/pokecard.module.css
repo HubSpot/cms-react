@@ -1,0 +1,81 @@
+.wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.card {
+  display: flex;
+  border-radius: 5px;
+  background-color: #303030;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 20px 25px 20px;
+  margin: 10px;
+  min-height: 300px;
+  min-width: 225px;
+  gap: 20px;
+}
+
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile .highlight {
+  width: 175px;
+  height: 175px;
+  background: transparent;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0px 0px 0px 0px #fff, 0px 0px 50px inset rgba(255, 255,255, 0.5);
+  z-index: 0;
+}
+
+.card img {
+  width: 100%;
+  max-width: 100px;
+  align-self: center;
+  z-index: 1;
+  height: 175px;
+}
+
+.attributes {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.attributes h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.attributes p {
+  margin: 0;
+  color: white;
+}
+
+.stack {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card h2 {
+  margin: 0px;
+  color: white;
+}
+
+.card span {
+  padding: 2.5px 5px;
+  background-color: #f0f0f0;
+}
+
+ul {
+  margin-top: 0px;
+}

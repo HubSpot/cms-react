@@ -3,11 +3,12 @@ import WeatherForecast from '../../islands/WeatherForecast.tsx?island';
 import { ModuleFields, TextField } from '@hubspot/cms-components/fields';
 
 export function Component({ fieldValues }: any) {
+  const { defaultCity, headline } = fieldValues;
   return (
     <Island
       module={WeatherForecast}
-      headline={fieldValues.headline}
-      defaultCity={fieldValues.city}
+      headline={headline}
+      defaultCity={defaultCity}
     />
   );
 }
@@ -19,7 +20,7 @@ export const fields = (
       name="headline"
       default="Get the latest weather forecast"
     />
-    <TextField label="Default City" name="city" default="Boston" />
+    <TextField label="Default City" name="defaultCity" default="Boston" />
   </ModuleFields>
 );
 

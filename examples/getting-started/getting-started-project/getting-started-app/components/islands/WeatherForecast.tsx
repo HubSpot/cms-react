@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import weatherStyles from '../../styles/weather.module.css';
-import {
-  WeatherForecast as WeatherForecastType,
-  getWeatherForecast,
-} from '../../utils.ts';
+import { getWeatherForecast } from '../../utils.ts';
+import { WeatherForecast as WeatherForecastType } from '../../constants.ts';
 import { CurrentWeatherCard, UpcomingWeatherCard } from '../WeatherCards.tsx';
 
 interface WeatherForecastProps {
@@ -30,9 +28,10 @@ export default function WeatherForecast({
     });
   };
 
-  const isFetching = !weatherData;
-  const hasError = !isFetching && weatherData?.error;
-  const hasWeatherData = !isFetching && !hasError && weatherData?.forecast;
+  const isFetching: boolean = !weatherData;
+  const hasError: boolean = !isFetching && !!weatherData.error;
+  const hasWeatherData: boolean =
+    !isFetching && !hasError && !!weatherData.forecast;
   const missingData = !isFetching && !hasWeatherData && !hasError;
 
   function WeatherForecast({ weatherData }) {
@@ -63,7 +62,9 @@ export default function WeatherForecast({
         {isFetching && <h2>Loading...</h2>}
         {hasError && <h2>Error occurred when fetching weather forecast</h2>}
         {hasWeatherData && <WeatherForecast weatherData={weatherData} />}
-        {missingData && <h2>No data found, please search another location</h2>}
+        {missingData && (
+          <h2>No results found for "{city}", please search another location</h2>
+        )}
       </div>
     </div>
   );

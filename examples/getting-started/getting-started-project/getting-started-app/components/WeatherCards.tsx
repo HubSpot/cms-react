@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import weatherStyles from '../styles/weather.module.css';
-import { ForecastData, getWeatherIcon } from '../utils.ts';
+import { getWeatherIcon } from '../utils.ts';
+import { ForecastData } from '../constants.ts';
 
 interface WeatherProps {
   city: string;

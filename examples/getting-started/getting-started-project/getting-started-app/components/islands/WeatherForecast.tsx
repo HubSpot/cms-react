@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import weatherStyles from '../../styles/weather.module.css';
 import { getWeatherForecast } from '../../utils.ts';
 import { WeatherForecast as WeatherForecastType } from '../../constants.ts';
@@ -6,22 +6,11 @@ import { CurrentWeatherCard, UpcomingWeatherCard } from '../WeatherCards.tsx';
 
 interface WeatherForecastProps {
   headline: string;
-  defaultCity: string; // added defaultCity to the interface
 }
 
-export default function WeatherForecast({
-  headline,
-  defaultCity, // included defaultCity in props list
-}: WeatherForecastProps) {
+export default function WeatherForecast({ headline }: WeatherForecastProps) {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState<WeatherForecastType>();
-
-  // adding useEffect to fetch weather forecast on component mount
-  useEffect(() => {
-    getWeatherForecast(defaultCity).then((data) => {
-      setWeatherData(data);
-    });
-  }, []);
 
   const handleFetchWeather = () => {
     getWeatherForecast(city).then((data) => {
@@ -60,8 +49,7 @@ export default function WeatherForecast({
         <button onClick={handleFetchWeather}>Update Forecast</button>
       </div>
       <div className={weatherStyles.currentWeather}>
-        {isFetching && <h2>Loading...</h2>}{' '}
-        {/* add loading state during fetch */}
+        {isFetching && <h2>Search for a city to see the weather forecast</h2>}
         {hasError && <h2>Error occurred when fetching weather forecast</h2>}
         {hasWeatherData && <WeatherForecast weatherData={weatherData} />}
         {missingData && (

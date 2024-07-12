@@ -32,7 +32,6 @@ export function CurrentWeatherCard({ weatherData }: CurrentWeatherCardProps) {
   );
 }
 
-// Define the props interface for the UpcomingWeatherCard component
 interface UpcomingWeatherCardProps {
   weatherData: WeatherProps;
 }

@@ -3,13 +3,8 @@
   isAvailableForNewContent: true
   label: Getting Started - Weather Forecast
 -->
-{% extends "./layouts/base.hubl.html" %}
-
-{% block body %}
-
-  {% module
-    "weather"
-    path="@projects/getting-started-project/components/modules/Weather",
-  %}
-
+{% extends "./layouts/base.hubl.html" %} {% block body %} 
+  {% module "weather"
+    path="@projects/getting-started-project/getting-started-app/components/modules/Weather",
+  %} 
 {% endblock body %}

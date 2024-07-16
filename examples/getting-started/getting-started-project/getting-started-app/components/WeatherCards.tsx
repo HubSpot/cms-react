@@ -1,42 +1,63 @@
 import dayjs from 'dayjs';
 import weatherStyles from '../styles/weather.module.css';
 import { getWeatherIcon } from '../utils.ts';
+import { ForecastData } from '../constants.ts';
 
-export function CurrentWeatherCard({ weatherData }: any) {
-  const { location, forecast } = weatherData;
-  const { forecastday } = forecast;
-  const currentDay = forecastday[0].day;
+interface WeatherProps {
+  city: string;
+  forecast: ForecastData[];
+}
+interface CurrentWeatherCardProps {
+  weatherData: WeatherProps;
+}
+
+export function CurrentWeatherCard({ weatherData }: CurrentWeatherCardProps) {
+  const { forecast, city } = weatherData;
+  const currentDay = forecast[0];
 
   return (
-    <div className={weatherStyles.current}>
+    <div className={weatherStyles.current} key={currentDay.time}>
       <div className={weatherStyles.condition}>
         <img
-          src={getWeatherIcon(currentDay.condition.text.trim())}
-          alt={currentDay.condition.text}
+          src={getWeatherIcon(currentDay.weather_code.toString())}
+          alt={`${city}-weather-icon-${currentDay.weather_code}`}
         />
         <h3>
-          {currentDay.avgtemp_f}&deg;
+          {currentDay.apparent_temperature_max}&deg;
           <span className={weatherStyles.unit}>F</span>
         </h3>
       </div>
-      <h2 className={weatherStyles.city}>{location.name}</h2>
-      <span className={weatherStyles.country}>{location.country}</span>
+      <h2 className={weatherStyles.city}>{city}</h2>
     </div>
   );
 }
 
-export function UpcomingWeatherCard({ weatherData }: any) {
+interface UpcomingWeatherCardProps {
+  weatherData: WeatherProps;
+}
+
+export function UpcomingWeatherCard({ weatherData }: UpcomingWeatherCardProps) {
+  const { city, forecast } = weatherData;
+
   return (
-    <div className={weatherStyles.card}>
-      <span>{dayjs(weatherData.date).format('dddd')}</span>
-      <img
-        src={getWeatherIcon(weatherData.day.condition.text.trim())}
-        alt={weatherData.day.condition.text}
-      />
-      <h3>
-        {weatherData.day.avgtemp_f}&deg;
-        <span className={weatherStyles.unit}>F</span>
-      </h3>
-    </div>
+    <>
+      {forecast?.map((weather, index: number) => {
+        if (index === 0) return null;
+
+        return (
+          <div className={weatherStyles.card} key={index}>
+            <span>{dayjs(weather.time).format('dddd')}</span>
+            <img
+              src={getWeatherIcon(weather.weather_code.toString())}
+              alt={`${city}-weather-icon-${weather.weather_code}`}
+            />
+            <h3>
+              {weather.apparent_temperature_max}&deg;
+              <span className={weatherStyles.unit}>F</span>
+            </h3>
+          </div>
+        );
+      })}
+    </>
   );
 }

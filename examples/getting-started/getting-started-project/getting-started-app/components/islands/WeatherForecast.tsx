@@ -1,60 +1,45 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import weatherStyles from '../../styles/weather.module.css';
 import { getWeatherForecast } from '../../utils.ts';
+import { WeatherForecast as WeatherForecastType } from '../../constants.ts';
 import { CurrentWeatherCard, UpcomingWeatherCard } from '../WeatherCards.tsx';
 
-type WeatherCondition = {
-  text: string;
-  icon: string;
-  code: number;
-};
-
-type DailyForecast = Record<string, string | number | Day>;
-
-type Day = {
-  day: Record<string, number | WeatherCondition>;
-};
-
-type Forecast = {
-  forecastday: DailyForecast[];
-};
-
-export type CurrentWeather = Record<string, number | string | WeatherCondition>;
-type Location = Record<string, number | string>;
-
-export type WeatherData = {
-  location: Location;
-  current: CurrentWeather;
-  forecast: Forecast;
-};
-
-type WeatherForecastProps = {
+interface WeatherForecastProps {
   headline: string;
-  defaultCity: string;
-};
+}
 
-export default function WeatherForecast({
-  headline,
-  defaultCity,
-}: WeatherForecastProps) {
+export default function WeatherForecast({ headline }: WeatherForecastProps) {
   const [city, setCity] = useState('');
-  const [weatherData, setWeatherData] = useState<WeatherData>();
-
-  useEffect(() => {
-    getWeatherForecast(defaultCity).then((data) => {
-      setWeatherData(JSON.parse(data as string));
-    });
-  }, []);
+  const [weatherData, setWeatherData] = useState<WeatherForecastType>();
 
   const handleFetchWeather = () => {
     getWeatherForecast(city).then((data) => {
-      setWeatherData(JSON.parse(data as string));
+      setWeatherData(data);
     });
   };
 
+  const isFetching: boolean = !weatherData;
+  const hasError: boolean = !isFetching && !!weatherData.error;
+  const hasWeatherData: boolean =
+    !isFetching && !hasError && !!weatherData.forecast;
+  const missingData = !isFetching && !hasWeatherData && !hasError;
+
+  function WeatherForecast({ weatherData }) {
+    return (
+      <>
+        <div>
+          <CurrentWeatherCard weatherData={weatherData} />
+        </div>
+        <div className={weatherStyles.cardContainer}>
+          <UpcomingWeatherCard weatherData={weatherData} />
+        </div>
+      </>
+    );
+  }
+
   return (
     <div className={weatherStyles.wrapper}>
-      <h2>{headline}</h2>
+      <h1>{headline}</h1>
       <div className={weatherStyles.form}>
         <input
           type="text"
@@ -63,23 +48,14 @@ export default function WeatherForecast({
         />
         <button onClick={handleFetchWeather}>Update Forecast</button>
       </div>
-      {weatherData?.forecast ? (
-        <>
-          <div className={weatherStyles.currentWeather}>
-            <CurrentWeatherCard weatherData={weatherData} />
-          </div>
-          <div className={weatherStyles.cardContainer}>
-            {weatherData.forecast.forecastday.map((weather: any, i) => {
-              if (i === 0) return null;
-              return (
-                <UpcomingWeatherCard key={weather.date} weatherData={weather} />
-              );
-            })}
-          </div>
-        </>
-      ) : (
-        <h2>No data found, please search another location</h2>
-      )}
+      <div className={weatherStyles.currentWeather}>
+        {isFetching && <h2>Search for a city to see the weather forecast</h2>}
+        {hasError && <h2>Error occurred when fetching weather forecast</h2>}
+        {hasWeatherData && <WeatherForecast weatherData={weatherData} />}
+        {missingData && (
+          <h2>No results found for "{city}", please search another location</h2>
+        )}
+      </div>
     </div>
   );
 }

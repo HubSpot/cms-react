@@ -11,11 +11,13 @@ To set up your development environment to work with CMS React, you’ll need the
 - Node.js v18.0 or higher and the associated version of NPM
 
 ## Creating and deploying a CMS React project
-Before we dive into running your first CMS React project, its important to understand 3 significant directories that you will come across in all CMS React projects:
+Before we dive into running your first CMS React project, its important to understand 3 significant directories that you will come across within this example:
 
 - `*-project`: The HubSpot project directory that gets uploaded via the Projects system to build and deploy your CMS React code found in the `/src` directory.
 - `*-theme`: This is where your HubL templates and theme configuration lives.
 - `*-project/*-app`: A package inside your project directory containing all your assets, styles, components, modules, islands, and any local development tooling you need, such as ESLint, Prettier, TypeScript, etc.
+
+> **Note** The directory naming convention found mentioned above is not a requirement for your CMS React project to work, but rather an example of how you could organize your CMS React files.
 
 ### Clone the `getting-started` directory
 From your local directory for the following commands:
@@ -31,7 +33,7 @@ git sparse-checkout set examples/getting-started;
 This will clone only the `getting-started` directory from within cms-react repository down to your local file system.
 
 ### Setting up your `hubspot.config.yaml` file
-In order to develop locally and deploy your code to your HubSpot portal. You will need to configure a `hubspot.config.yaml` file. Run `hs init` from the root of the repository and follow the prompts to setup your `hubspot.config.yaml` file. Keep in mind that when setting up JS assets for the first time, you will need to deactivate and regenerate your personal access key, ensuring it includes `CMS Pages`, `Design Manager`, `Developer Projects`, and `GraphQL Data Fetching` permissions. See the [HubSpot CLI documentation](https://developers.hubspot.com/docs/cms/guides/getting-started-with-local-development) for more information.
+In order to develop locally and deploy your code to your HubSpot portal. You will need to configure a `hubspot.config.yaml` file. Run `hs init` from the root of the repository and follow the prompts to setup your `hubspot.config.yaml` file. Keep in mind that when setting up JS assets for the first time, you will need to deactivate and regenerate your personal access key, ensuring it includes `CMS Pages`, `Design Manager` and `Developer Projects` permissions. See the [HubSpot CLI documentation](https://developers.hubspot.com/docs/cms/guides/getting-started-with-local-development) for more information.
 
 > **Warning:** If you are using an existing access key from a previous call to `hs init` or `hs auth`, you will need to deactivate and regenerate the access key to include new scopes necessary for local CMS React development.
 

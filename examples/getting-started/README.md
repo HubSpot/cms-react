@@ -17,7 +17,7 @@ Before we dive into running your first CMS React project, its important to under
 - `*-theme`: This is where your HubL templates and theme configuration lives.
 - `*-project/*-app`: A package inside your project directory containing all your assets, styles, components, modules, islands, and any local development tooling you need, such as ESLint, Prettier, TypeScript, etc.
 
-> **Note** The directory naming convention found mentioned above is not a requirement for your CMS React project to work, but rather an example of how you could organize your CMS React files.
+> **Note** The directory naming convention mentioned above is not a requirement for your CMS React project to work, but rather an example of how you could organize your CMS React files.
 
 ### Clone the `getting-started` directory
 From your local directory for the following commands:

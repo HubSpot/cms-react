@@ -44,4 +44,3 @@ Note, React modules & partials are still in development and we are actively work
 
 - More performance optimizations
 - Support for importing JS Modules into JS Partials
-- Support for fetching non-HubSpot data

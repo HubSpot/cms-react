@@ -150,7 +150,7 @@ Cache "keys" are based on the following:
 
 Knowing this, if you hadn't made changes to any data flowing into the module, but still wanted to bust the cache, a new project build would suffice.
 
-The `cacheConfig` property that is returned from `getServerSideProps` currently has one property `cacheControl`. This represents the `Cache-Control` header, and the properties can be any of the standard directives.
+The `caching` property that is returned from `getServerSideProps` currently has one property `cacheControl`. This represents the `Cache-Control` header, and the properties can be any of the standard directives.
 
 ```typescript
 import { withModuleProps } from 'path/to/helpers';
@@ -160,12 +160,12 @@ const fetchData = async (props: ModulePropsWithoutSSP) => {
   const results = await fetch(...).then(response => response.json())
 
   return {
-    serverSideProps {
-      results,
-      cacheConfig: {
-        cacheControl: {
-          maxAge 60
-        }
+    serverSideProps: {
+      results
+    },
+    caching: {
+      cacheControl: {
+        maxAge: 60
       }
     }
   }

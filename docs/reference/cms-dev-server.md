@@ -73,6 +73,8 @@ Making use of the CMS React local dev with proxied pages is powerful. It allows 
 
 Visit a private page and login with the configured method. Once authenticated Once there add `hslocal.net:3000` or `localhost:3000` to your root domain just as you would with proxying a public page. This will allow you to develop your React modules locally in the context of an authenticated live page.
 
+When proxying a private page, if you provide an email parameter e.g. `https://mydomain.hslocal.net:3000/private-page?email=bh@hubspot.com` that email's user will be used for the `request_contact` HubL variable. This can be passed to React with the [`hublDataTemplate`](./js-modules#hublDataTemplate) feature.
+
 ### Proxied Preview
 
 Visit the page as a "preview". You can do this from the page editor by clicking the "Preview" button and then "Open in a new tab". Once there add `hslocal.net:3000` or `localhost:3000` to your root domain. This will allow you to do local development on a private pages. Further if you pass an `email` param it will use the associated contact as context for viewing the page. Your URL in this case wil look like `http://my-domain.com.localhost:3000/private-page-path?hs_preview=[preview_key]&email=bh@hubspot.com`.

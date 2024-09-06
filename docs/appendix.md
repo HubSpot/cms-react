@@ -6,6 +6,8 @@ JS Rendering uses the [Projects](https://developers.hubspot.com/docs/platform/bu
 
 After running `hs project upload` you’ll be able to see its build/deploy status in the [Projects UI](https://app.hubspot.com/l/developer-projects/).
 
+**NOTE:** There is a maximum, uncompressed file size limit of 250mb for a given build. If your project exceeds this limit an error will be thrown at build time alerting you of the issue.
+
 HubL assets, such as HubL templates that reference JS partials or modules, aren’t managed with Projects but you can upload them as a theme with the `hs upload` command, making them available in the Design Manager.
 
 Just like in the [js-rendering-hello-world repo](https://git.hubteam.com/HubSpot/js-rendering-hello-world/tree/master/hello-world-project), we recommend separating your JS rendering components and HubL assets into different directories.

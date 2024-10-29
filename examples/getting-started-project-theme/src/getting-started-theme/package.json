@@ -16,7 +16,7 @@
     "vitest": "^0.24.3"
   },
   "scripts": {
-    "start": "hs-cms-dev-server .",
+    "start": "hs-cms-dev-server . --ssl",
     "test": "vitest"
   }
 }

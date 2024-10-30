@@ -1,6 +1,13 @@
 # Getting Started Example
 
-The getting started example within this directory covers a variety of key features/components of working with CMS React within a HubSpot website. This guide outlines the specifics of using CMS React primitives such as Modules, Fields, and Islands, as well as integrating third-party dependencies, styling, assets, and setting up local development tooling for your project.
+This example is similar to the "getting-started" example, but demonstrates how to use CMS React within a Project Theme. Project Themes allow you to build and deploy themes using the Projects framework, which enables powerful new capabilities like:
+
+- Using CMS React building blocks (Modules, Fields, Islands) directly within your theme
+- Leveraging project-level dependencies and configuration
+- Leveraging project build and deploy capabilities
+- Better organization of theme assets and components
+
+The example shows how to structure a Project Theme, integrate React components, and take advantage of these new features while building a fully functional theme.
 
 ## Setup
 

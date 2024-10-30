@@ -1,0 +1,152 @@
+:root {
+  --primary-color: #ff7a59;
+  --primary-color-dark: #e66e50;
+  --primary-color-med: #ffbcac;
+  --secondary-color: #dfe3eb;
+  --accent-color: #2d3e50;
+  --light-accent-color: #eaf0f6;
+}
+
+.wrapper {
+  background-color: var(--accent-color);
+  min-height: 40vh;
+  padding: 50px;
+  font-family: sans-serif;
+
+  & .currentWeather {
+    min-height: 670px;
+  }
+
+  & h1 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: white;
+    font-size: 3rem;
+    }
+
+    & h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: white;
+    }
+
+  & input[type="text"] {
+    border-radius: 5px;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: var(--light-accent-color);
+  }
+
+  & button {
+    border-radius: 5px;
+    border:none;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 12px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    font-size: 14px;
+
+    &:hover {
+      background-color: var(--primary-color-dark);
+      transition: background-color 0.3s;
+    }
+  }
+
+  & .form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 50px;
+  }
+
+  & .cardContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 300px;
+    margin: auto;
+  }
+
+  & .card {
+      background-color: var(--secondary-color);
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+      min-width: 165px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      & img {
+        height: 100px;
+      }
+
+      & h3 {
+        margin: 0 auto 10px auto;
+      }
+    }
+
+  & .current {
+    background-color: var(--primary-color);
+    padding: 0px 25px 25px;
+    border-radius: 5px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    max-width: 350px;
+    margin:auto;
+    min-height: 400px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    & h2 {
+      margin: 0 auto 10px auto;
+    }
+
+    & .city {
+      text-align: center;
+      color: white;
+    }
+
+    & .country {
+      text-align: center;
+      color: var(--primary-color-med);
+    }
+
+    & h3 {
+      text-align: center;
+      color: white;
+      font-size: 3.5rem;
+      margin: 0;
+      position: relative;
+
+      & .unit {
+        font-size: 22px;
+        position: absolute;
+        right: 4px;
+        top: 31px;
+        color: var(--primary-color-med);
+      }
+    }
+
+    & .condition {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 25px;
+
+      & img {
+        width:200px
+      }
+    }
+  }
+}

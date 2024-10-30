@@ -1,0 +1,24 @@
+{
+  "name": "getting-started-project-theme-example",
+  "description": "Getting started CMS Themes on Projects",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@hubspot/cli": "latest",
+    "@hubspot/prettier-plugin-hubl": "latest",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.31.10",
+    "prettier": "^2.7.1",
+    "yarpm": "^1.2.0"
+  },
+  "scripts": {
+    "start": "cd src/getting-started-theme && yarpm start",
+    "postinstall": "cd src/getting-started-theme && yarpm install",
+    "lint:js": "eslint . --ext .js,.jsx",
+    "prettier": "prettier . --check",
+    "deploy": "hs project upload ."
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

@@ -1,0 +1,30 @@
+.wrapper {
+  width: 100%;
+  background-color: transparent;
+
+  & nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 15px 25px;
+
+    & ul {
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+
+      & li {
+        & a {
+          text-decoration: none;
+          color: #ff7a59;
+            &:hover {
+              color: #2d3e50;
+            }
+          }
+      }
+    }
+  }
+}

@@ -9,7 +9,6 @@ Part of: `@hubspot/cms-dev-server@0.17.0`
 
 Upgrade to Vite@5
 
----
 ## 2024-10-15
 
 Type: Enhancement
@@ -19,7 +18,6 @@ Part of:`@hubspot/cms-dev-server@0.16.14`
 Add viewport meta tag to improve mobile viewing experience
 Add local module meta validation
 
----
 ## 2024-10-09
 
 Type: Enhancement
@@ -28,7 +26,7 @@ Part of: `@hubspot/cms-components@0.16.12` and `@hubspot/cms-dev-server@0.16.12`
 
 Upgrade React@18.3.1
 
----
+
 ## 2024-10-07
 
 Type: Enhancement
@@ -37,7 +35,7 @@ Part of: `@hubspot/cms-components@0.16.11`
 
 Add enforcement of the required `occurrence` property for `RepeatedFieldGroup`
 
----
+
 ## 2024-08-26
 Type: Enhancement
 
@@ -45,7 +43,7 @@ Part of: `@hubspot/cms-components@0.16.7`
 
 Miscellaneous TypeScript type improvements
 
----
+
 ## 2024-08-16
 
 Type: Enhancement
@@ -58,7 +56,7 @@ Add support for the `buttons` option for the `display` property and add `preset`
 
 Add support for the `links` property on all field components
 
----
+
 ## 2024-08-07
 
 Type: Enhancement
@@ -67,7 +65,7 @@ Part of: `@hubspot/cms-components@0.16.4`
 
 Add support for the `alternateName` property for `FontField` and `ColorField`
 
----
+
 ## 2024-07-31
 
 Type: Enhancement
@@ -76,7 +74,7 @@ Part of: `@hubspot/cms-components@0.16.3`
 
 TypeScript type improvements
 
----
+
 ## 2024-07-24
 
 Type: Enhancement
@@ -85,11 +83,12 @@ Part of: `@hubspot/cms-dev-server@0.16.1`
 
 Improvements to locally used secrets within .env file
 
+---
+
 Part of: `@hubspot/cms-components@0.16.1`
 
 Add support for `groupOccurrenceMeta` property for RepeatedFieldGroup
 
----
 
 ## 2024-07-19
 
@@ -99,7 +98,6 @@ Part of: `@hubspot/cms-components@0.15.16` - `@hubspot/cms-components@0.16.0`
 
 Miscellaneous improvements and bug fixes
 
----
 
 ## 2024-06-24
 
@@ -109,7 +107,6 @@ Part of: `@hubspot/cms-components@0.15.14` and `@hubspot/cms-components@0.15.15`
 
 Update field TypeScript types and improve field validation
 
----
 
 ## 2024-06-13
 
@@ -121,7 +118,6 @@ TypeScript type improvements
 Add withRequest helper function
 Add support for `required` property for field type generation
 
----
 
 ## 2024-05-17
 
@@ -132,7 +128,6 @@ Part of: `@hubspot/cms-dev-server@0.15.11`
 Improvements to generated types
 Add support for custom component type generation
 
----
 
 ## 2024-05-14
 Type: Enhancement
@@ -143,7 +138,6 @@ Miscellaneous bug fixes
 Part of: `@hubspot/cms-components@0.15.10`
 TypeScript type improvements for module fields
 
----
 
 ## 2024-05-02
 
@@ -155,7 +149,6 @@ Improved error messaging for proxy domains
 Part of: `@hubspot/cms-components@0.15.9`
 Add withContact helper function
 
----
 
 ## 2024-04-27
 

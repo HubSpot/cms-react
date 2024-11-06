@@ -3,9 +3,14 @@
 =======
 ## 2024-11-06
 
+=======
+## 2024-11-06
+
 Type: Bug Fix
 
 Part of: `@hubspot/cms-dev-server@0.18.0`
+
+Fix issue with secrets not getting loaded locally when running against a theme
 
 Miscellaneous improvements and bug fixes
 

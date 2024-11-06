@@ -1,6 +1,15 @@
 # Release Log
 
 =======
+## 2024-11-06
+
+Type: Bug Fix
+
+Part of: `@hubspot/cms-dev-server@0.18.0`
+
+Miscellaneous improvements and bug fixes
+
+
 ## 2024-10-21
 
 Type: Enhancement

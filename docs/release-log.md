@@ -7,7 +7,7 @@ Type: Bug Fix
 
 Part of: `@hubspot/cms-dev-server@0.18.0`
 
-Miscellaneous bug fixes and improvements
+Miscellaneous improvements and bug fixes
 
 
 ## 2024-10-21

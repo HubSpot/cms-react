@@ -1,4 +1,5 @@
 {
   "name": "react-module-boilerplate",
-  "srcDir": "."
+  "srcDir": ".",
+  "platformVersion": "2023.2"
 }

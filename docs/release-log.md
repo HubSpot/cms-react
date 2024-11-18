@@ -1,7 +1,13 @@
 # Release Log
 
 =======
-## 2024-11-06
+## 2024-11-15
+
+Type: Enhancement
+
+Part of: `@hubspot/cms-components@0.18.8` - `@hubspot/cms-dev-server@0.18.8`
+
+Miscellaneous improvements and bug fixes
 
 =======
 ## 2024-11-06

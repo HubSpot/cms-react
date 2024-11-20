@@ -45,7 +45,7 @@ The "Getting Started" example is the most up to date example of CMS React basics
 
 ### [Hello World](examples/hello-world)
 
-**NOTE:** this is an older example, and [Getting Started](getting-started) is a better first example
+**NOTE:** this is an older example, and [Getting Started](examples/getting-started) is a better first example
 
 The "Hello World" example combines partials, modules, islands and CSS modules for styling to show a more cohesive yet straightforward example of how CMS React components and APIs work together.
 

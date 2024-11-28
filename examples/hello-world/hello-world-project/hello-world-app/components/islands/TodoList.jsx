@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 
 import Button from './Button.jsx';
 import styles from '../../styles/todo.module.css';
@@ -10,7 +10,6 @@ import styles from '../../styles/todo.module.css';
 //  - Examples of various ways to do conditional styling based on incoming props
 //    or module fields (inline comments below)
 
-let id = 0;
 const todoSortByCompleted = (todoA, todoB) => {
   if (todoA.completed && todoB.completed) {
     // Earlier IDs correspond to higher place in the list
@@ -21,17 +20,62 @@ const todoSortByCompleted = (todoA, todoB) => {
   return todoA.id - todoB.id;
 };
 
-const initialTodosMapped = (todos) =>
-  todos.map((initialTodo, i) => ({
-    id: `default-${i}`,
-    key: `default-${i}`,
-    ...initialTodo,
-  }));
+const initialize = (initialTodos) => {
+  return {
+    nextId: 0,
+    todos: initialTodos.map((initialTodo, i) => ({
+      id: `default-${i}`,
+      key: `default-${i}`,
+      ...initialTodo,
+    })),
+  };
+};
+
+const reducer = (state, action) => {
+  switch (action.action) {
+    case 'ADD_TODO': {
+      const todoText = action.value;
+      return {
+        todos: [
+          ...state.todos,
+          {
+            id: state.nextId,
+            key: state.nextId,
+            text: todoText,
+            completed: false,
+          },
+        ].sort(todoSortByCompleted),
+        nextId: state.nextId + 1,
+      };
+    }
+    case 'TOGGLE_TODO': {
+      const updatedTodoId = action.value;
+      return {
+        ...state,
+        todos: state.todos
+          .map((todo) =>
+            todo.id === updatedTodoId
+              ? { ...todo, completed: !todo.completed }
+              : todo,
+          )
+          .sort(todoSortByCompleted),
+      };
+    }
+    case 'REMOVE_TODO': {
+      const todoToRemoveId = action.value;
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => todo.id !== todoToRemoveId),
+      };
+    }
+    default:
+      return state;
+  }
+};
 
 function TodoItem({ todo, onRemove, onUpdate }) {
   const handleTodoCompleteClick = () => {
-    const updatedTodo = { ...todo, completed: !todo.completed };
-    onUpdate(updatedTodo);
+    onUpdate(todo.id);
   };
 
   const handleTodoRemoveClick = () => {
@@ -48,7 +92,7 @@ function TodoItem({ todo, onRemove, onUpdate }) {
           todo.completed ? styles.complete : styles.notComplete
         }`}
       >
-        <input type="checkbox" defaultChecked={todo.completed} />
+        <input type="checkbox" checked={todo.completed} readOnly />
         {todo.text}
         {todo.dateAdded ? (
           <span className={styles.todoDateAdded}>{todo.dateAdded}</span>
@@ -64,37 +108,25 @@ function TodoItem({ todo, onRemove, onUpdate }) {
 }
 
 function TodoList({ initialTodos = [], buttonColor, completeTodoOpacity }) {
-  const [todoList, setTodoList] = useState(() =>
-    initialTodosMapped(initialTodos)
-  );
+  const [state, dispatch] = useReducer(reducer, initialTodos, initialize);
   const [todoInput, setTodoInput] = useState('');
+  const todoList = state.todos;
 
-  const addTodo = (todo) => {
-    todo['id'] = id;
-    todo['key'] = id;
-    id += 1;
-
-    setTodoList([...todoList, todo].sort(todoSortByCompleted));
+  const addTodo = (todoText) => {
+    dispatch({ action: 'ADD_TODO', value: todoText });
   };
 
   const handleRemoveTodo = (todoId) => {
-    setTodoList(todoList.filter((todo) => todo.id !== todoId));
+    dispatch({ action: 'REMOVE_TODO', value: todoId });
   };
 
-  const handleUpdateTodo = (updatedTodo) => {
-    setTodoList(
-      todoList
-        .map((todo) => (todo.id === updatedTodo.id ? updatedTodo : todo))
-        .sort(todoSortByCompleted),
-    );
+  const handleUpdateTodo = (updatedTodoId) => {
+    dispatch({ action: 'TOGGLE_TODO', value: updatedTodoId });
   };
 
   const handleAddTodoClick = () => {
-    const todo = { text: todoInput, completed: false };
-
-    addTodo(todo);
+    addTodo(todoInput);
     setTodoInput('');
-    return todo;
   };
 
   const handleTodoInput = (e) => setTodoInput(e.target.value);

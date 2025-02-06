@@ -16,7 +16,7 @@
     "postinstall": "cd cms-with-serverless-project/src/cms-react && yarpm install",
     "lint:js": "eslint . --ext .js,.jsx",
     "prettier": "prettier . --check",
-    "deploy": "hs project upload cms-with-serverless-project"
+    "deploy": "hs project upload"
   },
   "dependencies": {},
   "engines": {

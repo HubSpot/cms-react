@@ -18,7 +18,7 @@
     "prettier": "prettier . --check",
     "watch:hubl": "hs watch styling-theme styling-theme",
     "upload:hubl": "hs upload styling-theme styling-theme",
-    "deploy": "hs project upload styling-project",
+    "deploy": "hs project upload",
     "test": "cd styling-project && cd styling-app && yarpm run test"
   },
   "engines": {

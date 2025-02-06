@@ -25,7 +25,7 @@ CMS React components introduce the “CMS assets” project component alongside 
 The linked documentation notes that "Create a project (BETA)" is available for "Sales Hub" and "Service Hub" enterprise. CMS React components are available for all tiers and therefore so is use of the Projects system to support them.
 :::
 
-Building and deploying is straightforward. A project can be uploaded for build and deploy with the `hs project upload` command. The command can be run in the root of a project with no argument or a directory path can be passed i.e. `hs project upload path/to/project`.
+Building and deploying is straightforward. A project can be uploaded for build and deploy with the `hs project upload` command. The command can be run in the root of a project with no argument or a directory path can be passed i.e. `hs project upload`.
 
 The command will kick off a build for your project. If you have "auto deploy" configured for the project it will deploy the build if successful. Projects that are not configured for "auto deploy" can be deployed via the command line with `hs project deploy`. More info is available with `hs project --help`.
 

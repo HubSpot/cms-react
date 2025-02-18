@@ -18,7 +18,7 @@
     "prettier": "prettier . --write",
     "watch:hubl": "hs watch data-fetching-theme data-fetching-theme",
     "upload:hubl": "hs upload data-fetching-theme",
-    "deploy": "hs project upload data-fetching-project"
+    "deploy": "hs project upload"
   },
   "engines": {
     "node": ">=20.0.0"

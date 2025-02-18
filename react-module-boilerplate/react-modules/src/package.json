@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "hs-cms-dev-server .",
-    "deploy": "hs project upload react-module-boilerplate",
+    "deploy": "hs project upload",
     "test": "vitest"
   },
   "author": "",

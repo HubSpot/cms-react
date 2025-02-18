@@ -17,7 +17,7 @@
     "prettier": "prettier . --check",
     "watch:hubl": "hs watch gql-storybook-theme gql-storybook-theme",
     "upload:hubl": "hs upload gql-storybook-theme gql-storybook-theme",
-    "deploy": "hs project upload gql-storybook-project"
+    "deploy": "hs project upload"
   },
   "dependencies": {},
   "engines": {

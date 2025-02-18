@@ -18,7 +18,7 @@
     "prettier": "prettier . --check",
     "watch:hubl": "hs watch islands-theme islands-theme",
     "upload:hubl": "hs upload islands-theme islands-theme",
-    "deploy": "hs project upload islands-project"
+    "deploy": "hs project upload"
   },
   "engines": {
     "node": ">=16.0.0"

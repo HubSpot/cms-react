@@ -16,7 +16,7 @@
     "postinstall": "cd src/getting-started-theme && yarpm install",
     "lint:js": "eslint . --ext .js,.jsx",
     "prettier": "prettier . --check",
-    "deploy": "hs project upload ."
+    "deploy": "hs project upload"
   },
   "engines": {
     "node": ">=16.0.0"

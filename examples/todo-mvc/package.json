@@ -18,7 +18,7 @@
     "prettier": "prettier . --check",
     "watch:hubl": "hs watch todo-mvc-theme todo-mvc-theme",
     "upload:hubl": "hs upload todo-mvc-theme todo-mvc-theme",
-    "deploy": "hs project upload todo-mvc-project"
+    "deploy": "hs project upload"
   },
   "dependencies": {},
   "engines": {

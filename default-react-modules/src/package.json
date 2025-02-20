@@ -7,7 +7,7 @@
   "scripts": {
     "start": "hs-cms-dev-server ../src",
     "start-storybook": "hs-cms-dev-server ../src --storybook",
-    "deploy": "hs project upload public-default-react-modules",
+    "deploy": "hs project upload",
     "test": "vitest"
   },
   "author": "",

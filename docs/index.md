@@ -6,7 +6,6 @@ next:
 
 CMS React slack channel: [\#cms-react](https://hubspotdev.slack.com/archives/C04AY1H2204)
 
-# Introduction
 
 ## Welcome!
 

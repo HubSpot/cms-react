@@ -1,0 +1,87 @@
+name: Sync cms-react issues
+
+on:
+  issues:
+    types: [opened, reopened, closed]
+  issue_comment:
+    types: [created]
+
+jobs:
+  sync-to-enterprise:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync to internal repo
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.JSR_PAT }}
+          script: |
+            const eventName = context.eventName;
+
+            if (eventName === 'issues') {
+              const issue = context.payload.issue;
+
+              if (context.payload.action === 'opened' || context.payload.action === 'reopened') {
+                const newIssue = await github.rest.issues.create({
+                  owner: 'enterprise-org-name',
+                  repo: 'enterprise-repo-name',
+                  title: issue.title,
+                  body: `Originally created by ${issue.user.login} in public repo\n\nOriginal Issue: ${issue.html_url}\n\n${issue.body}`,
+                  labels: ['synced']
+                });
+
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  body: `This issue has been synced to the enterprise repository (Issue #${newIssue.data.number}).`
+                });
+              } else if (context.payload.action === 'closed') {
+                const comments = await github.rest.issues.listComments({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number
+                });
+
+                const syncComment = comments.data.find(comment =>
+                  comment.body.includes('synced to the enterprise repository (Issue #')
+                ));
+
+                if (syncComment) {
+                  const enterpriseIssueNumber = syncComment.body.match(/Issue #(\d+)/)[1];
+
+                  await github.rest.issues.update({
+                    owner: 'enterprise-org-name',
+                    repo: 'enterprise-repo-name',
+                    issue_number: parseInt(enterpriseIssueNumber),
+                    state: 'closed',
+                    state_reason: 'completed'
+                  });
+                }
+              }
+            } else if (eventName === 'issue_comment') {
+              const issue = context.payload.issue;
+              const comment = context.payload.comment;
+
+              if (comment.user.type === 'Bot') return;
+
+              const comments = await github.rest.issues.listComments({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number
+              });
+
+              const syncComment = comments.data.find(c =>
+                c.body.includes('synced to the enterprise repository (Issue #')
+              ));
+
+              if (syncComment) {
+                const enterpriseIssueNumber = syncComment.body.match(/Issue #(\d+)/)[1];
+
+                await github.rest.issues.createComment({
+                  owner: 'enterprise-org-name',
+                  repo: 'enterprise-repo-name',
+                  issue_number: parseInt(enterpriseIssueNumber),
+                  body: `Comment from ${comment.user.login} in public repo:\n\n${comment.body}`
+                });
+              }
+            }

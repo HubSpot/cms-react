@@ -22,8 +22,8 @@ jobs:
 
               if (context.payload.action === 'opened' || context.payload.action === 'reopened') {
                 const newIssue = await github.rest.issues.create({
-                  owner: 'enterprise-org-name',
-                  repo: 'enterprise-repo-name',
+                  owner: 'HubSpot',
+                  repo: 'cms-js-platform',
                   title: issue.title,
                   body: `Originally created by ${issue.user.login} in public repo\n\nOriginal Issue: ${issue.html_url}\n\n${issue.body}`,
                   labels: ['synced']
@@ -50,8 +50,8 @@ jobs:
                   const enterpriseIssueNumber = syncComment.body.match(/Issue #(\d+)/)[1];
 
                   await github.rest.issues.update({
-                    owner: 'enterprise-org-name',
-                    repo: 'enterprise-repo-name',
+                    owner: 'HubSpot',
+                    repo: 'cms-js-platform',
                     issue_number: parseInt(enterpriseIssueNumber),
                     state: 'closed',
                     state_reason: 'completed'
@@ -78,8 +78,8 @@ jobs:
                 const enterpriseIssueNumber = syncComment.body.match(/Issue #(\d+)/)[1];
 
                 await github.rest.issues.createComment({
-                  owner: 'enterprise-org-name',
-                  repo: 'enterprise-repo-name',
+                  owner: 'HubSpot',
+                  repo: 'cms-js-platform',
                   issue_number: parseInt(enterpriseIssueNumber),
                   body: `Comment from ${comment.user.login} in public repo:\n\n${comment.body}`
                 });

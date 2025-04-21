@@ -47,6 +47,6 @@ We welcome bug reports and PRs to update or add new examples:
 ## Support
 
 Chat with the community on Slack:
-https://hubspotdev.slack.com/archives/C04AY1H2204
+https://developers.hubspot.com/docs/getting-started/slack/developer-slack
 
 ---

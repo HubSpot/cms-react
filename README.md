@@ -29,6 +29,8 @@ Each folder under `examples/` is a standalone example focused on a specific use 
 - **[getting-started](examples/getting-started)**
   Building a standalone Project with React modules that can be used across CMS themes
 
+If you want to bootstrap a new Project with CMS React you can run `npx @hubspot/create-cms-theme@latest` which will create a Project starting point for you to build upon. [Learn More](https://www.npmjs.com/package/@hubspot/create-cms-theme)
+
 ---
 
 ## Contributing

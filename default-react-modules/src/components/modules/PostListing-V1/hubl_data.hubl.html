@@ -1,7 +1,0 @@
-{% if module.selectBlog is number %}
-  {% set selectBlog = module.selectBlog %}
-{% else %}
-  {% set selectBlog = 'default' %}
-{% endif %}
-
-{% set hublData = sign_postlisting_url(selectBlog, module.listingType, module.maxLinks) %}

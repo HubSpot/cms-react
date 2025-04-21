@@ -2,42 +2,19 @@
 
 ## Documentation
 
-Check out an expanded documentation page at <a href="https://github.hubspot.com/cms-react/" target="_blank">https://github.hubspot.com/cms-react/</a>
+Check out an expanded documentation page at <a href="https://developers.hubspot.com/docs/guides/cms/react/overview" target="_blank">https://developers.hubspot.com/docs/guides/cms/react/overview</a>
 
 ## Welcome!
 
 Thank you for taking the time to learn about HubSpot CMS React. As always our goal is to solve for our customers so we welcome any and all feedback. Chat away in [\#cms-react](https://hubspotdev.slack.com/archives/C04AY1H2204) with other HubSpot developers who are pushing forward with developing with React on the Hubspot CMS. If you do not have access to the developer slack, you can request access [here](https://developers.hubspot.com/slack).
 
-## How do React modules on the CMS work?
-
-CMS React Modules and Partials are building blocks you can use to write React and JavaScript instead of HubL inside the HubSpot CMS. Note this doesn’t mean you will switch entirely away from HubL, rather we want to provide a pathway to begin writing React to render on both on the server and client. JS modules and partials are built from React components and can directly be referenced via HubL tags in your templates.
-
 ## Can I use React modules on my CMS account?
 
-Yes! Working with React modules is generally available and can be used with all tiers of the CMS, including free.
-
-## [Default React modules](default-react-modules)
-
-This directory contains a copy of all of our internal default React modules. As React modules do not appear in the Design manager, we made them available within this public repository so you can make your own copy and edit as you like. The modules you find in this directory are synced up with our internal code to ensure we keep them up to date.
-
-### What if I don't see a default React module in this repo but that is available for use within Hubspot?
-Some default React modules contain code that is internal to Hubspot and thus cannot be used in a general way by external developers. If you are are seeking to utilize one of these modules, or otherwise get a better sense of how it works, please reach out to a developer advocate for more information.
-
-## [React module boilerplate](react-module-boilerplate)
-
-If you'd like to get started with your own React module or one of our defaults, we have provided a boilerplate project for you to pick up and get started right away. This boilerplate comes complete with a Sample module so you can test working with this repo with only a few steps on your part. In order to get working with this boilerplate you simply have to:
-
-- Become familiar with working with our CLI, if you are not already, with our [Hubspot CLI documentation](https://developers.hubspot.com/docs/cms/guides/getting-started)
-- Run `hs init` and select your portal.
-- Within the react-module-boilerplate/src run `yarn deploy` or `npm deploy`, which is a helper script we offer which runs the `hs project upload` CLI command.
-- You will be prompted to create this project in your portal. Confirm and the project will be created.
-- Wait a few moments for the deploy to finish. You can view the projects within your portal at `https://app.hubspot.com/developer-projects/{YOUR_PORTAL_ID}`
-
-Once the module is uploaded you should be able to see it when you go to edit a page, adding it like any other module.
+Yes! Working with React modules can be used with all tiers of the CMS, including free.
 
 ## Examples
+In this repository is example usage of some of key features of React modules. These examples are are best understood alongside our official <a href="https://developers.hubspot.com/docs/guides/cms/react/overview" target="_blank">docs</a>. You can quickly try things out without any local setup by [opening this repo in Codesandbox.io](https://codesandbox.io/p/sandbox/stoic-pateu-g20chg?file=%2Fcms-react%2FREADME.md).
 
-In this repository is example usage of some of key features of React modules. These examples are are best understood alongside our official <a href="https://github.hubspot.com/cms-react/" target="_blank">docs</a>. You can quickly try things out without any local setup by [opening this repo in Codesandbox.io](https://codesandbox.io/p/sandbox/stoic-pateu-g20chg?file=%2Fcms-react%2FREADME.md).
 
 ### [Getting Started](examples/getting-started)
 
@@ -64,3 +41,23 @@ GraphQL is the future for querying HubSpot data in your CMS pages. As part of JS
 ### [Todo MVC](examples/todo-mvc)
 
 It seems with every new FE technology on the web comes an implemetation of TodoMVC. We didn't want to be left out and ported a recent version that made use of React and React hooks to work as a JS Module with Islands. Additionally there is an example of our `sharedIslandReducer` which provides a redux like interface for sharing state across islands.
+
+
+### [Default React modules](default-react-modules)
+
+This directory contains a copy of all of our internal default React modules. As React modules do not appear in the Design manager, we made them available within this public repository so you can make your own copy and edit as you like. The modules you find in this directory are synced up with our internal code to ensure we keep them up to date.
+
+#### What if I don't see a default React module in this repo but that is available for use within Hubspot?
+Some default React modules contain code that is internal to Hubspot and thus cannot be used in a general way by external developers. If you are are seeking to utilize one of these modules, or otherwise get a better sense of how it works, please reach out to a developer advocate for more information.
+
+### [React module boilerplate](react-module-boilerplate)
+
+If you'd like to get started with your own React module or one of our defaults, we have provided a boilerplate project for you to pick up and get started right away. This boilerplate comes complete with a Sample module so you can test working with this repo with only a few steps on your part. In order to get working with this boilerplate you simply have to:
+
+- Become familiar with working with our CLI, if you are not already, with our [Hubspot CLI documentation](https://developers.hubspot.com/docs/cms/guides/getting-started)
+- Run `hs init` and select your portal.
+- Within the react-module-boilerplate/src run `yarn deploy` or `npm deploy`, which is a helper script we offer which runs the `hs project upload` CLI command.
+- You will be prompted to create this project in your portal. Confirm and the project will be created.
+- Wait a few moments for the deploy to finish. You can view the projects within your portal at `https://app.hubspot.com/developer-projects/{YOUR_PORTAL_ID}`
+
+Once the module is uploaded you should be able to see it when you go to edit a page, adding it like any other modules.

@@ -18,7 +18,7 @@ This repo demonstrates how to build React modules and "islands" for the HubSpot 
 
 ## Documentation
 
-- Official HubSpot CMS React guide:
+- Official HubSpot CMS React docs:
   https://developers.hubspot.com/docs/guides/cms/react/overview
 
 ## Examples

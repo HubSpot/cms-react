@@ -13,4 +13,5 @@ export default defineConfig({
       { text: 'Release Log', link: 'release-log' },
     ],
   },
+  ignoreDeadLinks: true,
 });

@@ -5,16 +5,19 @@
   "devDependencies": {
     "@hubspot/cli": "latest",
     "@hubspot/prettier-plugin-hubl": "latest",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.31.10",
     "prettier": "^2.7.1",
+    "typescript": "^5.8.3",
     "yarpm": "^1.2.0"
   },
   "scripts": {
     "start": "cd islands-project/islands-app && yarpm start --",
     "postinstall": "cd islands-project/islands-app && yarpm install",
-    "lint:js": "eslint . --ext .js,.jsx",
+    "lint:js": "eslint . --ext .js,.jsx,.ts,.tsx",
     "prettier": "prettier . --check",
     "watch:hubl": "hs watch islands-theme islands-theme",
     "upload:hubl": "hs upload islands-theme islands-theme",

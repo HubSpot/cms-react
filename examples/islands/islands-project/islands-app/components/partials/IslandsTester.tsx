@@ -2,20 +2,18 @@ import { Island } from '@hubspot/cms-components';
 
 import ButtonCounterIsland from '../ButtonCounter?island';
 
-const IslandsTester = ({
+export default function IslandsTester({
   numIslands = 1,
   marginTop,
   marginBetween = '50vh',
   hydrateOn = 'load',
   islandIdPrefix = '',
-}) => {
-  numIslands = parseInt(numIslands, 10);
-
-  const islandElements = new Array(numIslands).fill('').map((_, i) => {
-    let style = { marginTop: marginTop ?? marginBetween };
-    if (i === 0 && marginTop == null) {
-      delete style.marginTop;
-    }
+}: Props) {
+  const islandElements = Array.from({ length: Number(numIslands) }, (_, i) => {
+    const style =
+      i === 0 && marginTop == null
+        ? null
+        : { marginTop: marginTop ?? marginBetween };
 
     const islandId = `${islandIdPrefix}island-${i}`;
 
@@ -30,7 +28,14 @@ const IslandsTester = ({
       />
     );
   });
-  return <div style={{ fontSize: '1.5em' }}>{islandElements}</div>;
-};
 
-export default IslandsTester;
+  return <div style={{ fontSize: '1.5em' }}>{islandElements}</div>;
+}
+
+interface Props {
+  numIslands?: number | string;
+  marginTop?: string | null;
+  marginBetween?: string;
+  hydrateOn?: string;
+  islandIdPrefix?: string;
+}
